@@ -22,25 +22,25 @@
         android:textSize="36sp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/libertyCustomersBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:layout_below="@+id/button2"
+        android:layout_alignLeft="@+id/nonLibertyBtn"
+        android:layout_alignStart="@+id/nonLibertyBtn"
+        android:layout_below="@+id/nonLibertyBtn"
         android:layout_marginTop="58dp"
         android:background="@color/LMBlue"
         android:text="Liberty Mutual Customer"
         android:textColor="@android:color/white" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/nonLibertyBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="88dp"
         android:background="@color/LMBlue"
-        android:text="Non-Liberty Mutua Customers"
+        android:text="Non-Liberty Mutual Customers"
         android:textColor="@android:color/white" />
 </RelativeLayout>

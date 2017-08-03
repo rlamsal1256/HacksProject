@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.project.libertyhacks.mutual.liberty.care.DriverLicenseActivity">
+
+    <Button
+        android:id="@+id/enterManualBtn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:background="@color/LMBlue"
+        android:text="Enter info manually"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/takePicBtn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:background="@color/LMBlue"
+        android:text="Take picture of your license"
+        android:textColor="@android:color/white" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Or"
+        android:textAlignment="center" />
+</RelativeLayout>
