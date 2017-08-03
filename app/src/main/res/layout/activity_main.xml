@@ -5,25 +5,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.project.libertyhacks.mutual.liberty.care.MainActivity"
+    tools:context="com.project.libertyhacks.mutual.liberty.care.GetStartedActivity"
     android:weightSum="1">
 
     <TextView
         android:id="@+id/titleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="89dp"
+        android:layout_above="@+id/getStartedBtn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="53dp"
+        android:fontFamily="casual"
         android:gravity="center_horizontal"
         android:text="CARe"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textColor="@color/LMBlue"
+        android:textSize="36sp" />
 
     <Button
         android:id="@+id/getStartedBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Get Started" />
+        android:background="@color/LMBlue"
+        android:text="Get Started"
+        android:textColor="@android:color/white" />
 </RelativeLayout>
