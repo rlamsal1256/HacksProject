@@ -181,7 +181,7 @@
         android:textSize="18sp" />
 
     <ImageButton
-        android:id="@+id/setUserLicenceExpDateBtn"
+        android:id="@+id/setUserLicenseExpDateImgBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/expDateTxt"
@@ -191,7 +191,7 @@
         app:srcCompat="@drawable/calendar" />
 
     <ImageButton
-        android:id="@+id/setUserDobBtn"
+        android:id="@+id/setUserDobImgBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/dobTxt"

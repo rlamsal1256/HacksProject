@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 
 import com.project.libertyhacks.mutual.liberty.care.R;
@@ -18,7 +19,7 @@ import java.util.Calendar;
 public class InputLicenseInfoActivity extends AppCompatActivity implements
         View.OnClickListener{
 
-    private Button setUserDobBtn;
+    private ImageButton setUserDobBtn;
     private Calendar calendar;
     private int year, month, day;
     private int mYear, mMonth, mDay;
@@ -41,7 +42,7 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
         RadioButton userIsMale = findViewById(R.id.userMaleRadioBtn);
         RadioButton userIsFemale =  findViewById(R.id.userFemaleRadioBtn);
         userDob = findViewById(R.id.dobTxt);
-        setUserDobBtn = findViewById(R.id.setUserDobBtn);
+        setUserDobBtn = findViewById(R.id.setUserDobImgBtn);
         setUserDobBtn.setOnClickListener(this);
         EditText userLicenseNum = findViewById(R.id.licenseNumTxt);
         EditText userLicenseExpDate = findViewById(R.id.expDateTxt);
