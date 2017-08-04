@@ -55,4 +55,3 @@ freeline/
 freeline_project_description.json
 gradle.properties
 app/proguard-rules.pro
-app/google-services.json
