@@ -92,4 +92,16 @@ public class User {
         result = 31 * result + userLicenseNum.hashCode();
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName='" + userName + '\'' +
+                ", userAge=" + userAge +
+                ", userGender=" + userGender +
+                ", userDOB=" + userDOB +
+                ", userLicenseNum='" + userLicenseNum + '\'' +
+                ", userLicenseExpDate=" + userLicenseExpDate +
+                '}';
+    }
 }
