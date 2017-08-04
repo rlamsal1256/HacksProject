@@ -19,6 +19,8 @@ import com.project.libertyhacks.mutual.liberty.care.models.User;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class InputLicenseInfoActivity extends AppCompatActivity implements
         View.OnClickListener{
@@ -135,14 +137,7 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
 
         } else if (view == nextScreenBtn) {
 
-//            final FirebaseDatabase database = FirebaseDatabase.getInstance();
-//            DatabaseReference usersRef = ref.child("users");
-//
-//            Map<String, User> users = new HashMap<String, User>();
-//            users.put("alanisawesome", new User("June 23, 1912", "Alan Turing"));
-//            users.put("gracehop", new User("December 9, 1906", "Grace Hopper"));
-//
-//            usersRef.setValue(users);
+
 
             String licNum = userLicenseNum.getText().toString();
 
@@ -157,7 +152,10 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference mDatabase = database.getReference("users");
 
-            mDatabase.child(licNum).setValue(newUser);
+            Map<String, User> users = new HashMap<>();
+            users.put(licNum, newUser);
+
+            mDatabase.setValue(users);
 
             Log.d("InputLicenseInfo", newUser.toString());
 
