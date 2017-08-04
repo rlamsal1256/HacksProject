@@ -17,11 +17,20 @@ public class DriverLicenseActivity extends AppCompatActivity {
 
 
 
-        Button takePicBtn = (Button) findViewById(R.id.takePicBtn);
+        Button takePicBtn = findViewById(R.id.takePicBtn);
         takePicBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DriverLicenseActivity.this, TakeLicensePictureAcitivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button inputLicenseInfoBtn = findViewById(R.id.inputLicenseInfoBtn);
+        inputLicenseInfoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DriverLicenseActivity.this, InputLicenseInfoActivity.class);
                 startActivity(intent);
             }
         });

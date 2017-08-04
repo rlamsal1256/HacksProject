@@ -124,18 +124,23 @@
         android:layout_alignLeft="@+id/licenseNumTxt"
         android:layout_alignStart="@+id/licenseNumTxt"
         android:ems="10"
-        android:inputType="date" />
+        android:inputType="date"
+        android:layout_toStartOf="@+id/imageButton"
+        android:layout_alignRight="@+id/dobTxt"
+        android:layout_alignEnd="@+id/dobTxt" />
 
     <EditText
         android:id="@+id/dobTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
         android:layout_alignBaseline="@+id/dobTextView"
         android:layout_alignBottom="@+id/dobTextView"
         android:layout_alignLeft="@+id/licenseNumTxt"
         android:layout_alignStart="@+id/licenseNumTxt"
-        android:ems="10"
-        android:inputType="date" />
+        android:layout_alignRight="@+id/userFemaleRadioBtn"
+        android:layout_alignEnd="@+id/userFemaleRadioBtn" />
 
     <TextView
         android:id="@+id/genderTextView"
@@ -174,4 +179,24 @@
         android:text="F"
         android:textColor="@color/LMBlue"
         android:textSize="18sp" />
+
+    <ImageButton
+        android:id="@+id/setUserLicenceExpDateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/expDateTxt"
+        android:layout_toEndOf="@+id/expDateTxt"
+        android:layout_toRightOf="@+id/expDateTxt"
+        android:background="@android:color/white"
+        app:srcCompat="@drawable/calendar" />
+
+    <ImageButton
+        android:id="@+id/setUserDobBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/dobTxt"
+        android:layout_toEndOf="@+id/dobTxt"
+        android:layout_toRightOf="@+id/dobTxt"
+        android:background="@android:color/white"
+        app:srcCompat="@drawable/calendar" />
 </RelativeLayout>
