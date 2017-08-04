@@ -12,9 +12,11 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 
 import com.project.libertyhacks.mutual.liberty.care.R;
+import com.project.libertyhacks.mutual.liberty.care.models.DateTemplate;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class InputLicenseInfoActivity extends AppCompatActivity implements
         View.OnClickListener{
@@ -28,17 +30,23 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
     private RadioButton userIsMale;
     private RadioButton userIsFemale;
     private EditText userLicenseExpDate;
+    private DateTemplate userLicenseExpDateTemplate;
     private EditText userDob;
+    private DateTemplate userDobDateTemplate;
     private int mYear, mMonth, mDay;
+    private boolean isUserMale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_license_info);
+
+
         userName = findViewById(R.id.userNameTxt);
         userAge = findViewById(R.id.userAgeTxt);
         userIsMale = findViewById(R.id.userMaleRadioBtn);
         userIsFemale =  findViewById(R.id.userFemaleRadioBtn);
+        isUserMale = true;
         userDob = findViewById(R.id.dobTxt);
         setUserDobBtn = findViewById(R.id.setUserDobImgBtn);
         setUserLicenseExpDateBtn = findViewById(R.id.setUserLicenseExpDateImgBtn);
@@ -53,11 +61,29 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
 
     }
 
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.userMaleRadioBtn:
+                if (checked)
+                    isUserMale = true;
+                    break;
+            case R.id.userFemaleRadioBtn:
+                if (checked)
+                    isUserMale = false;
+                    break;
+        }
+    }
 
 
-    private char userGender(RadioButton userIsMale, RadioButton userIsFemale) {
-        //TODO: check both radio buttons
-        return 'F';
+    private char userGender() {
+        if (isUserMale)
+            return 'M';
+        else
+            return 'F';
     }
 
     @Override
@@ -77,6 +103,7 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
                                               int monthOfYear, int dayOfMonth) {
 
                             userDob.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            userDobDateTemplate = new DateTemplate(monthOfYear + 1, dayOfMonth, year);
 
                         }
                     }, mYear, mMonth, mDay);
@@ -98,6 +125,7 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
                                               int monthOfYear, int dayOfMonth) {
 
                             userLicenseExpDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            userLicenseExpDateTemplate = new DateTemplate(monthOfYear + 1, dayOfMonth, year);
 
                         }
                     }, mYear, mMonth, mDay);
@@ -105,8 +133,12 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
 
         } else if (view == nextScreenBtn) {
 
-            User newUser = new User(userName.getText().toString(), Integer.parseInt(userAge.getText().toString()),
-                    userGender(userIsMale, userIsFemale), null, userLicenseNum.getText().toString(), null);
+            User newUser = new User(userName.getText().toString(),
+                    Integer.parseInt(userAge.getText().toString()),
+                    userGender(),
+                    new Date(userDobDateTemplate.getYear(), userDobDateTemplate.getMonth(), userDobDateTemplate.getDay()),
+                    userLicenseNum.getText().toString(),
+                    new Date(userLicenseExpDateTemplate.getYear(), userLicenseExpDateTemplate.getMonth(), userLicenseExpDateTemplate.getDay()));
 
             Log.d("InputLicenseInfo", newUser.toString());
 

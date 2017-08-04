@@ -50,7 +50,7 @@
         android:textColor="@color/LMBlue"
         android:textSize="18sp"
         android:layout_marginTop="34dp"
-        android:layout_below="@+id/userMaleRadioBtn"
+        android:layout_below="@+id/radioSex"
         android:layout_alignLeft="@+id/ageTextView"
         android:layout_alignStart="@+id/ageTextView" />
 
@@ -123,7 +123,6 @@
         android:layout_alignStart="@+id/licenseNumTxt"
         android:ems="10"
         android:inputType="date"
-        android:layout_toStartOf="@+id/imageButton"
         android:layout_alignRight="@+id/dobTxt"
         android:layout_alignEnd="@+id/dobTxt" />
 
@@ -137,8 +136,8 @@
         android:layout_alignBottom="@+id/dobTextView"
         android:layout_alignLeft="@+id/licenseNumTxt"
         android:layout_alignStart="@+id/licenseNumTxt"
-        android:layout_alignRight="@+id/userFemaleRadioBtn"
-        android:layout_alignEnd="@+id/userFemaleRadioBtn" />
+        android:layout_alignRight="@+id/radioSex"
+        android:layout_alignEnd="@+id/radioSex" />
 
     <TextView
         android:id="@+id/genderTextView"
@@ -147,36 +146,42 @@
         android:text="Gender"
         android:textColor="@color/LMBlue"
         android:textSize="18sp"
-        android:layout_alignBaseline="@+id/userMaleRadioBtn"
-        android:layout_alignBottom="@+id/userMaleRadioBtn"
+        android:layout_alignBaseline="@+id/radioSex"
+        android:layout_alignBottom="@+id/radioSex"
         android:layout_alignLeft="@+id/dobTextView"
         android:layout_alignStart="@+id/dobTextView" />
 
-    <RadioButton
-        android:id="@+id/userMaleRadioBtn"
+    <RadioGroup
+        android:id="@+id/radioSex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:text="M"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/dobTxt"
-        android:layout_alignStart="@+id/dobTxt"
-        android:layout_toLeftOf="@+id/userFemaleRadioBtn"
-        android:layout_toStartOf="@+id/userFemaleRadioBtn" />
+        android:orientation="horizontal"
+        android:layout_below="@+id/userAgeTxt"
+        android:layout_alignLeft="@+id/userAgeTxt"
+        android:layout_alignStart="@+id/userAgeTxt"
+        android:layout_marginTop="25dp">
 
-    <RadioButton
-        android:id="@+id/userFemaleRadioBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/userMaleRadioBtn"
-        android:layout_alignBottom="@+id/userMaleRadioBtn"
-        android:layout_alignEnd="@+id/textView3"
-        android:layout_alignRight="@+id/textView3"
-        android:text="F"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp" />
+        <RadioButton
+            android:id="@+id/userMaleRadioBtn"
+            android:layout_width="102dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text="M"
+            android:textColor="@color/LMBlue"
+            android:textSize="18sp"
+            android:onClick="onRadioButtonClicked"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/userFemaleRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="F"
+            android:textColor="@color/LMBlue"
+            android:textSize="18sp"
+            android:onClick="onRadioButtonClicked" />
+
+    </RadioGroup>
 
     <ImageButton
         android:id="@+id/setUserLicenseExpDateImgBtn"
@@ -200,11 +205,14 @@
 
     <ImageButton
         android:id="@+id/nextScreenBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/userFemaleRadioBtn"
-        android:layout_toRightOf="@+id/userFemaleRadioBtn"
+        android:layout_alignEnd="@+id/setUserLicenseExpDateImgBtn"
+        android:layout_alignRight="@+id/setUserLicenseExpDateImgBtn"
+        android:layout_below="@+id/setUserLicenseExpDateImgBtn"
+        android:layout_marginTop="15dp"
         android:background="@color/LMBlue"
         app:srcCompat="@drawable/ic_right_arrow" />
+
+
 </RelativeLayout>
