@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.project.libertyhacks.mutual.liberty.care.R;
 import com.project.libertyhacks.mutual.liberty.care.models.DateTemplate;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
@@ -133,12 +135,29 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
 
         } else if (view == nextScreenBtn) {
 
+//            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+//            DatabaseReference usersRef = ref.child("users");
+//
+//            Map<String, User> users = new HashMap<String, User>();
+//            users.put("alanisawesome", new User("June 23, 1912", "Alan Turing"));
+//            users.put("gracehop", new User("December 9, 1906", "Grace Hopper"));
+//
+//            usersRef.setValue(users);
+
+            String licNum = userLicenseNum.getText().toString();
+
             User newUser = new User(userName.getText().toString(),
                     Integer.parseInt(userAge.getText().toString()),
                     userGender(),
                     userDobDateTemplate,
-                    userLicenseNum.getText().toString(),
+                    licNum,
                     userLicenseExpDateTemplate);
+
+            // Save user in firebase database
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference mDatabase = database.getReference("users");
+
+            mDatabase.child(licNum).setValue(newUser);
 
             Log.d("InputLicenseInfo", newUser.toString());
 
