@@ -9,16 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GetStartedActivity">
+        <activity android:name=".activities.GetStartedActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".DriverLicenseActivity" />
-        <activity android:name=".TakeLicensePictureAcitivity"></activity>
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.DriverLicenseActivity" />
+        <activity android:name=".activities.TakeLicensePictureAcitivity" />
+        <activity android:name=".activities.InputLicenseInfoActivity"></activity>
     </application>
 
 </manifest>
