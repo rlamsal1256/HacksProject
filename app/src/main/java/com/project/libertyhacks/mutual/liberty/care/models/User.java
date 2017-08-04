@@ -12,12 +12,12 @@ public class User {
     private String userName;
     private int userAge;
     private char userGender;
-    private Date userDOB;
+    private DateTemplate userDOB;
 
     private String userLicenseNum;
-    private Date userLicenseExpDate;
+    private DateTemplate userLicenseExpDate;
 
-    public User(String userName, int userAge, char userGender, Date userDOB, String userLicenseNum, Date userLicenseExpDate) {
+    public User(String userName, int userAge, char userGender, DateTemplate userDOB, String userLicenseNum, DateTemplate userLicenseExpDate) {
         this.userName = userName;
         this.userAge = userAge;
         this.userGender = userGender;
@@ -42,11 +42,11 @@ public class User {
         this.userAge = userAge;
     }
 
-    public Date getUserDOB() {
+    public DateTemplate getUserDOB() {
         return userDOB;
     }
 
-    public void setUserDOB(Date userDOB) {
+    public void setUserDOB(DateTemplate userDOB) {
         this.userDOB = userDOB;
     }
 
@@ -58,11 +58,11 @@ public class User {
         this.userLicenseNum = userLicenseNum;
     }
 
-    public Date getUserLicenseExpDate() {
+    public DateTemplate getUserLicenseExpDate() {
         return userLicenseExpDate;
     }
 
-    public void setUserLicenseExpDate(Date userLicenseExpDate) {
+    public void setUserLicenseExpDate(DateTemplate userLicenseExpDate) {
         this.userLicenseExpDate = userLicenseExpDate;
     }
 

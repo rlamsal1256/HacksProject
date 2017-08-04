@@ -136,9 +136,9 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
             User newUser = new User(userName.getText().toString(),
                     Integer.parseInt(userAge.getText().toString()),
                     userGender(),
-                    new Date(userDobDateTemplate.getYear(), userDobDateTemplate.getMonth(), userDobDateTemplate.getDay()),
+                    userDobDateTemplate,
                     userLicenseNum.getText().toString(),
-                    new Date(userLicenseExpDateTemplate.getYear(), userLicenseExpDateTemplate.getMonth(), userLicenseExpDateTemplate.getDay()));
+                    userLicenseExpDateTemplate);
 
             Log.d("InputLicenseInfo", newUser.toString());
 
