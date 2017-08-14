@@ -150,12 +150,12 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
 
             // Save user in firebase database
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference mDatabase = database.getReference("users");
+            DatabaseReference mDatabase = database.getReference();
 
-            Map<String, User> users = new HashMap<>();
-            users.put(licNum, newUser);
+//            Map<String, User> users = new HashMap<>();
+//            users.put(licNum, newUser);
 
-            mDatabase.setValue(users);
+            mDatabase.child("users").setValue(newUser);
 
             Log.d("InputLicenseInfo", newUser.toString());
 
