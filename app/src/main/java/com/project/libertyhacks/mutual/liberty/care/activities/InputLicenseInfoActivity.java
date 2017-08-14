@@ -1,6 +1,7 @@
 package com.project.libertyhacks.mutual.liberty.care.activities;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,7 +62,13 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
 
         setUserDobBtn.setOnClickListener(this);
         setUserLicenseExpDateBtn.setOnClickListener(this);
-        nextScreenBtn.setOnClickListener(this);
+        nextScreenBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InputLicenseInfoActivity.this, UserProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
