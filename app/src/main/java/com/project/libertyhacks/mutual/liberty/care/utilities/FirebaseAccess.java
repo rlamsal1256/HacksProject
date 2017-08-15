@@ -11,6 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.project.libertyhacks.mutual.liberty.care.activities.GetStartedActivity;
 import com.project.libertyhacks.mutual.liberty.care.interfaces.Mapable;
+import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
 
 
@@ -35,7 +36,7 @@ public class FirebaseAccess {
 
         Map<String, Object> map = m.toMap();
         Log.d("USER UID", m.getKey());
-        DatabaseReference key = mDatabase.child(m.getKey());//mDatabase.child(UUID.randomUUID().toString());
+        DatabaseReference key = mDatabase.child(m.getKey());
         key.setValue(map);
 
         Log.d("InputInfo", key + ": " + map.toString());
@@ -46,6 +47,27 @@ public class FirebaseAccess {
     {
         this.getStartedActivity = gsa;
     }
+
+    public void getCarData(String vin)
+    {
+        DatabaseReference mDatabase = database.getReference("cars/" + vin);
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Car newCar = dataSnapshot.getValue(Car.class);
+                if (newCar != null)
+                {
+                    Log.d("CAR DATA", newCar.toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 
     public void getCurrentUser(FirebaseUser fbUser)
     {

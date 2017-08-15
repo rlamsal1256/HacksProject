@@ -18,6 +18,15 @@ public class Car implements Mapable {
     private int year;
     private int miles;
 
+    public Car(String vin, String name, String make, String model, int year, int miles) {
+        this.vin = vin;
+        this.name = name;
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.miles = miles;
+    }
+
     public String getVin() {
         return vin;
     }
@@ -66,8 +75,15 @@ public class Car implements Mapable {
         this.miles = miles;
     }
 
-
-
+    public void setValues(Car newCar)
+    {
+        this.make = newCar.getMake();
+        this.miles = newCar.getMiles();
+        this.model = newCar.getModel();
+        this.name = newCar.getKey();
+        this.vin = newCar.getVin();
+        this.year = newCar.getYear();
+    }
     public Car()
     {
 
@@ -85,5 +101,17 @@ public class Car implements Mapable {
 
     public String getKey() {
         return vin;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "vin='" + vin + '\'' +
+                ", name='" + name + '\'' +
+                ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", miles=" + miles +
+                '}';
     }
 }

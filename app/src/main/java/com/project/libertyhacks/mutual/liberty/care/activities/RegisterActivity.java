@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.project.libertyhacks.mutual.liberty.care.R;
+import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.models.DateTemplate;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
 import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
@@ -39,8 +40,10 @@ public class RegisterActivity extends AppCompatActivity {
                 Map<String, Object> cars = new HashMap<>();
                 cars.put("1234", true);
                 User newUser = new User( Singleton.getInstance().getFirebaseUser().getUid(), "joe", 45, "m", new DateTemplate(1, 1, 1970), licNum, new DateTemplate(1, 1, 2018), cars);
+                Car newCar = new Car("1234", "Dad's car", "Honda", "Accord", 2013, 40456);
                 FirebaseAccess fa = new FirebaseAccess();
                 fa.post("/users/", newUser);
+                fa.post("/cars/", newCar);
             }
         });
     }
