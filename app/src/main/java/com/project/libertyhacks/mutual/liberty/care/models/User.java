@@ -3,7 +3,7 @@ package com.project.libertyhacks.mutual.liberty.care.models;
 
 import com.project.libertyhacks.mutual.liberty.care.interfaces.Mapable;
 
-import java.util.Date;
+
 import java.util.HashMap;
 import java.util.Map;
 

@@ -2,10 +2,6 @@ package com.project.libertyhacks.mutual.liberty.care.utilities;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,9 +13,9 @@ import com.project.libertyhacks.mutual.liberty.care.activities.GetStartedActivit
 import com.project.libertyhacks.mutual.liberty.care.interfaces.Mapable;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
 
-import java.util.HashMap;
+
 import java.util.Map;
-import java.util.UUID;
+
 
 /**
  * Created by andrewcunningham on 8/14/17.

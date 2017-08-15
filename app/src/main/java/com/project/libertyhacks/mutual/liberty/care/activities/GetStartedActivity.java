@@ -16,7 +16,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.project.libertyhacks.mutual.liberty.care.R;
 import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
-import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
 
 public class GetStartedActivity extends AppCompatActivity {
 

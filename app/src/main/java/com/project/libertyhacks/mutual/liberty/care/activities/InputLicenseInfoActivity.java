@@ -3,16 +3,14 @@ package com.project.libertyhacks.mutual.liberty.care.activities;
 import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
-import android.widget.Button;
+
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.project.libertyhacks.mutual.liberty.care.R;
 import com.project.libertyhacks.mutual.liberty.care.models.DateTemplate;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
@@ -20,10 +18,10 @@ import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
 import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
 
 import java.util.Calendar;
-import java.util.Date;
+
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
+
 
 public class InputLicenseInfoActivity extends AppCompatActivity implements
         View.OnClickListener{
