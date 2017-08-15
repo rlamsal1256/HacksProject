@@ -18,7 +18,7 @@ public class User implements Mapable {
     private String userGender;
     private DateTemplate userDOB;
     private String userKey;
-
+    private Map<String, Object> cars;
     private String userLicenseNum;
     private DateTemplate userLicenseExpDate;
 
@@ -27,7 +27,7 @@ public class User implements Mapable {
 
     }
 
-    public User(String userKey, String userName, int userAge, String userGender, DateTemplate userDOB, String userLicenseNum, DateTemplate userLicenseExpDate) {
+    public User(String userKey, String userName, int userAge, String userGender, DateTemplate userDOB, String userLicenseNum, DateTemplate userLicenseExpDate, Map<String, Object> cars) {
         this.userKey = userKey;
         this.userName = userName;
         this.userAge = userAge;
@@ -35,6 +35,15 @@ public class User implements Mapable {
         this.userDOB = userDOB;
         this.userLicenseNum = userLicenseNum;
         this.userLicenseExpDate = userLicenseExpDate;
+        this.cars = cars;
+    }
+
+    public Map<String, Object> getCars() {
+        return cars;
+    }
+
+    public void setCars(Map<String, Object> cars) {
+        this.cars = cars;
     }
 
     public void setUserKey(String userKey) { this.userKey = userKey; }
@@ -127,6 +136,7 @@ public class User implements Mapable {
         result.put("userDOB", userDOB.toMap());
         result.put("userLicenseNum", userLicenseNum);
         result.put("userLicenseExpDate", userLicenseExpDate.toMap());
+        result.put("cars", cars);
         return result;
     }
 

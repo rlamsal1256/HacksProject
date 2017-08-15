@@ -13,6 +13,9 @@ import com.project.libertyhacks.mutual.liberty.care.models.User;
 import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
 import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
@@ -34,7 +37,9 @@ public class RegisterActivity extends AppCompatActivity {
             {
                 String licNum = "1263748";
                 //Log.d("USER UID", Singleton.getInstance().userUID);
-                User newUser = new User( Singleton.getInstance().getFirebaseUser().getUid(), "joe", 45, "m", new DateTemplate(1, 1, 1970), licNum, new DateTemplate(1, 1, 2018));
+                Map<String, Object> cars = new HashMap<>();
+                cars.put("1234", true);
+                User newUser = new User( Singleton.getInstance().getFirebaseUser().getUid(), "joe", 45, "m", new DateTemplate(1, 1, 1970), licNum, new DateTemplate(1, 1, 2018), cars);
                 FirebaseAccess fa = new FirebaseAccess();
                 fa.post("/users/", newUser);
             }

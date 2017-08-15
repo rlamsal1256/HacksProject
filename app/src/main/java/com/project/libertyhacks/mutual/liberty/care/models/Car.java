@@ -13,7 +13,6 @@ public class Car implements Mapable {
 
     private String vin;
     private String name;
-    private Map<String, Object> drivers;
     private String make;
     private String model;
     private int year;
@@ -33,14 +32,6 @@ public class Car implements Mapable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Map<String, Object> getDrivers() {
-        return drivers;
-    }
-
-    public void setDrivers(Map<String, Object> drivers) {
-        this.drivers = drivers;
     }
 
     public String getMake() {
@@ -89,7 +80,6 @@ public class Car implements Mapable {
         result.put("model", model);
         result.put("year", year);
         result.put("miles", miles);
-        result.put("drivers", drivers);
         return result;
     }
 

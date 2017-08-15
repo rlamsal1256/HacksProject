@@ -145,13 +145,16 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
             String licNum = userLicenseNum.getText().toString();
 
             String userUID = Singleton.getInstance().getCurrentUser().getKey();
+            Map<String, Object> cars = new HashMap<>();
+            cars.put("1234", true);
 
             User newUser = new User(userUID, userName.getText().toString(),
                     Integer.parseInt(userAge.getText().toString()),
                     String.valueOf(userGender()),
                     userDobDateTemplate,
                     licNum,
-                    userLicenseExpDateTemplate);
+                    userLicenseExpDateTemplate,
+                    cars);
 
             FirebaseAccess fa = new FirebaseAccess();
             fa.post("/users/", newUser);
