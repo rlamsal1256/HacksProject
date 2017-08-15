@@ -25,7 +25,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Will change null to a valid screen
-                Intent intent = new Intent(EnterCarInfoActivity.this, null);
+                Intent intent = new Intent(EnterCarInfoActivity.this, YourCarsActivity.class);
                 startActivity(intent);
             }
         });
