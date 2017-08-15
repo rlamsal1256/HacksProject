@@ -21,7 +21,8 @@
         <activity android:name=".activities.TakeLicensePictureAcitivity" />
         <activity android:name=".activities.InputLicenseInfoActivity" />
         <activity android:name=".activities.UserProfileActivity" />
-        <activity android:name=".activities.AddCarsActivity"></activity>
+        <activity android:name=".activities.AddCarsActivity" />
+        <activity android:name=".activities.EnterCarInfoActivity"></activity>
     </application>
 
 </manifest>
