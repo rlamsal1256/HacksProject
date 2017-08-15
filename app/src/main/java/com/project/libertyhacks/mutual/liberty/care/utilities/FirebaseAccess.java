@@ -8,8 +8,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.project.libertyhacks.mutual.liberty.care.activities.GetStartedActivity;
 import com.project.libertyhacks.mutual.liberty.care.interfaces.Mapable;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
 
@@ -25,20 +29,58 @@ public class FirebaseAccess {
 
     public FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private GetStartedActivity getStartedActivity;
 
     public boolean post(String url, Mapable m)
     {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference mDatabase = database.getReference(url);
         Log.d("Database Reference", mDatabase.toString());
 
         Map<String, Object> map = m.toMap();
-        DatabaseReference key = mDatabase.child(UUID.randomUUID().toString());
+        Log.d("USER UID", m.getKey());
+        DatabaseReference key = mDatabase.child(m.getKey());//mDatabase.child(UUID.randomUUID().toString());
         key.setValue(map);
 
         Log.d("InputInfo", key + ": " + map.toString());
         return true;
     }
+
+    public void setGetStartedActivity(GetStartedActivity gsa)
+    {
+        this.getStartedActivity = gsa;
+    }
+
+    public void getCurrentUser(FirebaseUser fbUser)
+    {
+        DatabaseReference mDatabase = database.getReference("users/"+fbUser.getUid());
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                if (user != null)
+                {
+                    setCurrentUser(user);
+                    Log.d("USER SET", "CURRENT USER IS SET");
+                }
+                else
+                {
+                    Log.d("USER NOT FOUND", "No user associated with url");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void setCurrentUser(User user)
+    {
+        Singleton.getInstance().setCurrentUser(user);
+    }
+
 /*
     public Task<AuthResult> signIn()
     {
@@ -46,6 +88,32 @@ public class FirebaseAccess {
         return mAuth.signInAnonymously();
     }
 */
+
+    public void isExistingUser(FirebaseUser user) {
+        Singleton.getInstance().setFirebaseUser(user);
+        DatabaseReference mDatabase = database.getReference("users/" + user.getUid());
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                if (user != null)
+                {
+                    getStartedActivity.existingUser();
+                    Log.d("USER", "EXISTING USER");
+                }
+                else
+                {
+                    getStartedActivity.newUser();
+                    Log.d("USER", "NEW USER");
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                getStartedActivity.newUser();
+            }
+        });
+    }
+
     // release listener in onStop
     public void onStop() {
         if (mAuthListener != null) {
@@ -74,7 +142,5 @@ public class FirebaseAccess {
                 }
             }
         };
-
-
     }
 }

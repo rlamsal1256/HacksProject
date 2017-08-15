@@ -17,6 +17,7 @@ import com.project.libertyhacks.mutual.liberty.care.R;
 import com.project.libertyhacks.mutual.liberty.care.models.DateTemplate;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
 import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
+import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -143,9 +144,11 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
 
             String licNum = userLicenseNum.getText().toString();
 
-            User newUser = new User(userName.getText().toString(),
+            String userUID = Singleton.getInstance().getCurrentUser().getKey();
+
+            User newUser = new User(userUID, userName.getText().toString(),
                     Integer.parseInt(userAge.getText().toString()),
-                    userGender(),
+                    String.valueOf(userGender()),
                     userDobDateTemplate,
                     licNum,
                     userLicenseExpDateTemplate);

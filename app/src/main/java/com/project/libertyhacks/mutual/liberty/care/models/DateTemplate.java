@@ -4,6 +4,7 @@ import com.project.libertyhacks.mutual.liberty.care.interfaces.Mapable;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by n0312809 on 8/4/2017.
@@ -14,6 +15,11 @@ public class DateTemplate implements Mapable{
     private int year;
     private int month;
     private int day;
+
+    public DateTemplate()
+    {
+
+    }
 
     public DateTemplate(int month, int day, int year) {
         this.year = year;
@@ -61,5 +67,9 @@ public class DateTemplate implements Mapable{
         result.put("month", month);
         result.put("day", day);
         return result;
+    }
+
+    public String getKey() {
+        return UUID.randomUUID().toString();
     }
 }

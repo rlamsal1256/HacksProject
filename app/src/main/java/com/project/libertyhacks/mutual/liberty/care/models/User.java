@@ -15,13 +15,20 @@ public class User implements Mapable {
 
     private String userName;
     private int userAge;
-    private char userGender;
+    private String userGender;
     private DateTemplate userDOB;
+    private String userKey;
 
     private String userLicenseNum;
     private DateTemplate userLicenseExpDate;
 
-    public User(String userName, int userAge, char userGender, DateTemplate userDOB, String userLicenseNum, DateTemplate userLicenseExpDate) {
+    public User()
+    {
+
+    }
+
+    public User(String userKey, String userName, int userAge, String userGender, DateTemplate userDOB, String userLicenseNum, DateTemplate userLicenseExpDate) {
+        this.userKey = userKey;
         this.userName = userName;
         this.userAge = userAge;
         this.userGender = userGender;
@@ -29,6 +36,8 @@ public class User implements Mapable {
         this.userLicenseNum = userLicenseNum;
         this.userLicenseExpDate = userLicenseExpDate;
     }
+
+    public void setUserKey(String userKey) { this.userKey = userKey; }
 
     public String getUserName() {
         return userName;
@@ -70,11 +79,11 @@ public class User implements Mapable {
         this.userLicenseExpDate = userLicenseExpDate;
     }
 
-    public char getUserGender() {
+    public String getUserGender() {
         return userGender;
     }
 
-    public void setUserGender(char userGender) {
+    public void setUserGender(String userGender) {
         this.userGender = userGender;
     }
 
@@ -109,6 +118,7 @@ public class User implements Mapable {
                 '}';
     }
 
+    @Override
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("userName", userName);
@@ -118,5 +128,10 @@ public class User implements Mapable {
         result.put("userLicenseNum", userLicenseNum);
         result.put("userLicenseExpDate", userLicenseExpDate.toMap());
         return result;
+    }
+
+    @Override
+    public String getKey() {
+        return userKey;
     }
 }
