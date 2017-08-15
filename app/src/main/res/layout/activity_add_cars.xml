@@ -41,16 +41,16 @@
         app:srcCompat="@drawable/ic_menu" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/addCarBtn"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_below="@+id/textView21"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:background="@android:color/background_light"
         android:backgroundTint="@android:color/background_light"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_add"
-        android:layout_below="@+id/textView21"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        app:srcCompat="@drawable/ic_add" />
 
     <ImageButton
         android:id="@+id/imageButton8"
