@@ -24,12 +24,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.0.0'
     compile 'com.google.firebase:firebase-core:11.0.4'
     compile 'com.google.firebase:firebase-database:11.0.4'
-<<<<<<< HEAD
-    compile 'com.android.support.constraint:constraint-layout:+'
-    compile 'com.android.support:gridlayout-v7:25.3.1'
-=======
     compile 'com.google.firebase:firebase-auth:11.0.4'
->>>>>>> ff01ff9db37c57ac5414116f5024553a5a8fda9d
 }
 
 apply plugin: 'com.google.gms.google-services'
