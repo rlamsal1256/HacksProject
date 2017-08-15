@@ -28,8 +28,7 @@ public class UserProfileActivity extends AppCompatActivity {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Will change null to Your Cars screen
-                Intent intent = new Intent(UserProfileActivity.this, null);
+                Intent intent = new Intent(UserProfileActivity.this, AddCarsActivity.class);
                 startActivity(intent);
             }
         });
