@@ -2,12 +2,12 @@ package com.project.libertyhacks.mutual.liberty.care.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.project.libertyhacks.mutual.liberty.care.R;
 
@@ -20,7 +20,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_car_info);
 
-        Button nextScreenBtn = findViewById(R.id.nextScreenBtn);
+        ImageButton nextScreenBtn = findViewById(R.id.nextScreenBtn);
         nextScreenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,7 +30,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
             }
         });
 
-        Button backBtn = findViewById(R.id.backBtn);
+        ImageButton backBtn = findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +42,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
         final EditText lastRegistrationDate = findViewById(R.id.lastRegistrationTxt);
         final EditText lastOilChangeDate = findViewById(R.id.lastOilChangeTxt);
 
-        Button setLastRegistrationBtn = findViewById(R.id.setLastRegistrationImgBtn);
+        ImageButton setLastRegistrationBtn = findViewById(R.id.setLastRegistrationImgBtn);
         setLastRegistrationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +65,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
             }
         });
 
-        Button setLastOilChangeBtn = findViewById(R.id.setLastOilChangeImgBtn);
+        ImageButton setLastOilChangeBtn = findViewById(R.id.setLastOilChangeImgBtn);
         setLastOilChangeBtn.setOnClickListener(new View.OnClickListener()
 
         {
