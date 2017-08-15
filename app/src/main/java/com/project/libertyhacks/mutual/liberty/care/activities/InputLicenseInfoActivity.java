@@ -16,11 +16,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.project.libertyhacks.mutual.liberty.care.R;
 import com.project.libertyhacks.mutual.liberty.care.models.DateTemplate;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
+import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class InputLicenseInfoActivity extends AppCompatActivity implements
         View.OnClickListener{
@@ -148,16 +150,8 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
                     licNum,
                     userLicenseExpDateTemplate);
 
-            // Save user in firebase database
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference mDatabase = database.getReference("users");
-
-            Map<String, User> users = new HashMap<>();
-            users.put(licNum, newUser);
-
-            mDatabase.setValue(users);
-
-            Log.d("InputLicenseInfo", newUser.toString());
+            FirebaseAccess fa = new FirebaseAccess();
+            fa.post("/users/", newUser);
 
             //TODO: fire intent to next screen
         }

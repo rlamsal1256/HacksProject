@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.project.libertyhacks.mutual.liberty.care.R;
+import com.project.libertyhacks.mutual.liberty.care.models.DateTemplate;
+import com.project.libertyhacks.mutual.liberty.care.models.User;
+import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -21,6 +24,16 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this, DriverLicenseActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        Button libertyBtn = (Button) findViewById(R.id.libertyCustomersBtn);
+        libertyBtn.setOnClickListener((v) -> {
+            {
+                String licNum = "1263748";
+                User newUser = new User("joe", 45, 'm', new DateTemplate(1, 1, 1970), licNum, new DateTemplate(1, 1, 2018));
+                FirebaseAccess fa = new FirebaseAccess();
+                fa.post("/users/", newUser);
             }
         });
     }

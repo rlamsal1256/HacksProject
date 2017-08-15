@@ -1,10 +1,15 @@
 package com.project.libertyhacks.mutual.liberty.care.models;
 
+import com.project.libertyhacks.mutual.liberty.care.interfaces.Mapable;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by n0312809 on 8/4/2017.
  */
 
-public class DateTemplate {
+public class DateTemplate implements Mapable{
 
     private int year;
     private int month;
@@ -47,5 +52,14 @@ public class DateTemplate {
                 ", month=" + month +
                 ", day=" + day +
                 '}';
+    }
+
+    public Map<String, Object> toMap()
+    {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("year", year);
+        result.put("month", month);
+        result.put("day", day);
+        return result;
     }
 }

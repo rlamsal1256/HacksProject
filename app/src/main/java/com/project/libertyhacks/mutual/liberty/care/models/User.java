@@ -1,13 +1,17 @@
 package com.project.libertyhacks.mutual.liberty.care.models;
 
 
+import com.project.libertyhacks.mutual.liberty.care.interfaces.Mapable;
+
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by n0312809 on 8/4/2017.
  */
 
-public class User {
+public class User implements Mapable {
 
     private String userName;
     private int userAge;
@@ -95,7 +99,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "{" +
                 "userName='" + userName + '\'' +
                 ", userAge=" + userAge +
                 ", userGender=" + userGender +
@@ -103,5 +107,16 @@ public class User {
                 ", userLicenseNum='" + userLicenseNum + '\'' +
                 ", userLicenseExpDate=" + userLicenseExpDate +
                 '}';
+    }
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("userName", userName);
+        result.put("userAge", userAge);
+        result.put("userGender", String.valueOf(userGender));
+        result.put("userDOB", userDOB.toMap());
+        result.put("userLicenseNum", userLicenseNum);
+        result.put("userLicenseExpDate", userLicenseExpDate.toMap());
+        return result;
     }
 }
