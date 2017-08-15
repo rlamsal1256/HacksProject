@@ -19,7 +19,11 @@
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.DriverLicenseActivity" />
         <activity android:name=".activities.TakeLicensePictureAcitivity" />
-        <activity android:name=".activities.InputLicenseInfoActivity"></activity>
+        <activity android:name=".activities.InputLicenseInfoActivity" />
+        <activity android:name=".activities.UserProfileActivity" />
+        <activity android:name=".activities.AddCarsActivity" />
+        <activity android:name=".activities.EnterCarInfoActivity" />
+        <activity android:name=".activities.YourCarsActivity" />
     </application>
 
 </manifest>

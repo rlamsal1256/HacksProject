@@ -61,6 +61,7 @@ public class GetStartedActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     @Override

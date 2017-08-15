@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.project.libertyhacks.mutual.liberty.care.activities.EnterCarInfoActivity">
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
+        android:text="Car Info"
+        android:textColor="@color/LMBlue"
+        android:textSize="30sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="VIN"
+        android:textColor="@color/LMBlue"
+        android:textSize="18sp"
+        android:layout_below="@+id/textView19"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Mileage"
+        android:textColor="@color/LMBlue"
+        android:textSize="18sp"
+        android:layout_marginTop="61dp"
+        android:layout_below="@+id/textView22"
+        android:layout_alignLeft="@+id/textView27"
+        android:layout_alignStart="@+id/textView27" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView25"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="66dp"
+        android:text="Last Registration"
+        android:textColor="@color/LMBlue"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView26"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="78dp"
+        android:text="Last Oil Change"
+        android:textColor="@color/LMBlue"
+        android:textSize="18sp" />
+
+    <ImageButton
+        android:id="@+id/nextScreenBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="29dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:background="@color/LMBlue"
+        android:backgroundTint="@color/LMBlue"
+        android:scaleType="fitCenter"
+        android:tint="@android:color/background_light"
+        app:srcCompat="@drawable/ic_right_arrow" />
+
+    <ImageButton
+        android:id="@+id/backBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@color/LMBlue"
+        android:backgroundTint="@color/LMBlue"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_left_arrow"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_alignTop="@+id/nextScreenBtn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/vinTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView22"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/currentMileageTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/textView25"
+        android:layout_alignLeft="@+id/vinTxt"
+        android:layout_alignStart="@+id/vinTxt"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/lastRegistrationTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/textView26"
+        android:layout_alignLeft="@+id/currentMileageTxt"
+        android:layout_alignStart="@+id/currentMileageTxt" />
+
+    <EditText
+        android:id="@+id/lastOilChangeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textView27"
+        android:layout_alignLeft="@+id/lastRegistrationTxt"
+        android:layout_alignStart="@+id/lastRegistrationTxt" />
+
+    <ImageButton
+        android:id="@+id/setLastRegistrationImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_light"
+        app:srcCompat="@drawable/calendar"
+        android:layout_alignBottom="@+id/lastRegistrationTxt"
+        android:layout_toRightOf="@+id/lastRegistrationTxt"
+        android:layout_toEndOf="@+id/lastRegistrationTxt" />
+
+    <ImageButton
+        android:id="@+id/setLastOilChangeImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lastOilChangeTxt"
+        android:layout_alignEnd="@+id/setLastRegistrationImgBtn"
+        android:layout_alignRight="@+id/setLastRegistrationImgBtn"
+        android:background="@android:color/background_light"
+        app:srcCompat="@drawable/calendar" />
+
+</RelativeLayout>
