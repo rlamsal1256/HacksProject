@@ -143,7 +143,7 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
 
         } else if (view == nextScreenBtn) {
 
-
+            int userAge = 30;
 
             String licNum = userLicenseNum.getText().toString();
 
@@ -151,7 +151,7 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
             Map<String, Object> cars = new HashMap<>();
 
             User newUser = new User(userUID, userName.getText().toString(),
-                    Integer.parseInt(userAge.getText().toString()),
+                    userAge,
                     String.valueOf(userGender()),
                     userDobDateTemplate,
                     licNum,
