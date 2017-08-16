@@ -22,7 +22,7 @@
         android:id="@+id/nametextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="66dp"
         android:text="Name"
         android:textColor="@color/LMBlue"
         android:textSize="18sp"
@@ -30,17 +30,6 @@
         android:layout_toLeftOf="@+id/textView3"
         android:layout_toStartOf="@+id/textView3" />
 
-    <TextView
-        android:id="@+id/ageTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nametextView"
-        android:layout_alignStart="@+id/nametextView"
-        android:layout_below="@+id/nametextView"
-        android:layout_marginTop="41dp"
-        android:text="Age:"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/dobTextView"
@@ -49,34 +38,33 @@
         android:text="DOB:"
         android:textColor="@color/LMBlue"
         android:textSize="18sp"
-        android:layout_marginTop="34dp"
-        android:layout_below="@+id/radioSex"
-        android:layout_alignLeft="@+id/ageTextView"
-        android:layout_alignStart="@+id/ageTextView" />
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/nametextView"
+        android:layout_alignStart="@+id/nametextView" />
 
     <TextView
         android:id="@+id/licenseNumTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/dobTextView"
-        android:layout_alignStart="@+id/dobTextView"
-        android:layout_below="@+id/dobTextView"
-        android:layout_marginTop="47dp"
         android:text="License Number:"
         android:textColor="@color/LMBlue"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/dobTxt"
+        android:layout_alignLeft="@+id/dobTextView"
+        android:layout_alignStart="@+id/dobTextView" />
 
     <TextView
         android:id="@+id/expDateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/licenseNumTextView"
-        android:layout_alignStart="@+id/licenseNumTextView"
-        android:layout_below="@+id/licenseNumTextView"
-        android:layout_marginTop="46dp"
         android:text="Expiration Date:"
         android:textColor="@color/LMBlue"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_below="@+id/licenseNumTxt"
+        android:layout_alignLeft="@+id/licenseNumTextView"
+        android:layout_alignStart="@+id/licenseNumTextView"
+        android:layout_marginTop="46dp" />
 
     <EditText
         android:id="@+id/licenseNumTxt"
@@ -88,19 +76,6 @@
         android:layout_alignBottom="@+id/licenseNumTextView"
         android:layout_toRightOf="@+id/licenseNumTextView"
         android:layout_toEndOf="@+id/licenseNumTextView" />
-
-    <EditText
-        android:id="@+id/userAgeTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/ageTextView"
-        android:layout_alignBottom="@+id/ageTextView"
-        android:layout_alignLeft="@+id/userNameTxt"
-        android:layout_alignStart="@+id/userNameTxt"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-
 
     <EditText
         android:id="@+id/userNameTxt"
@@ -134,10 +109,8 @@
         android:inputType="date"
         android:layout_alignBaseline="@+id/dobTextView"
         android:layout_alignBottom="@+id/dobTextView"
-        android:layout_alignLeft="@+id/licenseNumTxt"
-        android:layout_alignStart="@+id/licenseNumTxt"
-        android:layout_alignRight="@+id/radioSex"
-        android:layout_alignEnd="@+id/radioSex" />
+        android:layout_alignRight="@+id/textView3"
+        android:layout_alignEnd="@+id/textView3" />
 
     <TextView
         android:id="@+id/genderTextView"
@@ -146,40 +119,20 @@
         android:text="Gender"
         android:textColor="@color/LMBlue"
         android:textSize="18sp"
-        android:layout_alignBaseline="@+id/radioSex"
-        android:layout_alignBottom="@+id/radioSex"
-        android:layout_alignLeft="@+id/dobTextView"
-        android:layout_alignStart="@+id/dobTextView" />
+        android:layout_below="@+id/radioSex"
+        android:layout_alignLeft="@+id/nametextView"
+        android:layout_alignStart="@+id/nametextView"
+        android:layout_marginTop="10dp" />
 
     <RadioGroup
         android:id="@+id/radioSex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/userAgeTxt"
-        android:layout_alignLeft="@+id/userAgeTxt"
-        android:layout_alignStart="@+id/userAgeTxt"
-        android:layout_marginTop="25dp">
-
-        <RadioButton
-            android:id="@+id/userMaleRadioBtn"
-            android:layout_width="102dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:text="M"
-            android:textColor="@color/LMBlue"
-            android:textSize="18sp"
-            android:onClick="onRadioButtonClicked"
-            android:checked="true"/>
-
-        <RadioButton
-            android:id="@+id/userFemaleRadioBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="F"
-            android:textColor="@color/LMBlue"
-            android:textSize="18sp"
-            android:onClick="onRadioButtonClicked" />
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/userNameTxt"
+        android:layout_alignRight="@+id/userNameTxt"
+        android:layout_alignEnd="@+id/userNameTxt">
 
     </RadioGroup>
 
@@ -207,12 +160,40 @@
         android:id="@+id/nextScreenBtn"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/setUserLicenseExpDateImgBtn"
-        android:layout_alignRight="@+id/setUserLicenseExpDateImgBtn"
-        android:layout_below="@+id/setUserLicenseExpDateImgBtn"
-        android:layout_marginTop="15dp"
         android:background="@color/LMBlue"
-        app:srcCompat="@drawable/ic_right_arrow" />
+        app:srcCompat="@drawable/ic_right_arrow"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/licenseNumTxt"
+        android:layout_alignEnd="@+id/licenseNumTxt"
+        android:layout_marginBottom="39dp" />
+
+    <RadioButton
+        android:id="@+id/userMaleRadioBtn"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:ems="10"
+        android:onClick="onRadioButtonClicked"
+        android:text="M"
+        android:textColor="@color/LMBlue"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/genderTextView"
+        android:layout_alignBottom="@+id/genderTextView"
+        android:layout_toLeftOf="@+id/userFemaleRadioBtn"
+        android:layout_toStartOf="@+id/userFemaleRadioBtn" />
+
+    <RadioButton
+        android:id="@+id/userFemaleRadioBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onRadioButtonClicked"
+        android:text="F"
+        android:textColor="@color/LMBlue"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/userMaleRadioBtn"
+        android:layout_alignBottom="@+id/userMaleRadioBtn"
+        android:layout_toLeftOf="@+id/setUserDobImgBtn"
+        android:layout_toStartOf="@+id/setUserDobImgBtn" />
 
 
 </RelativeLayout>
