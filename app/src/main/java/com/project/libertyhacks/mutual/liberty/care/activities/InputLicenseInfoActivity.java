@@ -2,11 +2,10 @@ package com.project.libertyhacks.mutual.liberty.care.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -19,9 +18,6 @@ import com.project.libertyhacks.mutual.liberty.care.models.DateTemplate;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 public class InputLicenseInfoActivity extends AppCompatActivity implements
         View.OnClickListener{
@@ -30,7 +26,6 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
     private ImageButton setUserLicenseExpDateBtn;
     private ImageButton nextScreenBtn;
     private EditText userName;
-    private EditText userAge;
     private EditText userLicenseNum;
     private RadioButton userIsMale;
     private RadioButton userIsFemale;
@@ -48,7 +43,6 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
 
 
         userName = findViewById(R.id.userNameTxt);
-        userAge = findViewById(R.id.userAgeTxt);
         userIsMale = findViewById(R.id.userMaleRadioBtn);
         userIsFemale =  findViewById(R.id.userFemaleRadioBtn);
         isUserMale = true;
@@ -148,8 +142,11 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
 
             String licNum = userLicenseNum.getText().toString();
 
+            // User's age
+            int userAge = 30;
+
             User newUser = new User(userName.getText().toString(),
-                    Integer.parseInt(userAge.getText().toString()),
+                    userAge,
                     userGender(),
                     userDobDateTemplate,
                     licNum,
