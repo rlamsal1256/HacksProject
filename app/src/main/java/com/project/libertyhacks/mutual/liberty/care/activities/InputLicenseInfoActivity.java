@@ -4,9 +4,9 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
+import android.util.Log;
 import android.view.View;
-
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -19,7 +19,7 @@ import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
 import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
 
 import java.util.Calendar;
-
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +31,6 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
     private ImageButton setUserLicenseExpDateBtn;
     private ImageButton nextScreenBtn;
     private EditText userName;
-    private EditText userAge;
     private EditText userLicenseNum;
     private RadioButton userIsMale;
     private RadioButton userIsFemale;
@@ -49,7 +48,6 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
 
 
         userName = findViewById(R.id.userNameTxt);
-        userAge = findViewById(R.id.userAgeTxt);
         userIsMale = findViewById(R.id.userMaleRadioBtn);
         userIsFemale =  findViewById(R.id.userFemaleRadioBtn);
         isUserMale = true;
