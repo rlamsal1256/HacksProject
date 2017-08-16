@@ -32,6 +32,14 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        Button libertyBtn = (Button) findViewById(R.id.libertyCustomersBtn);
+        libertyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, TakeLicensePictureAcitivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
