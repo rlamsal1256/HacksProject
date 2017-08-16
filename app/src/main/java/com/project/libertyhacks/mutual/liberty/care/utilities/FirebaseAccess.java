@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.project.libertyhacks.mutual.liberty.care.activities.GetStartedActivity;
+import com.project.libertyhacks.mutual.liberty.care.activities.InputLicenseInfoActivity;
 import com.project.libertyhacks.mutual.liberty.care.activities.TakeLicensePictureAcitivity;
 import com.project.libertyhacks.mutual.liberty.care.interfaces.Mapable;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
@@ -29,6 +30,7 @@ public class FirebaseAccess {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private GetStartedActivity getStartedActivity;
+    private InputLicenseInfoActivity inputLicenseInfoActivity;
 
     public boolean post(String url, Mapable m)
     {
@@ -49,6 +51,8 @@ public class FirebaseAccess {
         this.getStartedActivity = gsa;
     }
 
+    public void setInputLicenseInfoActivity(InputLicenseInfoActivity ilia) { this.inputLicenseInfoActivity = ilia; }
+
     public void getCarData(String vin)
     {
         DatabaseReference mDatabase = database.getReference("cars/" + vin);
@@ -59,7 +63,14 @@ public class FirebaseAccess {
                 if (newCar != null)
                 {
                     Log.d("CAR DATA", newCar.toString());
-                    Singleton.getInstance().addCar(newCar);
+                    if (!Singleton.getInstance().carExists(newCar.getVin()))
+                    {
+                        Singleton.getInstance().addCar(newCar);
+                    }
+                    else
+                    {
+                        Singleton.getInstance().updateCar(newCar);
+                    }
                 }
             }
 
@@ -113,6 +124,8 @@ public class FirebaseAccess {
         }
     }
 
+
+
 /*
     public Task<AuthResult> signIn()
     {
@@ -120,8 +133,16 @@ public class FirebaseAccess {
         return mAuth.signInAnonymously();
     }
 */
+    public void makeNewUser(User user)
+    {
+        if (post("/users/", user))
+        {
+            inputLicenseInfoActivity.nextScreen();
+        }
+    }
 
-    public void isExistingUser(FirebaseUser user) {
+    public void isExistingUser(FirebaseUser user)
+    {
         Singleton.getInstance().setFirebaseUser(user);
         DatabaseReference mDatabase = database.getReference("users/" + user.getUid());
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -142,6 +163,30 @@ public class FirebaseAccess {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 getStartedActivity.newUser();
+            }
+        });
+    }
+
+    public void doesCarExist(String vin)
+    {
+        DatabaseReference mDatabase = database.getReference("/cars/" + vin);
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Car car = dataSnapshot.getValue(Car.class);
+                if (car != null)
+                {
+                    // does exist
+                }
+                else
+                {
+                    // does not exist
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

@@ -15,16 +15,26 @@ public class Car implements Mapable {
     private String name;
     private String make;
     private String model;
+    private String ownerId;
     private int year;
     private int miles;
 
-    public Car(String vin, String name, String make, String model, int year, int miles) {
+    public Car(String vin, String name, String make, String model, int year, int miles, String ownerId) {
         this.vin = vin;
         this.name = name;
         this.make = make;
         this.model = model;
         this.year = year;
         this.miles = miles;
+        this.ownerId = ownerId;
+    }
+
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 
     public String getVin() {
@@ -96,6 +106,8 @@ public class Car implements Mapable {
         result.put("model", model);
         result.put("year", year);
         result.put("miles", miles);
+        result.put("vin", vin);
+        result.put("ownerId", ownerId);
         return result;
     }
 

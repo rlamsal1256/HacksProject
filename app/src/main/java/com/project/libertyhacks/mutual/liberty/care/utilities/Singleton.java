@@ -36,6 +36,29 @@ public class Singleton {
     private User currentUser;
     private ArrayList<Car> cars = new ArrayList<>();
 
+    public boolean carExists(String vin)
+    {
+        for (Car c : cars)
+        {
+            if (c.getKey().equals(vin))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void updateCar(Car car)
+    {
+        for (Car c : cars)
+        {
+            if (c.getKey().equals(car.getKey()))
+            {
+                c.setValues(car);
+            }
+        }
+    }
+
     // Stubs
     private TakeLicensePictureAcitivity takeLicensePictureAcitivity;
     public void setTakeLicensePictureAcitivity(TakeLicensePictureAcitivity

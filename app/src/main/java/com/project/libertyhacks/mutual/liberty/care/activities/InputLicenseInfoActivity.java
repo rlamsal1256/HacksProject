@@ -40,12 +40,14 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
     private DateTemplate userDobDateTemplate;
     private int mYear, mMonth, mDay;
     private boolean isUserMale;
+    private FirebaseAccess firebaseAccess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_license_info);
-
+        firebaseAccess = new FirebaseAccess();
+        firebaseAccess.setInputLicenseInfoActivity(this);
 
         userName = findViewById(R.id.userNameTxt);
         userIsMale = findViewById(R.id.userMaleRadioBtn);
@@ -64,8 +66,22 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
         nextScreenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(InputLicenseInfoActivity.this, UserProfileActivity.class);
-                startActivity(intent);
+                int userAge = 30;
+
+                String licNum = userLicenseNum.getText().toString();
+
+                String userUID = Singleton.getInstance().getFirebaseUser().getUid();
+                Map<String, Object> cars = new HashMap<>();
+
+                User newUser = new User(userUID, userName.getText().toString(),
+                        userAge,
+                        String.valueOf(userGender()),
+                        userDobDateTemplate,
+                        licNum,
+                        userLicenseExpDateTemplate,
+                        cars);
+                
+                firebaseAccess.makeNewUser(newUser);
             }
         });
 
@@ -144,24 +160,13 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
         } else if (view == nextScreenBtn) {
 
 
-
-            String licNum = userLicenseNum.getText().toString();
-
-            String userUID = Singleton.getInstance().getCurrentUser().getKey();
-            Map<String, Object> cars = new HashMap<>();
-
-            User newUser = new User(userUID, userName.getText().toString(),
-                    Integer.parseInt(userAge.getText().toString()),
-                    String.valueOf(userGender()),
-                    userDobDateTemplate,
-                    licNum,
-                    userLicenseExpDateTemplate,
-                    cars);
-
-            FirebaseAccess fa = new FirebaseAccess();
-            //fa.post("/users/", newUser);
-
-            //TODO: fire intent to next screen
         }
     }
+
+    public void nextScreen()
+    {
+        Intent intent = new Intent(InputLicenseInfoActivity.this, UserProfileActivity.class);
+        startActivity(intent);
+    }
+
 }

@@ -29,6 +29,7 @@ public class GetStartedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         firebaseAccess.setGetStartedActivity(this);
         firebaseAccess.onCreate();
+        firebaseAccess.onStart();
 
         mAuth = FirebaseAuth.getInstance();
         signInAnonymously();
