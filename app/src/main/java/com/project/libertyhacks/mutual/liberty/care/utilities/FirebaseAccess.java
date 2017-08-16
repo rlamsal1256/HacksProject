@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.project.libertyhacks.mutual.liberty.care.activities.GetStartedActivity;
+import com.project.libertyhacks.mutual.liberty.care.activities.TakeLicensePictureAcitivity;
 import com.project.libertyhacks.mutual.liberty.care.interfaces.Mapable;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
@@ -58,6 +59,7 @@ public class FirebaseAccess {
                 if (newCar != null)
                 {
                     Log.d("CAR DATA", newCar.toString());
+                    Singleton.getInstance().addCar(newCar);
                 }
             }
 
@@ -79,6 +81,7 @@ public class FirebaseAccess {
                 if (user != null)
                 {
                     setCurrentUser(user);
+                    getCars(user);
                     Log.d("USER SET", "CURRENT USER IS SET");
                 }
                 else
@@ -97,6 +100,17 @@ public class FirebaseAccess {
     private void setCurrentUser(User user)
     {
         Singleton.getInstance().setCurrentUser(user);
+    }
+
+    private void getCars(User user)
+    {
+        if (user.getCars() != null)
+        {
+            for (String key : user.getCars().keySet())
+            {
+                getCarData(key);
+            }
+        }
     }
 
 /*
@@ -153,7 +167,7 @@ public class FirebaseAccess {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    Log.d("SGINED IN", "onAuthStateChanged:signed_in:" + user.getUid());
+                    Log.d("SIGNED IN", "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
                     Log.d("SIGNED OUT", "onAuthStateChanged:signed_out");

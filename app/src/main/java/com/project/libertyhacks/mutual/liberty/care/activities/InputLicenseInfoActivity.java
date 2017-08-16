@@ -151,7 +151,6 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
 
             String userUID = Singleton.getInstance().getCurrentUser().getKey();
             Map<String, Object> cars = new HashMap<>();
-            cars.put("1234", true);
 
             User newUser = new User(userUID, userName.getText().toString(),
                     Integer.parseInt(userAge.getText().toString()),
@@ -162,7 +161,7 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
                     cars);
 
             FirebaseAccess fa = new FirebaseAccess();
-            fa.post("/users/", newUser);
+            //fa.post("/users/", newUser);
 
             //TODO: fire intent to next screen
         }

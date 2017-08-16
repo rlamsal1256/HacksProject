@@ -41,7 +41,7 @@ public class GetStartedActivity extends AppCompatActivity {
 
     public void existingUser()
     {
-        Intent intent = new Intent(GetStartedActivity.this, TakeLicensePictureAcitivity.class);
+        Intent intent = new Intent(GetStartedActivity.this, YourCarsActivity.class);
         startActivity(intent);
     }
 

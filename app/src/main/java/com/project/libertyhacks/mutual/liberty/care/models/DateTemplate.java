@@ -53,11 +53,7 @@ public class DateTemplate implements Mapable{
 
     @Override
     public String toString() {
-        return "DateTemplate{" +
-                "year=" + year +
-                ", month=" + month +
-                ", day=" + day +
-                '}';
+        return month + "/" + day + "/" + year;
     }
 
     public Map<String, Object> toMap()

@@ -27,7 +27,10 @@ public class User implements Mapable {
 
     }
 
-    public User(String userKey, String userName, int userAge, String userGender, DateTemplate userDOB, String userLicenseNum, DateTemplate userLicenseExpDate, Map<String, Object> cars) {
+    public User(String userKey, String userName, int userAge, String userGender,
+                DateTemplate userDOB, String userLicenseNum, DateTemplate userLicenseExpDate,
+                Map<String, Object> cars)
+    {
         this.userKey = userKey;
         this.userName = userName;
         this.userAge = userAge;
