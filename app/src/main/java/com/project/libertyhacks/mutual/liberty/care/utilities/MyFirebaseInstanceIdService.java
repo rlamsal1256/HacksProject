@@ -2,6 +2,8 @@ package com.project.libertyhacks.mutual.liberty.care.utilities;
 
 import android.util.Log;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
@@ -39,7 +41,16 @@ public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
      * @param token The new token.
      */
     private void sendRegistrationToServer(String token) {
-        // TODO: Implement this method to send token to your app server.
+        postToken(Singleton.getInstance().getFirebaseUser().getUid(), token);
+    }
+
+    private void postToken(String userKey, String token)
+    {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("/users/" + userKey);
+        mDatabase.child("token").setValue(token);
+        Log.d("TOKEN", "********************************************");
+        Log.d("POSTED", token);
+        Log.d("TOKEN", "********************************************");
     }
 
 

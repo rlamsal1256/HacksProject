@@ -1,5 +1,6 @@
 package com.project.libertyhacks.mutual.liberty.care.utilities;
 
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,12 +34,11 @@ public class FirebaseAccess {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private GetStartedActivity getStartedActivity;
     private InputLicenseInfoActivity inputLicenseInfoActivity;
-    private MyFirebaseInstanceIdService firebaseInstanceIdService;
+    private MyFirebaseInstanceIdService firebaseInstanceIdService = new MyFirebaseInstanceIdService();
 
     public FirebaseAccess()
     {
-        String token = FirebaseInstanceId.getInstance().getToken();
-        Log.d("TOKEN: ", token);
+
     }
 
     public boolean post(String url, Mapable m)
@@ -54,6 +54,8 @@ public class FirebaseAccess {
         Log.d("InputInfo", key + ": " + map.toString());
         return true;
     }
+
+
 
     public void setGetStartedActivity(GetStartedActivity gsa)
     {
@@ -103,6 +105,7 @@ public class FirebaseAccess {
                     setCurrentUser(user);
                     getCars(user);
                     Log.d("USER SET", "CURRENT USER IS SET");
+                    firebaseInstanceIdService.onTokenRefresh();
                 }
                 else
                 {
@@ -162,6 +165,7 @@ public class FirebaseAccess {
                 {
                     getStartedActivity.existingUser();
                     Log.d("USER", "EXISTING USER");
+
                 }
                 else
                 {
