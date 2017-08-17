@@ -121,8 +121,10 @@ public class AddCarsActivity extends AppCompatActivity implements
 
     private void extractSteps(String steps) {
         String[] parts = steps.split(",");
-        lastStepsAmt = Integer.parseInt(parts[0]);
-        totalSteps = Integer.parseInt(parts[2]);
+        if (!steps.equals("0")) {
+            lastStepsAmt = Integer.parseInt(parts[0]);
+            totalSteps = Integer.parseInt(parts[2]);
+        }
     }
 
 

@@ -55,8 +55,10 @@ public class StepCounterAndDetectActivityService extends IntentService implement
     }
 
     private void extractStepsUntilNow(String steps) {
-        String[] parts = steps.split(",");
-        stepsUntilNow =  Integer.parseInt(parts[1]);
+        if (!steps.equals("0")) {
+            String[] parts = steps.split(",");
+            stepsUntilNow = Integer.parseInt(parts[1]);
+        }
     }
 
 
