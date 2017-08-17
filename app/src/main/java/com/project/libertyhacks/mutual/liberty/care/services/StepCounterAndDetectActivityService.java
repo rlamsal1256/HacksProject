@@ -86,7 +86,7 @@ public class StepCounterAndDetectActivityService extends IntentService implement
                         stepCounter = totalCount - stepsUntilNow;
                         stepsUntilNow = totalCount;
                         saveStepsInSharedPref();
-                        //TODO: update stepCounter and totalCount to firebase
+                        
                         firebaseAccess.updateCarMiles("1234", stepCounter, totalCount);
 
                         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
