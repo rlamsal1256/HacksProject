@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.project.libertyhacks.mutual.liberty.care">
 
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,6 +26,10 @@
         <activity android:name=".activities.AddCarsActivity" />
         <activity android:name=".activities.EnterCarInfoActivity" />
         <activity android:name=".activities.YourCarsActivity" />
+
+        <service
+            android:name=".services.StepCounterAndDetectActivityService"
+            android:exported="false"></service>
     </application>
 
 </manifest>
