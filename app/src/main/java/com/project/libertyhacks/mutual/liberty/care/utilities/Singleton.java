@@ -75,7 +75,6 @@ public class Singleton {
     {
         Log.d("NEW CAR", c.toString());
         cars.add(c);
-
     }
 
     private FirebaseUser firebaseUser;
