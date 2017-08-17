@@ -92,6 +92,13 @@ public class FirebaseAccess {
         });
     }
 
+    public void updateCarMiles(String vin, int lastCount, int totalCount)
+    {
+        DatabaseReference mDatabase = database.getReference("/cars/" + vin);
+        mDatabase.child("lastMiles").setValue(lastCount);
+        mDatabase.child("totalMiles").setValue(totalCount);
+    }
+
 
     public void getCurrentUser(FirebaseUser fbUser)
     {

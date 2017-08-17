@@ -15,6 +15,7 @@ import android.util.Log;
 import com.google.android.gms.location.ActivityRecognitionResult;
 import com.google.android.gms.location.DetectedActivity;
 import com.project.libertyhacks.mutual.liberty.care.R;
+import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class StepCounterAndDetectActivityService extends IntentService implement
 
     private static final String MY_PREFS_NAME = "StepCounter";
     private int stepsUntilNow = 0;
+    private FirebaseAccess firebaseAccess = new FirebaseAccess();
     int stepCounter;
     int totalCount;
     boolean countValueChanged = false;
@@ -85,6 +87,7 @@ public class StepCounterAndDetectActivityService extends IntentService implement
                         stepsUntilNow = totalCount;
                         saveStepsInSharedPref();
                         //TODO: update stepCounter and totalCount to firebase
+                        firebaseAccess.updateCarMiles("1234", stepCounter, totalCount);
 
                         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
                         builder.setContentText("We detected " + stepCounter + " steps. Total steps is now " + totalCount);
