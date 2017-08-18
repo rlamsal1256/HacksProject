@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">CARe</string>
     <string name="action_notifications">Notifications</string>
+    <string name="user_name">Joe Schmo</string>
+    <string name="license_information">License Information</string>
+    <string name="age">Age:</string>
+    <string name="age_value">31</string>
+    <string name="gender">Gender:</string>
+    <string name="male">Male</string>
+    <string name="dob">DOB:</string>
+    <string name="dob_value">09/01/1986</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="license_number">Number:</string>
+    <string name="license_num_value">A45682709</string>
+    <string name="exp_date">Exp Date:</string>
+    <string name="exp_date_value">08/03/2017</string>
+    <string name="user_profile_pic">User Profile Pic</string>
+    <string name="continueBtn">Continue</string>
+    <string name="back">Back</string>
 
 </resources>

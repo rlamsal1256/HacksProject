@@ -19,7 +19,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:id="@+id/nametextView"
+        android:id="@+id/nameTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="66dp"
@@ -39,8 +39,8 @@
         android:textColor="@color/LMBlue"
         android:textSize="18sp"
         android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/nametextView"
-        android:layout_alignStart="@+id/nametextView" />
+        android:layout_alignLeft="@+id/nameTxtView"
+        android:layout_alignStart="@+id/nameTxtView" />
 
     <TextView
         android:id="@+id/licenseNumTextView"
@@ -83,8 +83,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:layout_alignBaseline="@+id/nametextView"
-        android:layout_alignBottom="@+id/nametextView"
+        android:layout_alignBaseline="@+id/nameTxtView"
+        android:layout_alignBottom="@+id/nameTxtView"
         android:layout_alignLeft="@+id/licenseNumTxt"
         android:layout_alignStart="@+id/licenseNumTxt" />
 
@@ -120,8 +120,8 @@
         android:textColor="@color/LMBlue"
         android:textSize="18sp"
         android:layout_below="@+id/radioSex"
-        android:layout_alignLeft="@+id/nametextView"
-        android:layout_alignStart="@+id/nametextView"
+        android:layout_alignLeft="@+id/nameTxtView"
+        android:layout_alignStart="@+id/nameTxtView"
         android:layout_marginTop="10dp" />
 
     <RadioGroup
