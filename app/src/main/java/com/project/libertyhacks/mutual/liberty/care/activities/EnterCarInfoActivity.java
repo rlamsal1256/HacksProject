@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.project.libertyhacks.mutual.liberty.care.R;
+import com.project.libertyhacks.mutual.liberty.care.models.Car;
+import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
+import com.project.libertyhacks.mutual.liberty.care.utilities.VINAnalyzer;
 
 import java.util.Calendar;
 
@@ -89,5 +92,24 @@ public class EnterCarInfoActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+
+        // Get input VIN
+        EditText vinTxt = findViewById(R.id.vinTxt);
+        String vin = vinTxt.getText().toString();
+
+        // Get input current mileage
+        EditText currentMileageTxt = findViewById(R.id.currentMileageTxt);
+        int miles = Integer.parseInt(currentMileageTxt.getText().toString());
+
+        // Retrieve car from VINAnalyzer
+        Car car = VINAnalyzer.getCar(vin);
+
+        // Set miles, ownerId, name
+        car.setMiles(miles);
+        car.setOwnerId(Singleton.getInstance().getFirebaseUser().getUid());
+        car.setName("Dad's Car"); // Will replace this with user input later
+
+        // Log car in database
+        Singleton.getInstance().addCar(car);
     }
 }
