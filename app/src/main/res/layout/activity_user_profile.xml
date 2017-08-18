@@ -6,219 +6,244 @@
     android:layout_height="match_parent"
     tools:context="com.project.libertyhacks.mutual.liberty.care.activities.UserProfileActivity">
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="License Information"
-        android:textAllCaps="false"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="380dp"
-        android:layout_above="@+id/textView7"
-        android:layout_toRightOf="@+id/textView11"
-        android:layout_toEndOf="@+id/textView11"
-        android:layout_marginBottom="12dp" />
-
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="161dp"
+        android:layout_width="147dp"
         android:layout_height="147dp"
         app:srcCompat="@drawable/ic_account_box"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="4dp"
         android:layout_marginTop="14dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/user_profile_pic" />
 
     <TextView
-        android:id="@+id/nametextView"
-        android:layout_width="123dp"
-        android:layout_height="41dp"
-        android:text="Joe Schmo"
+        android:id="@+id/nameTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/user_name"
         android:textColor="@color/LMBlue"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="159dp"
         android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
+
+
+    <LinearLayout
+        android:id="@+id/personalInfoLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Personal Information"
-        android:textAllCaps="false"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="216dp"
-        android:layout_marginTop="13dp"
-        android:layout_below="@+id/nametextView"
-        android:layout_alignRight="@+id/imageView2"
-        android:layout_alignEnd="@+id/imageView2" />
+        android:layout_below="@id/nameTxtView"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/personalInfoTxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/personal_information"
+            android:textColor="@color/LMBlue"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/ageTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/age"
+                android:textColor="@color/LMBlue"
+                android:textSize="18sp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/ageValueTxtView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/age_value"
+                android:textColor="@color/LMBlue"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:gravity="end"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/genderTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/gender"
+                android:textColor="@color/LMBlue"
+                android:textSize="18sp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/genderValueTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/male"
+                android:textColor="@color/LMBlue"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:gravity="end"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/dobTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/dob"
+                android:textColor="@color/LMBlue"
+                android:textSize="18sp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/dobValueTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/dob_value"
+                android:textColor="@color/LMBlue"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:gravity="end"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/licenseInfoLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="A45682709"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="418dp"
-        android:layout_alignBaseline="@+id/textView18"
-        android:layout_alignBottom="@+id/textView18"
-        android:layout_alignRight="@+id/textView9"
-        android:layout_alignEnd="@+id/textView9" />
+        android:layout_below="@id/personalInfoLayout"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp">
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/licenseInfoTxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/license_information"
+            android:textColor="@color/LMBlue"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/licenseNumTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/license_number"
+                android:textColor="@color/LMBlue"
+                android:textSize="18sp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/licenseNumValueTxtView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/license_num_value"
+                android:textColor="@color/LMBlue"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:gravity="end"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp">
+
+            <TextView
+                android:id="@+id/expDateTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/exp_date"
+                android:textColor="@color/LMBlue"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/expDateValueTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/exp_date_value"
+                android:textColor="@color/LMBlue"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:gravity="end"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="08/03/2017"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="455dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_alignBaseline="@+id/textView4"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_alignRight="@+id/continueBtn"
-        android:layout_alignEnd="@+id/continueBtn" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Number:"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="455dp"
-        android:layout_above="@+id/textView4"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Age"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="455dp"
-        android:layout_below="@+id/textView6"
-        android:layout_alignLeft="@+id/textView18"
-        android:layout_alignStart="@+id/textView18"
-        android:layout_marginTop="23dp" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Gender:"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="455dp"
-        android:layout_above="@+id/textView12"
-        android:layout_alignLeft="@+id/textView8"
-        android:layout_alignStart="@+id/textView8" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DOB:"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="455dp"
-        android:layout_above="@+id/textView10"
-        android:layout_alignLeft="@+id/textView11"
-        android:layout_alignStart="@+id/textView11"
-        android:layout_marginBottom="10dp" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/backBtn"
-        android:layout_marginBottom="42dp"
-        android:layout_toLeftOf="@+id/nametextView"
-        android:layout_toStartOf="@+id/nametextView"
-        android:text="Exp Date:"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="455dp" />
-
-    <Button
-        android:id="@+id/continueBtn"
-        android:layout_width="99dp"
-        android:layout_height="46dp"
-        android:background="@color/LMBlue"
-        android:text="Continue"
-        android:textColor="@android:color/background_light"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="254dp"
-        tools:layout_editor_absoluteY="505dp"
-        android:layout_alignBaseline="@+id/backBtn"
-        android:layout_alignBottom="@+id/backBtn"
-        android:layout_toRightOf="@+id/nametextView"
-        android:layout_toEndOf="@+id/nametextView" />
-
-    <Button
-        android:id="@+id/backBtn"
-        android:layout_width="95dp"
-        android:layout_height="48dp"
-        android:background="@color/LMBlue"
-        android:text="Back"
-        android:textColor="@android:color/background_light"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="503dp"
-        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/textView18"
-        android:layout_alignEnd="@+id/textView18" />
+        android:layout_margin="20dp">
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView8"
-        android:layout_toEndOf="@+id/textView6"
-        android:text="75"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp"
-        android:layout_toRightOf="@+id/textView6" />
+        <Button
+            android:id="@+id/backBtn"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@drawable/round_edges_button"
+            android:text="@string/back"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"/>
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Male"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp"
-        android:layout_alignBottom="@+id/textView11"
-        android:layout_toRightOf="@+id/nametextView"
-        android:layout_alignTop="@+id/textView11" />
+        <Button
+            android:id="@+id/continueBtn"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:background="@drawable/round_edges_button"
+            android:text="@string/continueBtn"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"/>
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView9"
-        android:layout_alignStart="@+id/textView9"
-        android:text="09/01/1986"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp"
-        android:layout_alignTop="@+id/textView12" />
+    </LinearLayout>
+
+
+
 
 </RelativeLayout>

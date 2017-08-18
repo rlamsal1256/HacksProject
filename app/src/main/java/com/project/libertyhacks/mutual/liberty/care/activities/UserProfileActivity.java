@@ -23,22 +23,22 @@ public class UserProfileActivity extends AppCompatActivity {
         Log.d("USER INFO", currentUser.toString());
         Log.d("USER NAME", currentUser.getUserName());
 
-        TextView name = findViewById(R.id.nametextView);
+        TextView name = findViewById(R.id.nameTxtView);
         name.setText(currentUser.getUserName());
 
         //TextView age = findViewById(R.id.textView13);
         //age.setText(currentUser.getUserAge());
 
-        TextView gender = findViewById(R.id.textView14);
+        TextView gender = findViewById(R.id.genderValueTextView);
         gender.setText(currentUser.getUserGender());
 
-        TextView dob = findViewById(R.id.textView15);
+        TextView dob = findViewById(R.id.dobValueTextView);
         dob.setText(currentUser.getUserDOB().toString());
 
-        TextView licNum = findViewById(R.id.textView7);
+        TextView licNum = findViewById(R.id.licenseNumValueTxtView);
         licNum.setText(currentUser.getUserLicenseNum());
 
-        TextView expDate = findViewById(R.id.textView9);
+        TextView expDate = findViewById(R.id.expDateValueTextView);
         expDate.setText(currentUser.getUserLicenseExpDate().toString());
 
         Button backBtn = findViewById(R.id.backBtn);
