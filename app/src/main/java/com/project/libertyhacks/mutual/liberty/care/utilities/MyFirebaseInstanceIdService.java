@@ -34,21 +34,19 @@ public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
 
     /**
      * Persist token to third-party servers.
-     *
+     * <p>
      * Modify this method to associate the user's FCM InstanceID token with any server-side account
      * maintained by your application.
      *
      * @param token The new token.
      */
     private void sendRegistrationToServer(String token) {
-        if (Singleton.getInstance().getFirebaseUser() != null)
-        {
+        if (Singleton.getInstance().getFirebaseUser() != null) {
             postToken(Singleton.getInstance().getFirebaseUser().getUid(), token);
         }
     }
 
-    private void postToken(String userKey, String token)
-    {
+    private void postToken(String userKey, String token) {
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("/users/" + userKey);
         mDatabase.child("token").setValue(token);
         Log.d("TOKEN", "********************************************");

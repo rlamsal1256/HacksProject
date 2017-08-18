@@ -85,8 +85,7 @@ public class Car implements Mapable {
         this.miles = miles;
     }
 
-    public void setValues(Car newCar)
-    {
+    public void setValues(Car newCar) {
         this.make = newCar.getMake();
         this.miles = newCar.getMiles();
         this.model = newCar.getModel();
@@ -94,8 +93,8 @@ public class Car implements Mapable {
         this.vin = newCar.getVin();
         this.year = newCar.getYear();
     }
-    public Car()
-    {
+
+    public Car() {
 
     }
 
