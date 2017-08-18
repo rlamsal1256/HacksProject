@@ -57,8 +57,10 @@ public class StepCounterAndDetectActivityService extends IntentService implement
     }
 
     private void extractStepsUntilNow(String steps) {
-        String[] parts = steps.split(",");
-        stepsUntilNow =  Integer.parseInt(parts[1]);
+        if (!steps.equals("0")) {
+            String[] parts = steps.split(",");
+            stepsUntilNow = Integer.parseInt(parts[1]);
+        }
     }
 
 
@@ -86,7 +88,7 @@ public class StepCounterAndDetectActivityService extends IntentService implement
                         stepCounter = totalCount - stepsUntilNow;
                         stepsUntilNow = totalCount;
                         saveStepsInSharedPref();
-                        
+
                         firebaseAccess.updateCarMiles("1234", stepCounter, totalCount);
 
                         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
