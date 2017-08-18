@@ -2,11 +2,9 @@ package com.project.libertyhacks.mutual.liberty.care.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -19,13 +17,12 @@ import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
 import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class InputLicenseInfoActivity extends AppCompatActivity implements
-        View.OnClickListener{
+        View.OnClickListener {
 
     private ImageButton setUserDobBtn;
     private ImageButton setUserLicenseExpDateBtn;
@@ -51,7 +48,7 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
 
         userName = findViewById(R.id.userNameTxt);
         userIsMale = findViewById(R.id.userMaleRadioBtn);
-        userIsFemale =  findViewById(R.id.userFemaleRadioBtn);
+        userIsFemale = findViewById(R.id.userFemaleRadioBtn);
         isUserMale = true;
         userDob = findViewById(R.id.dobTxt);
         setUserDobBtn = findViewById(R.id.setUserDobImgBtn);
@@ -74,10 +71,8 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
                 Map<String, Object> cars = new HashMap<>();
 
 
-
                 if (userUID != null && licNum != null && userName.getText() != null && String.valueOf(userGender()) != null && userDobDateTemplate != null
-                        && userLicenseExpDateTemplate != null)
-                {
+                        && userLicenseExpDateTemplate != null) {
                     User newUser = new User(userUID, userName.getText().toString(),
                             userAge,
                             String.valueOf(userGender()),
@@ -86,10 +81,7 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
                             userLicenseExpDateTemplate,
                             cars);
                     firebaseAccess.makeNewUser(newUser);
-                }
-
-                else
-                {
+                } else {
                     return;
                 }
             }
@@ -102,15 +94,15 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
         boolean checked = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.userMaleRadioBtn:
                 if (checked)
                     isUserMale = true;
-                    break;
+                break;
             case R.id.userFemaleRadioBtn:
                 if (checked)
                     isUserMale = false;
-                    break;
+                break;
         }
     }
 
@@ -145,7 +137,7 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
 
-        } else if (view == setUserLicenseExpDateBtn){
+        } else if (view == setUserLicenseExpDateBtn) {
 
             // Get Current Date
             final Calendar c = Calendar.getInstance();
@@ -173,8 +165,7 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
         }
     }
 
-    public void nextScreen()
-    {
+    public void nextScreen() {
         Intent intent = new Intent(InputLicenseInfoActivity.this, UserProfileActivity.class);
         startActivity(intent);
     }

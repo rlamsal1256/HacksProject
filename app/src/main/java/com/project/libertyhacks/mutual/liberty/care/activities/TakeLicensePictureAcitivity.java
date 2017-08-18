@@ -1,12 +1,10 @@
 package com.project.libertyhacks.mutual.liberty.care.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 
 import com.project.libertyhacks.mutual.liberty.care.R;
-import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.models.DateTemplate;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
 import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
@@ -21,28 +19,23 @@ public class TakeLicensePictureAcitivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_license_picture_acitivity);
         Singleton.getInstance().setTakeLicensePictureAcitivity(this);
-        if (Singleton.getInstance().getCurrentUser() == null)
-        {
+        if (Singleton.getInstance().getCurrentUser() == null) {
             User newUser = makeUser();
             FirebaseAccess firebaseAccess = new FirebaseAccess();
             firebaseAccess.post("/users/", newUser);
-        }
-        else
-        {
+        } else {
             postUserSuccessful();
         }
     }
 
-    public void postUserSuccessful()
-    {
+    public void postUserSuccessful() {
         Intent intent = new Intent(TakeLicensePictureAcitivity.this, UserProfileActivity.class);
         startActivity(intent);
     }
 
 
     // Stub Method
-    private User makeUser()
-    {
+    private User makeUser() {
         return new User(Singleton.getInstance().getFirebaseUser().getUid(),
                 "Joe Schmo", 30, "M", new DateTemplate(9, 1, 1986),
                 "A45682709", new DateTemplate(8, 3, 2017), new HashMap<String, Object>());

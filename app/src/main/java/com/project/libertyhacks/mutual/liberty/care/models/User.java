@@ -3,7 +3,6 @@ package com.project.libertyhacks.mutual.liberty.care.models;
 
 import com.project.libertyhacks.mutual.liberty.care.interfaces.Mapable;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,15 +21,13 @@ public class User implements Mapable {
     private String userLicenseNum;
     private DateTemplate userLicenseExpDate;
 
-    public User()
-    {
+    public User() {
 
     }
 
     public User(String userKey, String userName, int userAge, String userGender,
                 DateTemplate userDOB, String userLicenseNum, DateTemplate userLicenseExpDate,
-                Map<String, Object> cars)
-    {
+                Map<String, Object> cars) {
         this.userKey = userKey;
         this.userName = userName;
         this.userAge = userAge;
@@ -49,7 +46,9 @@ public class User implements Mapable {
         this.cars = cars;
     }
 
-    public void setUserKey(String userKey) { this.userKey = userKey; }
+    public void setUserKey(String userKey) {
+        this.userKey = userKey;
+    }
 
     public String getUserName() {
         return userName;

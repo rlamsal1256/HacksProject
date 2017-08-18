@@ -1,20 +1,12 @@
 package com.project.libertyhacks.mutual.liberty.care.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import com.project.libertyhacks.mutual.liberty.care.R;
-import com.project.libertyhacks.mutual.liberty.care.models.Car;
-import com.project.libertyhacks.mutual.liberty.care.models.DateTemplate;
-import com.project.libertyhacks.mutual.liberty.care.models.User;
-import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
-import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
