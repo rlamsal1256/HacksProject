@@ -44,7 +44,7 @@ public class TakeLicensePictureAcitivity extends AppCompatActivity {
     private User makeUser()
     {
         return new User(Singleton.getInstance().getFirebaseUser().getUid(),
-                "Ray Tang", 30, "M", new DateTemplate(9, 1, 1986),
+                "Joe Schmo", 30, "M", new DateTemplate(9, 1, 1986),
                 "A45682709", new DateTemplate(8, 3, 2017), new HashMap<String, Object>());
     }
 

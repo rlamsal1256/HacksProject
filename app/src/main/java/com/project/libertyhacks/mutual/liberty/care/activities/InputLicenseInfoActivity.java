@@ -73,15 +73,25 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
                 String userUID = Singleton.getInstance().getFirebaseUser().getUid();
                 Map<String, Object> cars = new HashMap<>();
 
-                User newUser = new User(userUID, userName.getText().toString(),
-                        userAge,
-                        String.valueOf(userGender()),
-                        userDobDateTemplate,
-                        licNum,
-                        userLicenseExpDateTemplate,
-                        cars);
-                
-                firebaseAccess.makeNewUser(newUser);
+
+
+                if (userUID != null && licNum != null && userName.getText() != null && String.valueOf(userGender()) != null && userDobDateTemplate != null
+                        && userLicenseExpDateTemplate != null)
+                {
+                    User newUser = new User(userUID, userName.getText().toString(),
+                            userAge,
+                            String.valueOf(userGender()),
+                            userDobDateTemplate,
+                            licNum,
+                            userLicenseExpDateTemplate,
+                            cars);
+                    firebaseAccess.makeNewUser(newUser);
+                }
+
+                else
+                {
+                    return;
+                }
             }
         });
 
