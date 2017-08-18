@@ -109,6 +109,7 @@ public class FirebaseAccess {
                 User user = dataSnapshot.getValue(User.class);
                 if (user != null)
                 {
+                    user.setUserKey(fbUser.getUid());
                     setCurrentUser(user);
                     getCars(user);
                     Log.d("USER SET", "CURRENT USER IS SET");
