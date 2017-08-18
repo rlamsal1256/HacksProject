@@ -19,18 +19,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.RegisterActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".activities.DriverLicenseActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".activities.TakeLicensePictureAcitivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".activities.InputLicenseInfoActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".activities.UserProfileActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".activities.YourCarsActivity" />
         <activity android:name=".activities.EnterCarInfoActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".activities.HardCodedActivity" />
 
         <service

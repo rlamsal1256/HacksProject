@@ -56,7 +56,7 @@ public class YourCarsActivity extends AppCompatActivity implements
         // Create action bar
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setTitle(fromHtml("<font color='@color/white'>Your Cars</font>"));
+            actionBar.setTitle("Your Cars");
         }
 
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
@@ -152,21 +152,6 @@ public class YourCarsActivity extends AppCompatActivity implements
                 return super.onOptionsItemSelected(item);
         }
         return true;
-    }
-
-    @SuppressWarnings("deprecation")
-    private static Spanned fromHtml(String html) {
-        Spanned result;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            result = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY);
-        } else {
-            result = Html.fromHtml(html);
-        }
-        return result;
-    }
-
-    private int getColorFromId(int id) {
-        return ContextCompat.getColor(this, id);
     }
 
     // Converts dp to px
