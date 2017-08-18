@@ -13,8 +13,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/LMBlue"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        style="@style/MyTheme"/>
 
     <TextView
         android:id="@+id/noCarsText"

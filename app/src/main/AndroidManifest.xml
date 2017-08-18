@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/MyTheme">
         <activity android:name=".activities.GetStartedActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,13 +18,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.RegisterActivity" />
-        <activity android:name=".activities.DriverLicenseActivity" />
-        <activity android:name=".activities.TakeLicensePictureAcitivity" />
-        <activity android:name=".activities.InputLicenseInfoActivity" />
-        <activity android:name=".activities.UserProfileActivity" />
+        <activity android:name=".activities.RegisterActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+        <activity android:name=".activities.DriverLicenseActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+        <activity android:name=".activities.TakeLicensePictureAcitivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+        <activity android:name=".activities.InputLicenseInfoActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+        <activity android:name=".activities.UserProfileActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
         <activity android:name=".activities.YourCarsActivity" />
-        <activity android:name=".activities.EnterCarInfoActivity" />
+        <activity android:name=".activities.EnterCarInfoActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
         <activity android:name=".activities.HardCodedActivity" />
 
         <service
