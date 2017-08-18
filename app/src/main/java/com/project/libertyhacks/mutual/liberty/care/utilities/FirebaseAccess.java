@@ -1,5 +1,6 @@
 package com.project.libertyhacks.mutual.liberty.care.utilities;
 
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
@@ -9,6 +10,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.project.libertyhacks.mutual.liberty.care.activities.GetStartedActivity;
 import com.project.libertyhacks.mutual.liberty.care.activities.InputLicenseInfoActivity;
 import com.project.libertyhacks.mutual.liberty.care.activities.TakeLicensePictureAcitivity;
@@ -31,6 +34,12 @@ public class FirebaseAccess {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private GetStartedActivity getStartedActivity;
     private InputLicenseInfoActivity inputLicenseInfoActivity;
+    private MyFirebaseInstanceIdService firebaseInstanceIdService = new MyFirebaseInstanceIdService();
+
+    public FirebaseAccess()
+    {
+
+    }
 
     public boolean post(String url, Mapable m)
     {
@@ -45,6 +54,8 @@ public class FirebaseAccess {
         Log.d("InputInfo", key + ": " + map.toString());
         return true;
     }
+
+
 
     public void setGetStartedActivity(GetStartedActivity gsa)
     {
@@ -81,6 +92,13 @@ public class FirebaseAccess {
         });
     }
 
+    public void updateCarMiles(String vin, int lastCount, int totalCount)
+    {
+        DatabaseReference mDatabase = database.getReference("/cars/" + vin);
+        mDatabase.child("lastMiles").setValue(lastCount);
+        mDatabase.child("totalMiles").setValue(totalCount);
+    }
+
 
     public void getCurrentUser(FirebaseUser fbUser)
     {
@@ -94,6 +112,7 @@ public class FirebaseAccess {
                     setCurrentUser(user);
                     getCars(user);
                     Log.d("USER SET", "CURRENT USER IS SET");
+                    firebaseInstanceIdService.onTokenRefresh();
                 }
                 else
                 {
@@ -153,6 +172,7 @@ public class FirebaseAccess {
                 {
                     getStartedActivity.existingUser();
                     Log.d("USER", "EXISTING USER");
+
                 }
                 else
                 {
