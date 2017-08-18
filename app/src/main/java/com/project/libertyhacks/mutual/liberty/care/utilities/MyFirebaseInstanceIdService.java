@@ -41,7 +41,10 @@ public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
      * @param token The new token.
      */
     private void sendRegistrationToServer(String token) {
-        postToken(Singleton.getInstance().getFirebaseUser().getUid(), token);
+        if (Singleton.getInstance().getFirebaseUser() != null)
+        {
+            postToken(Singleton.getInstance().getFirebaseUser().getUid(), token);
+        }
     }
 
     private void postToken(String userKey, String token)
