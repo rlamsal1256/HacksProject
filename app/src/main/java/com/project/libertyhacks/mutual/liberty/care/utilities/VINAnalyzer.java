@@ -4,7 +4,7 @@ import com.project.libertyhacks.mutual.liberty.care.models.Car;
 
 /**
  * Created by Raymond on 8/17/2017.
- *
+ * <p>
  * From a VIN, a VINAnalyzer can determine the attributes of a car (e.g., make, model)
  */
 

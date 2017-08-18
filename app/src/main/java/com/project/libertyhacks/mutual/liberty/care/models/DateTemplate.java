@@ -10,14 +10,13 @@ import java.util.UUID;
  * Created by n0312809 on 8/4/2017.
  */
 
-public class DateTemplate implements Mapable{
+public class DateTemplate implements Mapable {
 
     private int year;
     private int month;
     private int day;
 
-    public DateTemplate()
-    {
+    public DateTemplate() {
 
     }
 
@@ -56,8 +55,7 @@ public class DateTemplate implements Mapable{
         return month + "/" + day + "/" + year;
     }
 
-    public Map<String, Object> toMap()
-    {
+    public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("year", year);
         result.put("month", month);
