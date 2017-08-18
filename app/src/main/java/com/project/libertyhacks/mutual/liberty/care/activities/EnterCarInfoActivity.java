@@ -27,8 +27,28 @@ public class EnterCarInfoActivity extends AppCompatActivity {
         nextScreenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Will change null to a valid screen
-                Intent intent = new Intent(EnterCarInfoActivity.this, YourCarsActivity.class);
+                // Get input VIN
+                EditText vinTxt = findViewById(R.id.vinTxt);
+                String vin = vinTxt.getText().toString();
+
+                // Get input current mileage
+                EditText currentMileageTxt = findViewById(R.id.currentMileageTxt);
+                String milesStr = currentMileageTxt.getText().toString();
+                int miles = 0;
+                if (!milesStr.isEmpty()) miles = Integer.parseInt(milesStr);
+
+                // Retrieve car from VINAnalyzer
+                Car car = VINAnalyzer.getCar(vin);
+
+                // Set miles, ownerId, name
+                car.setMiles(miles);
+                car.setOwnerId(Singleton.getInstance().getFirebaseUser().getUid());
+                car.setName("Dad's Car"); // Will replace this with user input later
+
+                // Log car in database
+                Singleton.getInstance().addCar(car);
+
+                Intent intent = new Intent(EnterCarInfoActivity.this, AddCarsActivity.class);
                 startActivity(intent);
             }
         });
@@ -92,24 +112,5 @@ public class EnterCarInfoActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-
-        // Get input VIN
-        EditText vinTxt = findViewById(R.id.vinTxt);
-        String vin = vinTxt.getText().toString();
-
-        // Get input current mileage
-        EditText currentMileageTxt = findViewById(R.id.currentMileageTxt);
-        int miles = Integer.parseInt(currentMileageTxt.getText().toString());
-
-        // Retrieve car from VINAnalyzer
-        Car car = VINAnalyzer.getCar(vin);
-
-        // Set miles, ownerId, name
-        car.setMiles(miles);
-        car.setOwnerId(Singleton.getInstance().getFirebaseUser().getUid());
-        car.setName("Dad's Car"); // Will replace this with user input later
-
-        // Log car in database
-        Singleton.getInstance().addCar(car);
     }
 }

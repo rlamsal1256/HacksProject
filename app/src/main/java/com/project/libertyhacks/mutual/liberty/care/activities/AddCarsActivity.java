@@ -80,6 +80,7 @@ public class AddCarsActivity extends AppCompatActivity implements
         mApiClient.connect();
 
         cars = Singleton.getInstance().getCars();
+        // cars = new ArrayList<>();
 
         // Get associated layout
         RelativeLayout layout = findViewById(R.id.add_cars_layout);
