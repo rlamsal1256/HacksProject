@@ -30,6 +30,11 @@
         android:visibility="visible"
         app:srcCompat="@drawable/ic_add" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <Button
         android:id="@+id/addAnotherCarBtn"
         android:layout_width="wrap_content"

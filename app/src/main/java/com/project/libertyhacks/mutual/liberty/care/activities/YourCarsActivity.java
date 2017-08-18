@@ -8,9 +8,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,11 +25,13 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.ActivityRecognition;
+import com.project.libertyhacks.mutual.liberty.care.MyAdapter;
 import com.project.libertyhacks.mutual.liberty.care.R;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.services.StepCounterAndDetectActivityService;
 import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class YourCarsActivity extends AppCompatActivity implements
@@ -42,7 +47,7 @@ public class YourCarsActivity extends AppCompatActivity implements
     private ImageButton addCarBtn;
     private Button addAnotherCarBtn;
     private TextView noCarsTextView;
-    List<Car> cars;
+    ArrayList<Car> cars;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +65,7 @@ public class YourCarsActivity extends AppCompatActivity implements
         createApiClientAndConnect();
 
         cars = Singleton.getInstance().getCars();
+        populateScreenWithCars();
 
         // TextView for when user has no cars added
         noCarsTextView = findViewById(R.id.noCarsText);
@@ -73,8 +79,24 @@ public class YourCarsActivity extends AppCompatActivity implements
             startActivity(intent);
         });
 
+        addAnotherCarBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(YourCarsActivity.this, EnterCarInfoActivity.class);
+            startActivity(intent);
+        });
+
         resolveVisibility();
     }
+
+    private void populateScreenWithCars() {
+            RecyclerView myRecyclerView = findViewById(R.id.cardView);
+            myRecyclerView.setHasFixedSize(true);
+            LinearLayoutManager myLayoutManager = new LinearLayoutManager(this);
+            myLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+            if (cars.size() > 0 & myRecyclerView != null) {
+                myRecyclerView.setAdapter(new MyAdapter(cars));
+            }
+            myRecyclerView.setLayoutManager(myLayoutManager);
+        }
 
     private void resolveVisibility() {
         if (cars.isEmpty()) {
