@@ -48,7 +48,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
                 // Log car in database
                 Singleton.getInstance().addCar(car);
 
-                Intent intent = new Intent(EnterCarInfoActivity.this, AddCarsActivity.class);
+                Intent intent = new Intent(EnterCarInfoActivity.this, YourCarsActivity.class);
                 startActivity(intent);
             }
         });
@@ -57,7 +57,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EnterCarInfoActivity.this, AddCarsActivity.class);
+                Intent intent = new Intent(EnterCarInfoActivity.this, YourCarsActivity.class);
                 startActivity(intent);
             }
         });

@@ -23,9 +23,9 @@
         <activity android:name=".activities.TakeLicensePictureAcitivity" />
         <activity android:name=".activities.InputLicenseInfoActivity" />
         <activity android:name=".activities.UserProfileActivity" />
-        <activity android:name=".activities.AddCarsActivity" />
-        <activity android:name=".activities.EnterCarInfoActivity" />
         <activity android:name=".activities.YourCarsActivity" />
+        <activity android:name=".activities.EnterCarInfoActivity" />
+        <activity android:name=".activities.HardCodedActivity" />
 
         <service
             android:name=".services.StepCounterAndDetectActivityService"

@@ -54,7 +54,7 @@ public class UserProfileActivity extends AppCompatActivity {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UserProfileActivity.this, AddCarsActivity.class);
+                Intent intent = new Intent(UserProfileActivity.this, YourCarsActivity.class);
                 startActivity(intent);
             }
         });
