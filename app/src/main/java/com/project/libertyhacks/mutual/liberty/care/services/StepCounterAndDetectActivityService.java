@@ -1,8 +1,8 @@
 package com.project.libertyhacks.mutual.liberty.care.services;
 
 import android.app.IntentService;
-import android.content.Intent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -43,7 +43,7 @@ public class StepCounterAndDetectActivityService extends IntentService implement
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        if(ActivityRecognitionResult.hasResult(intent)) {
+        if (ActivityRecognitionResult.hasResult(intent)) {
 
             SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
             String steps = prefs.getString("steps", "0");
@@ -52,7 +52,7 @@ public class StepCounterAndDetectActivityService extends IntentService implement
             requestSensor();
 
             ActivityRecognitionResult result = ActivityRecognitionResult.extractResult(intent);
-            handleDetectedActivities( result.getProbableActivities() );
+            handleDetectedActivities(result.getProbableActivities());
         }
     }
 
@@ -73,15 +73,15 @@ public class StepCounterAndDetectActivityService extends IntentService implement
     }
 
     private void handleDetectedActivities(List<DetectedActivity> probableActivities) {
-        for( DetectedActivity activity : probableActivities ) {
-            switch( activity.getType() ) {
+        for (DetectedActivity activity : probableActivities) {
+            switch (activity.getType()) {
                 case DetectedActivity.IN_VEHICLE: {
                     break;
                 }
                 case DetectedActivity.STILL: {
-                    Log.d( "ActivityRecogition", "Still: " + activity.getConfidence() );
+                    Log.d("ActivityRecogition", "Still: " + activity.getConfidence());
 
-                    if (activity.getConfidence() >=100 && countValueChanged){
+                    if (activity.getConfidence() >= 100 && countValueChanged) {
                         countValueChanged = false;
 
                         // Calculate steps taken based on first counter value received.
@@ -93,14 +93,14 @@ public class StepCounterAndDetectActivityService extends IntentService implement
 
                         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
                         builder.setContentText("We detected " + stepCounter + " steps. Total steps is now " + totalCount);
-                        builder.setSmallIcon( R.mipmap.ic_launcher );
-                        builder.setContentTitle( getString( R.string.app_name ) );
+                        builder.setSmallIcon(R.mipmap.ic_launcher);
+                        builder.setContentTitle(getString(R.string.app_name));
                         NotificationManagerCompat.from(this).notify(0, builder.build());
                     }
                     break;
                 }
                 case DetectedActivity.WALKING: {
-                    Log.d( "ActivityRecogition", "Walking: " + activity.getConfidence() );
+                    Log.d("ActivityRecogition", "Walking: " + activity.getConfidence());
                     break;
                 }
                 case DetectedActivity.UNKNOWN: {
@@ -128,8 +128,8 @@ public class StepCounterAndDetectActivityService extends IntentService implement
             countValueChanged = true;
         }
 
-        Log.d( "onSensorChanged", "Step: " + stepsUntilNow );
-        Log.d( "onSensorChanged", "Total: " + totalCount );
+        Log.d("onSensorChanged", "Step: " + stepsUntilNow);
+        Log.d("onSensorChanged", "Total: " + totalCount);
 
 
     }

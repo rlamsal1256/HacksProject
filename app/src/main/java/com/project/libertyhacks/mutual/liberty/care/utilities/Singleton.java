@@ -7,7 +7,6 @@ import com.project.libertyhacks.mutual.liberty.care.activities.TakeLicensePictur
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**

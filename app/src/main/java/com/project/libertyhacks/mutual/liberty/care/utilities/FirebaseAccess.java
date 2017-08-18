@@ -1,8 +1,8 @@
 package com.project.libertyhacks.mutual.liberty.care.utilities;
 
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.util.Log;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -10,15 +10,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.project.libertyhacks.mutual.liberty.care.activities.GetStartedActivity;
 import com.project.libertyhacks.mutual.liberty.care.activities.InputLicenseInfoActivity;
-import com.project.libertyhacks.mutual.liberty.care.activities.TakeLicensePictureAcitivity;
 import com.project.libertyhacks.mutual.liberty.care.interfaces.Mapable;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
-
 
 import java.util.Map;
 
@@ -36,13 +32,11 @@ public class FirebaseAccess {
     private InputLicenseInfoActivity inputLicenseInfoActivity;
     private MyFirebaseInstanceIdService firebaseInstanceIdService = new MyFirebaseInstanceIdService();
 
-    public FirebaseAccess()
-    {
+    public FirebaseAccess() {
 
     }
 
-    public boolean post(String url, Mapable m)
-    {
+    public boolean post(String url, Mapable m) {
         DatabaseReference mDatabase = database.getReference(url);
         Log.d("Database Reference", mDatabase.toString());
 
@@ -56,30 +50,25 @@ public class FirebaseAccess {
     }
 
 
-
-    public void setGetStartedActivity(GetStartedActivity gsa)
-    {
+    public void setGetStartedActivity(GetStartedActivity gsa) {
         this.getStartedActivity = gsa;
     }
 
-    public void setInputLicenseInfoActivity(InputLicenseInfoActivity ilia) { this.inputLicenseInfoActivity = ilia; }
+    public void setInputLicenseInfoActivity(InputLicenseInfoActivity ilia) {
+        this.inputLicenseInfoActivity = ilia;
+    }
 
-    public void getCarData(String vin)
-    {
+    public void getCarData(String vin) {
         DatabaseReference mDatabase = database.getReference("cars/" + vin);
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Car newCar = dataSnapshot.getValue(Car.class);
-                if (newCar != null)
-                {
+                if (newCar != null) {
                     Log.d("CAR DATA", newCar.toString());
-                    if (!Singleton.getInstance().carExists(newCar.getVin()))
-                    {
+                    if (!Singleton.getInstance().carExists(newCar.getVin())) {
                         Singleton.getInstance().addCar(newCar);
-                    }
-                    else
-                    {
+                    } else {
                         Singleton.getInstance().updateCar(newCar);
                     }
                 }
@@ -92,31 +81,26 @@ public class FirebaseAccess {
         });
     }
 
-    public void updateCarMiles(String vin, int lastCount, int totalCount)
-    {
+    public void updateCarMiles(String vin, int lastCount, int totalCount) {
         DatabaseReference mDatabase = database.getReference("/cars/" + vin);
         mDatabase.child("lastMiles").setValue(lastCount);
         mDatabase.child("totalMiles").setValue(totalCount);
     }
 
 
-    public void getCurrentUser(FirebaseUser fbUser)
-    {
-        DatabaseReference mDatabase = database.getReference("users/"+fbUser.getUid());
+    public void getCurrentUser(FirebaseUser fbUser) {
+        DatabaseReference mDatabase = database.getReference("users/" + fbUser.getUid());
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                if (user != null)
-                {
+                if (user != null) {
                     user.setUserKey(fbUser.getUid());
                     setCurrentUser(user);
                     getCars(user);
                     Log.d("USER SET", "CURRENT USER IS SET");
                     firebaseInstanceIdService.onTokenRefresh();
-                }
-                else
-                {
+                } else {
                     Log.d("USER NOT FOUND", "No user associated with url");
                 }
             }
@@ -128,59 +112,49 @@ public class FirebaseAccess {
         });
     }
 
-    private void setCurrentUser(User user)
-    {
+    private void setCurrentUser(User user) {
         Singleton.getInstance().setCurrentUser(user);
     }
 
-    private void getCars(User user)
-    {
-        if (user.getCars() != null)
-        {
-            for (String key : user.getCars().keySet())
-            {
+    private void getCars(User user) {
+        if (user.getCars() != null) {
+            for (String key : user.getCars().keySet()) {
                 getCarData(key);
             }
         }
     }
 
 
-
-/*
-    public Task<AuthResult> signIn()
-    {
-        Log.d("SIGNING IN", "SIGNING IN");
-        return mAuth.signInAnonymously();
-    }
-*/
-    public void makeNewUser(User user)
-    {
-        if (post("/users/", user))
+    /*
+        public Task<AuthResult> signIn()
         {
+            Log.d("SIGNING IN", "SIGNING IN");
+            return mAuth.signInAnonymously();
+        }
+    */
+    public void makeNewUser(User user) {
+        if (post("/users/", user)) {
             inputLicenseInfoActivity.nextScreen();
         }
     }
 
-    public void isExistingUser(FirebaseUser user)
-    {
+    public void isExistingUser(FirebaseUser user) {
         Singleton.getInstance().setFirebaseUser(user);
         DatabaseReference mDatabase = database.getReference("users/" + user.getUid());
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                if (user != null)
-                {
+                if (user != null) {
                     getStartedActivity.existingUser();
                     Log.d("USER", "EXISTING USER");
 
-                }
-                else
-                {
+                } else {
                     getStartedActivity.newUser();
                     Log.d("USER", "NEW USER");
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 getStartedActivity.newUser();
@@ -188,19 +162,15 @@ public class FirebaseAccess {
         });
     }
 
-    public void doesCarExist(String vin)
-    {
+    public void doesCarExist(String vin) {
         DatabaseReference mDatabase = database.getReference("/cars/" + vin);
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Car car = dataSnapshot.getValue(Car.class);
-                if (car != null)
-                {
+                if (car != null) {
                     // does exist
-                }
-                else
-                {
+                } else {
                     // does not exist
                 }
             }
@@ -219,13 +189,11 @@ public class FirebaseAccess {
         }
     }
 
-    public void onStart()
-    {
+    public void onStart() {
         mAuth.addAuthStateListener(mAuthListener);
     }
 
-    public void onCreate()
-    {
+    public void onCreate() {
         // active listen to user logged in or not.
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
