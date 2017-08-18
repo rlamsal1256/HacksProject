@@ -31,6 +31,7 @@ import com.google.android.gms.location.ActivityRecognition;
 import com.project.libertyhacks.mutual.liberty.care.R;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.services.StepCounterAndDetectActivityService;
+import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +79,7 @@ public class AddCarsActivity extends AppCompatActivity implements
 
         mApiClient.connect();
 
-        cars = new ArrayList<>();
+        cars = Singleton.getInstance().getCars();
 
         // Get associated layout
         RelativeLayout layout = findViewById(R.id.add_cars_layout);
