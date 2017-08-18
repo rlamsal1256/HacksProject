@@ -14,6 +14,7 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,8 +39,9 @@ public class YourCarsActivity extends AppCompatActivity implements
     private String steps = "";
     private SharedPreferences.OnSharedPreferenceChangeListener listener;
 
-    // ImageButton to add a car
-    ImageButton addCarBtn;
+    private ImageButton addCarBtn;
+    private Button addAnotherCarBtn;
+    private TextView noCarsTextView;
     List<Car> cars;
 
     @Override
@@ -53,14 +55,40 @@ public class YourCarsActivity extends AppCompatActivity implements
             actionBar.setTitle("Your Cars");
         }
 
-        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        steps = prefs.getString("steps", "0");
-        updateUI();
+        getStepsFromSharedPrefAndUpdateUI();
 
-        listener = (sharedPreferences, s) -> updateUI();
+        createApiClientAndConnect();
 
-        prefs.registerOnSharedPreferenceChangeListener(listener);
+        cars = Singleton.getInstance().getCars();
 
+        // TextView for when user has no cars added
+        noCarsTextView = findViewById(R.id.noCarsText);
+
+        // ImageButton to add a car
+        addCarBtn = findViewById(R.id.addCarBtn);
+        addAnotherCarBtn = findViewById(R.id.addAnotherCarBtn);
+
+        addCarBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(YourCarsActivity.this, EnterCarInfoActivity.class);
+            startActivity(intent);
+        });
+
+        resolveVisibility();
+    }
+
+    private void resolveVisibility() {
+        if (cars.isEmpty()) {
+            noCarsTextView.setVisibility(View.VISIBLE);
+            addCarBtn.setVisibility(View.VISIBLE);
+            addAnotherCarBtn.setVisibility(View.INVISIBLE);
+        } else {
+            addAnotherCarBtn.setVisibility(View.VISIBLE);
+            noCarsTextView.setVisibility(View.INVISIBLE);
+            addCarBtn.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void createApiClientAndConnect() {
         mApiClient = new GoogleApiClient.Builder(this)
                 .addApi(ActivityRecognition.API)
                 .addConnectionCallbacks(this)
@@ -68,35 +96,15 @@ public class YourCarsActivity extends AppCompatActivity implements
                 .build();
 
         mApiClient.connect();
+    }
 
-        cars = Singleton.getInstance().getCars();
-        // cars = new ArrayList<>();
+    private void getStepsFromSharedPrefAndUpdateUI() {
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        steps = prefs.getString("steps", "0");
+        updateUI();
 
-        // Get associated layout
-        RelativeLayout layout = findViewById(R.id.add_cars_layout);
-
-        // TextView for when user has no cars added
-        TextView noCarsTextView = findViewById(R.id.noCarsText);
-
-        // ImageButton to add a car
-        addCarBtn = findViewById(R.id.addCarBtn);
-
-        addCarBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(YourCarsActivity.this, EnterCarInfoActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        if (cars.isEmpty()) {
-            noCarsTextView.setVisibility(View.VISIBLE);
-        } else {
-
-            moveAddCarBtnToBottom();
-
-            noCarsTextView.setVisibility(View.INVISIBLE);
-        }
+        listener = (sharedPreferences, s) -> updateUI();
+        prefs.registerOnSharedPreferenceChangeListener(listener);
     }
 
     private void updateUI() {
@@ -119,18 +127,6 @@ public class YourCarsActivity extends AppCompatActivity implements
         }
     }
 
-
-    // Moves the addCarBtn to the bottom of the screen
-    private void moveAddCarBtnToBottom() {
-        RelativeLayout.LayoutParams addCarBtnLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        addCarBtnLayoutParams.width = dpInPx(60);
-        addCarBtnLayoutParams.height = dpInPx(60);
-        addCarBtnLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
-        addCarBtnLayoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-        addCarBtnLayoutParams.bottomMargin = 23;
-        addCarBtn.setLayoutParams(addCarBtnLayoutParams);
-    }
-
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar, menu);
         return true;
@@ -148,19 +144,14 @@ public class YourCarsActivity extends AppCompatActivity implements
         return true;
     }
 
-    // Converts dp to px
-    private int dpInPx(int dp) {
-        DisplayMetrics dm = getResources().getDisplayMetrics();
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, dm);
-    }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-//        if (!cars.isEmpty()) {
+        if (!cars.isEmpty()) {
         Intent intent = new Intent(this, StepCounterAndDetectActivityService.class);
         PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         ActivityRecognition.ActivityRecognitionApi.requestActivityUpdates(mApiClient, 1000, pendingIntent);
-//        }
+        }
     }
 
     @Override

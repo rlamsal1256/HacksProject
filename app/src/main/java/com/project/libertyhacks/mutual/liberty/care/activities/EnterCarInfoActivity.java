@@ -24,93 +24,65 @@ public class EnterCarInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_enter_car_info);
 
         ImageButton nextScreenBtn = findViewById(R.id.nextScreenBtn);
-        nextScreenBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get input VIN
-                EditText vinTxt = findViewById(R.id.vinTxt);
-                String vin = vinTxt.getText().toString();
+        nextScreenBtn.setOnClickListener(v -> {
+            // Get input VIN
+            EditText vinTxt = findViewById(R.id.vinTxt);
+            String vin = vinTxt.getText().toString();
 
-                // Get input current mileage
-                EditText currentMileageTxt = findViewById(R.id.currentMileageTxt);
-                String milesStr = currentMileageTxt.getText().toString();
-                int miles = 0;
-                if (!milesStr.isEmpty()) miles = Integer.parseInt(milesStr);
+            // Get input current mileage
+            EditText currentMileageTxt = findViewById(R.id.currentMileageTxt);
+            String milesStr = currentMileageTxt.getText().toString();
+            int miles = 0;
+            if (!milesStr.isEmpty()) miles = Integer.parseInt(milesStr);
 
-                // Retrieve car from VINAnalyzer
-                Car car = VINAnalyzer.getCar(vin);
+            // Retrieve car from VINAnalyzer
+            Car car = VINAnalyzer.getCar(vin);
 
-                // Set miles, ownerId, name
-                car.setMiles(miles);
-                car.setOwnerId(Singleton.getInstance().getFirebaseUser().getUid());
-                car.setName("Dad's Car"); // Will replace this with user input later
+            // Set miles, ownerId, name
+            car.setMiles(miles);
+            car.setOwnerId(Singleton.getInstance().getFirebaseUser().getUid());
+            car.setName("Dad's Car"); // Will replace this with user input later
 
-                // Log car in database
-                Singleton.getInstance().addCar(car);
+            // Log car in database
+            Singleton.getInstance().addCar(car);
 
-                Intent intent = new Intent(EnterCarInfoActivity.this, YourCarsActivity.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(EnterCarInfoActivity.this, YourCarsActivity.class);
+            startActivity(intent);
         });
 
         ImageButton backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(EnterCarInfoActivity.this, YourCarsActivity.class);
-                startActivity(intent);
-            }
+        backBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(EnterCarInfoActivity.this, YourCarsActivity.class);
+            startActivity(intent);
         });
 
         final EditText lastRegistrationDate = findViewById(R.id.lastRegistrationTxt);
         final EditText lastOilChangeDate = findViewById(R.id.lastOilChangeTxt);
 
         ImageButton setLastRegistrationBtn = findViewById(R.id.setLastRegistrationImgBtn);
-        setLastRegistrationBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get Current Date
-                final Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR);
-                int mMonth = c.get(Calendar.MONTH);
-                int mDay = c.get(Calendar.DAY_OF_MONTH);
+        setLastRegistrationBtn.setOnClickListener(v -> {
+            // Get Current Date
+            final Calendar c = Calendar.getInstance();
+            int mYear = c.get(Calendar.YEAR);
+            int mMonth = c.get(Calendar.MONTH);
+            int mDay = c.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(EnterCarInfoActivity.this,
-                        new DatePickerDialog.OnDateSetListener() {
-
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-                                lastRegistrationDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                            }
-                        }, mYear, mMonth, mDay);
-                datePickerDialog.show();
-            }
+            DatePickerDialog datePickerDialog = new DatePickerDialog(EnterCarInfoActivity.this,
+                    (view, year, monthOfYear, dayOfMonth) -> lastRegistrationDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year), mYear, mMonth, mDay);
+            datePickerDialog.show();
         });
 
         ImageButton setLastOilChangeBtn = findViewById(R.id.setLastOilChangeImgBtn);
-        setLastOilChangeBtn.setOnClickListener(new View.OnClickListener()
+        setLastOilChangeBtn.setOnClickListener(v -> {
+            // Get Current Date
+            final Calendar c = Calendar.getInstance();
+            int mYear = c.get(Calendar.YEAR);
+            int mMonth = c.get(Calendar.MONTH);
+            int mDay = c.get(Calendar.DAY_OF_MONTH);
 
-        {
-            @Override
-            public void onClick(View v) {
-                // Get Current Date
-                final Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR);
-                int mMonth = c.get(Calendar.MONTH);
-                int mDay = c.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog datePickerDialog = new DatePickerDialog(EnterCarInfoActivity.this,
-                        new DatePickerDialog.OnDateSetListener() {
-
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-                                lastOilChangeDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                            }
-                        }, mYear, mMonth, mDay);
-                datePickerDialog.show();
-            }
+            DatePickerDialog datePickerDialog = new DatePickerDialog(EnterCarInfoActivity.this,
+                    (view, year, monthOfYear, dayOfMonth) -> lastOilChangeDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year), mYear, mMonth, mDay);
+            datePickerDialog.show();
         });
     }
 }

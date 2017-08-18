@@ -15,8 +15,8 @@
         android:layout_alignBottom="@+id/addCarBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="76dp"
-        android:text="You don't have any cars listed yet."
-        android:textSize="18sp" />
+        android:text="@string/add_car"
+        android:textSize="20sp" />
 
     <ImageButton
         android:id="@+id/addCarBtn"
@@ -29,5 +29,20 @@
         android:scaleType="fitCenter"
         android:visibility="visible"
         app:srcCompat="@drawable/ic_add" />
+
+    <Button
+        android:id="@+id/addAnotherCarBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/add_another_car"
+        android:background="@drawable/round_edges_button"
+        android:textColor="@color/white"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:visibility="invisible"/>
+
 
 </RelativeLayout>

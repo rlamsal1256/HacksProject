@@ -17,5 +17,7 @@
     <string name="user_profile_pic">User Profile Pic</string>
     <string name="continueBtn">Continue</string>
     <string name="back">Back</string>
+    <string name="add_car">Great! Now let\'s add a car.</string>
+    <string name="add_another_car">Add Another Car</string>
 
 </resources>
