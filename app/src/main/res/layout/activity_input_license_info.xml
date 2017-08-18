@@ -143,7 +143,7 @@
         android:layout_alignBottom="@+id/expDateTxt"
         android:layout_toEndOf="@+id/expDateTxt"
         android:layout_toRightOf="@+id/expDateTxt"
-        android:background="@android:color/white"
+        android:background="@android:color/transparent"
         app:srcCompat="@drawable/calendar" />
 
     <ImageButton
@@ -153,14 +153,14 @@
         android:layout_alignBottom="@+id/dobTxt"
         android:layout_toEndOf="@+id/dobTxt"
         android:layout_toRightOf="@+id/dobTxt"
-        android:background="@android:color/white"
+        android:background="@android:color/transparent"
         app:srcCompat="@drawable/calendar" />
 
     <ImageButton
         android:id="@+id/nextScreenBtn"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:background="@color/LMBlue"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/round_edges_button"
         app:srcCompat="@drawable/ic_right_arrow"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/licenseNumTxt"

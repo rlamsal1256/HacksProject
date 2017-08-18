@@ -26,7 +26,6 @@
         android:layout_centerHorizontal="true" />
 
 
-
     <LinearLayout
         android:id="@+id/personalInfoLayout"
         android:layout_width="match_parent"
