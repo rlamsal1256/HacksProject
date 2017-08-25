@@ -60,7 +60,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activities.NotificationsActivity"></activity>
+        <activity android:name=".activities.NotificationsHardCodedActivity"></activity>
     </application>
 
 </manifest>

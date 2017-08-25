@@ -141,7 +141,7 @@ public class YourCarsActivity extends AppCompatActivity implements
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_notification:
-                Intent intent = new Intent(YourCarsActivity.this, NotificationsActivity.class);
+                Intent intent = new Intent(YourCarsActivity.this, NotificationsHardCodedActivity.class);
                 startActivity(intent);
                 break;
             default:
