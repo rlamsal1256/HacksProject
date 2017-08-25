@@ -45,6 +45,7 @@ public class YourCarsActivity extends AppCompatActivity implements
     private String steps = "";
     private SharedPreferences.OnSharedPreferenceChangeListener listener;
 
+    private RelativeLayout addCarLayout;
     private ImageButton addCarBtn;
     private FloatingActionButton addAnotherCarBtn;
     private TextView noCarsTextView;
@@ -74,6 +75,7 @@ public class YourCarsActivity extends AppCompatActivity implements
         // ImageButton to add a car
         addCarBtn = findViewById(R.id.addCarBtn);
         addAnotherCarBtn = findViewById(R.id.addAnotherCarBtn);
+        addCarLayout = findViewById(R.id.addCarLayout);
 
         addCarBtn.setOnClickListener(v -> {
             Intent intent = new Intent(YourCarsActivity.this, EnterCarInfoActivity.class);
@@ -101,13 +103,11 @@ public class YourCarsActivity extends AppCompatActivity implements
 
     private void resolveVisibility() {
         if (cars.isEmpty()) {
-            noCarsTextView.setVisibility(View.VISIBLE);
-            addCarBtn.setVisibility(View.VISIBLE);
             addAnotherCarBtn.setVisibility(View.INVISIBLE);
+            addCarLayout.setVisibility(View.VISIBLE);
         } else {
             addAnotherCarBtn.setVisibility(View.VISIBLE);
-            noCarsTextView.setVisibility(View.INVISIBLE);
-            addCarBtn.setVisibility(View.INVISIBLE);
+            addCarLayout.setVisibility(View.INVISIBLE);
         }
     }
 
