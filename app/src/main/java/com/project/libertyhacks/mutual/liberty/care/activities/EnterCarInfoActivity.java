@@ -61,7 +61,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
         });
 
         final EditText lastRegistrationDate = findViewById(R.id.lastRegistrationTxt);
-        final EditText lastOilChangeDate = findViewById(R.id.lastOilChangeTxt);
+//        final EditText lastOilChangeDate = findViewById(R.id.lastOilChangeTxt);
 
         ImageButton setLastRegistrationBtn = findViewById(R.id.setLastRegistrationImgBtn);
         setLastRegistrationBtn.setOnClickListener(v -> {
@@ -76,17 +76,17 @@ public class EnterCarInfoActivity extends AppCompatActivity {
             datePickerDialog.show();
         });
 
-        ImageButton setLastOilChangeBtn = findViewById(R.id.setLastOilChangeImgBtn);
-        setLastOilChangeBtn.setOnClickListener(v -> {
-            // Get Current Date
-            final Calendar c = Calendar.getInstance();
-            int mYear = c.get(Calendar.YEAR);
-            int mMonth = c.get(Calendar.MONTH);
-            int mDay = c.get(Calendar.DAY_OF_MONTH);
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(EnterCarInfoActivity.this,
-                    (view, year, monthOfYear, dayOfMonth) -> lastOilChangeDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year), mYear, mMonth, mDay);
-            datePickerDialog.show();
-        });
+//        ImageButton setLastOilChangeBtn = findViewById(R.id.setLastOilChangeImgBtn);
+//        setLastOilChangeBtn.setOnClickListener(v -> {
+//            // Get Current Date
+//            final Calendar c = Calendar.getInstance();
+//            int mYear = c.get(Calendar.YEAR);
+//            int mMonth = c.get(Calendar.MONTH);
+//            int mDay = c.get(Calendar.DAY_OF_MONTH);
+//
+//            DatePickerDialog datePickerDialog = new DatePickerDialog(EnterCarInfoActivity.this,
+//                    (view, year, monthOfYear, dayOfMonth) -> lastOilChangeDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year), mYear, mMonth, mDay);
+//            datePickerDialog.show();
+//        });
     }
 }
