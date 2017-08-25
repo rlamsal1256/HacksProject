@@ -35,7 +35,7 @@
         android:textColor="@android:color/white" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
@@ -46,10 +46,10 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/descriptionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
+        android:layout_below="@+id/welcomeText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:text="your car maintenance assistant"

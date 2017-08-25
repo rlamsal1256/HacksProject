@@ -7,7 +7,7 @@
     tools:context="com.project.libertyhacks.mutual.liberty.care.activities.RegisterActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/titleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -16,31 +16,31 @@
         android:layout_marginTop="69dp"
         android:fontFamily="sans-serif"
         android:gravity="center_horizontal"
-        android:text="Register"
+        android:text="To begin, do you have Liberty Mutual auto insurance?"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
         android:textColor="@color/LMBlue"
-        android:textSize="36sp" />
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/libertyCustomersBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nonLibertyBtn"
-        android:layout_alignStart="@+id/nonLibertyBtn"
-        android:layout_below="@+id/nonLibertyBtn"
+        android:layout_alignLeft="@+id/takePicBtn"
+        android:layout_alignStart="@+id/takePicBtn"
+        android:layout_below="@+id/takePicBtn"
         android:layout_marginTop="58dp"
         android:background="@color/LMBlue"
-        android:text="Liberty Mutual Customer"
+        android:text="No, I have another insurer"
         android:textColor="@android:color/white" />
 
     <Button
-        android:id="@+id/nonLibertyBtn"
+        android:id="@+id/takePicBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="70dp"
         android:background="@color/LMBlue"
-        android:text="Non-Liberty Mutual Customers"
-        android:textColor="@android:color/white" />
+        android:text="Yes I do"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/titleView"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -6,36 +6,40 @@
     android:layout_height="match_parent"
     tools:context="com.project.libertyhacks.mutual.liberty.care.activities.DriverLicenseActivity">
 
+    <TextView
+        android:id="@+id/titleView"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="71dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="How would you like to enter your driver info?"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textColor="@color/LMBlue"
+        android:textSize="30sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:id="@+id/inputLicenseInfoBtn"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"
+        android:layout_alignLeft="@+id/takePicBtn"
+        android:layout_alignStart="@+id/takePicBtn"
+        android:layout_below="@+id/takePicBtn"
+        android:layout_marginTop="58dp"
         android:background="@color/LMBlue"
-        android:text="Enter info manually"
+        android:text="Enter info manuaully"
         android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/takePicBtn"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="34dp"
+        android:layout_marginTop="78dp"
         android:background="@color/LMBlue"
-        android:text="Take picture of your license"
-        android:textColor="@android:color/white" />
-
-    <TextView
-        android:id="@+id/editText"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:text="Or"
-        android:textAlignment="center" />
-
+        android:text="Take a picture of my driver's license"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/titleView"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
