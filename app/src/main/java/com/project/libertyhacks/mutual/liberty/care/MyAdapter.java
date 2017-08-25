@@ -21,15 +21,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         list = Data;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView carNameTextView;
-        public TextView carMilestextView;
+        TextView carNameTextView;
+        TextView carMilesTextView;
 
-        public MyViewHolder(View v) {
+        MyViewHolder(View v) {
             super(v);
             carNameTextView =  v.findViewById(R.id.carNameTextView);
-            carMilestextView = v.findViewById(R.id.carMilesTextView);
+            carMilesTextView = v.findViewById(R.id.carMilesTextView);
         }
     }
 
@@ -44,8 +44,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
 
+        String miles = String.valueOf(list.get(position).getMiles());
+
         holder.carNameTextView.setText(list.get(position).getName());
-        holder.carMilestextView.setText(list.get(position).getMiles());
+        holder.carMilesTextView.setText(miles);
 
     }
 
