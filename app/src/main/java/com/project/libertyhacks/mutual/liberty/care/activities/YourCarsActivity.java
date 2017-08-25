@@ -89,13 +89,13 @@ public class YourCarsActivity extends AppCompatActivity implements
 
     private void populateScreenWithCars() {
             RecyclerView myRecyclerView = findViewById(R.id.cardView);
-            myRecyclerView.setHasFixedSize(true);
+//            myRecyclerView.setHasFixedSize(true);
             LinearLayoutManager myLayoutManager = new LinearLayoutManager(this);
             myLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             if (cars.size() > 0 & myRecyclerView != null) {
                 myRecyclerView.setAdapter(new MyAdapter(cars));
+                myRecyclerView.setLayoutManager(myLayoutManager);
             }
-            myRecyclerView.setLayoutManager(myLayoutManager);
         }
 
     private void resolveVisibility() {
