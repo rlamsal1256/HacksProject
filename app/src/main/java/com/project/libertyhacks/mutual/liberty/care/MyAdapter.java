@@ -44,7 +44,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
 
-        String miles = String.valueOf(list.get(position).getMiles());
+        String miles = String.valueOf(list.get(position).getMiles()) + " miles";
 
         holder.carNameTextView.setText(list.get(position).getName());
         holder.carMilesTextView.setText(miles);

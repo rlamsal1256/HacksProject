@@ -29,6 +29,10 @@ public class EnterCarInfoActivity extends AppCompatActivity {
             EditText vinTxt = findViewById(R.id.vinTxt);
             String vin = vinTxt.getText().toString();
 
+            EditText carsNameEditText = findViewById(R.id.carsNameEditText);
+            String carsName = carsNameEditText.getText().toString();
+            if (carsName.isEmpty()) carsName = "Dad's car";
+
             // Get input current mileage
             EditText currentMileageTxt = findViewById(R.id.currentMileageTxt);
             String milesStr = currentMileageTxt.getText().toString();
@@ -41,7 +45,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
             // Set miles, ownerId, name
             car.setMiles(miles);
             car.setOwnerId(Singleton.getInstance().getFirebaseUser().getUid());
-            car.setName("Dad's Car"); // Will replace this with user input later
+            car.setName(carsName); // Will replace this with user input later
 
             // Log car in database
             Singleton.getInstance().addCar(car);

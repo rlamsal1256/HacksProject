@@ -7,7 +7,7 @@
     tools:context="com.project.libertyhacks.mutual.liberty.care.activities.EnterCarInfoActivity">
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/carInfoHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="47dp"
@@ -18,14 +18,34 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/carsNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
+        android:text="Car's Nickname:"
+        android:textColor="@color/LMBlue"
+        android:textSize="18sp"
+        android:layout_below="@+id/carInfoHeader"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/carsNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/carsNameTextView"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="VIN"
         android:textColor="@color/LMBlue"
         android:textSize="18sp"
-        android:layout_below="@+id/textView19"
+        android:layout_below="@+id/carsNameEditText"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -35,32 +55,20 @@
         android:text="Current Mileage"
         android:textColor="@color/LMBlue"
         android:textSize="18sp"
-        android:layout_marginTop="61dp"
-        android:layout_below="@+id/textView22"
-        android:layout_alignLeft="@+id/textView27"
-        android:layout_alignStart="@+id/textView27" />
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/vinTxt"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView25"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="66dp"
+        android:layout_marginTop="12dp"
         android:text="Last Registration"
         android:textColor="@color/LMBlue"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView26"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="78dp"
-        android:text="Last Oil Change"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_below="@+id/currentMileageTxt"
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:id="@+id/nextScreenBtn"
@@ -123,35 +131,14 @@
         android:layout_alignLeft="@+id/currentMileageTxt"
         android:layout_alignStart="@+id/currentMileageTxt" />
 
-    <EditText
-        android:id="@+id/lastOilChangeTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/textView27"
-        android:layout_alignLeft="@+id/lastRegistrationTxt"
-        android:layout_alignStart="@+id/lastRegistrationTxt" />
-
     <ImageButton
         android:id="@+id/setLastRegistrationImgBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/background_light"
+        android:background="@android:color/transparent"
         app:srcCompat="@drawable/calendar"
         android:layout_alignBottom="@+id/lastRegistrationTxt"
         android:layout_toRightOf="@+id/lastRegistrationTxt"
         android:layout_toEndOf="@+id/lastRegistrationTxt" />
-
-    <ImageButton
-        android:id="@+id/setLastOilChangeImgBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/lastOilChangeTxt"
-        android:layout_alignEnd="@+id/setLastRegistrationImgBtn"
-        android:layout_alignRight="@+id/setLastRegistrationImgBtn"
-        android:background="@android:color/background_light"
-        app:srcCompat="@drawable/calendar" />
 
 </RelativeLayout>
