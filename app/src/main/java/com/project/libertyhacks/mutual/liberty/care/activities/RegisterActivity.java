@@ -15,7 +15,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        Button nonLibertyBtn = (Button) findViewById(R.id.nonLibertyBtn);
+        Button nonLibertyBtn = (Button) findViewById(R.id.takePicBtn);
         nonLibertyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
