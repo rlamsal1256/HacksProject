@@ -12,10 +12,8 @@
         android:layout_height="70dp"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="95dp"
         android:layout_marginTop="17dp"
-        android:layout_toEndOf="@+id/backButton"
-        android:layout_toRightOf="@+id/backButton"
         android:text="The oil health for Dad's Car is low. You may want to schedule an oil change soon."
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="18sp" />
@@ -24,12 +22,10 @@
         android:id="@+id/oilChangeCircleImg"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_alignBottom="@+id/oilChangeNotificationTxt"
-        android:layout_toLeftOf="@+id/oilChangeNotificationTxt"
-        android:layout_toStartOf="@+id/oilChangeNotificationTxt"
         android:scaleType="fitCenter"
         android:tint="@color/red"
-        app:srcCompat="@drawable/ic_circle" />
+        app:srcCompat="@drawable/ic_circle"
+        android:layout_alignBottom="@+id/oilChangeNotificationTxt" />
 
     <TextView
         android:id="@+id/oilChangeCircleLetterTxt"
@@ -69,10 +65,8 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="95dp"
         android:layout_marginTop="170dp"
-        android:layout_toEndOf="@+id/backButton"
-        android:layout_toRightOf="@+id/backButton"
         android:text="Keep in mind, your driver's license expires in 2 months."
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="18sp" />
@@ -82,8 +76,6 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignTop="@+id/notificationSeparator1"
-        android:layout_toLeftOf="@+id/licenseExpirationNotificationTxt"
-        android:layout_toStartOf="@+id/licenseExpirationNotificationTxt"
         android:layout_marginTop="5dp"
         android:scaleType="fitCenter"
         android:tint="@color/red"
@@ -128,10 +120,8 @@
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="95dp"
         android:layout_marginTop="295dp"
-        android:layout_toEndOf="@+id/backButton"
-        android:layout_toRightOf="@+id/backButton"
         android:text="Based on your Honda Accord's healthy maintenance score, Liberty Mutual has prepared a personalized auto quote for you."
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="18sp" />
@@ -141,9 +131,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignTop="@+id/notificationSeparator2"
-        android:layout_toLeftOf="@+id/quoteNotificationTxt"
-        android:layout_toStartOf="@+id/quoteNotificationTxt"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:scaleType="fitCenter"
         android:tint="@color/green"
         app:srcCompat="@drawable/ic_circle" />
@@ -169,7 +157,7 @@
         android:layout_alignEnd="@+id/quoteNotificationTxt"
         android:layout_alignRight="@+id/quoteNotificationTxt"
         android:layout_below="@+id/quoteCircleImg"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:backgroundTint="@color/LMBlue"
         android:text="Check It Out"
         android:textColor="@color/white" />
@@ -178,20 +166,7 @@
         android:id="@+id/notificationSeparator3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="450dp"
         android:background="@color/LMGray" />
-
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp"
-        android:backgroundTint="@color/LMBlue"
-        app:srcCompat="@drawable/ic_left_arrow" />
 
 </RelativeLayout>
