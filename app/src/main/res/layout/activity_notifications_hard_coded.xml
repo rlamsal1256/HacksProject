@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.project.libertyhacks.mutual.liberty.care.activities.NotificationsHardCodedActivity">
+
+    <TextView
+        android:id="@+id/oilChangeNotificationTxt"
+        android:layout_width="275dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="17dp"
+        android:text="The oil health for Dad's Car is low. You may want to schedule an oil change soon."
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/oilChangeCircleImg"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
+        android:tint="@color/red"
+        app:srcCompat="@drawable/ic_circle"
+        android:layout_alignBottom="@+id/oilChangeNotificationTxt" />
+
+    <TextView
+        android:id="@+id/oilChangeCircleLetterTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/oilChangeCircleImg"
+        android:layout_alignLeft="@+id/oilChangeCircleImg"
+        android:layout_alignRight="@+id/oilChangeCircleImg"
+        android:layout_alignTop="@+id/oilChangeCircleImg"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:text="O"
+        android:textColor="@color/LMGray"
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/scheduleAppointmentImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/oilChangeNotificationTxt"
+        android:layout_alignRight="@+id/oilChangeNotificationTxt"
+        android:layout_below="@+id/oilChangeCircleImg"
+        android:backgroundTint="@color/LMBlue"
+        android:text="Schedule Now"
+        android:textColor="@color/white" />
+
+    <View
+        android:id="@+id/notificationSeparator1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="150dp"
+        android:background="@color/LMGray" />
+
+    <TextView
+        android:id="@+id/licenseExpirationNotificationTxt"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="170dp"
+        android:text="Keep in mind, your driver's license expires in 2 months."
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/licenseExpirationCircleImg"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignTop="@+id/notificationSeparator1"
+        android:layout_marginTop="5dp"
+        android:scaleType="fitCenter"
+        android:tint="@color/red"
+        app:srcCompat="@drawable/ic_circle" />
+
+    <TextView
+        android:id="@+id/licenseExpirationCircleLetterTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/licenseExpirationCircleImg"
+        android:layout_alignLeft="@+id/licenseExpirationCircleImg"
+        android:layout_alignRight="@+id/licenseExpirationCircleImg"
+        android:layout_alignTop="@+id/licenseExpirationCircleImg"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:text="L"
+        android:textColor="@color/LMGray"
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/removeLicenseExpImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/licenseExpirationNotificationTxt"
+        android:layout_alignRight="@+id/licenseExpirationNotificationTxt"
+        android:layout_below="@+id/licenseExpirationNotificationTxt"
+        android:layout_marginTop="0dp"
+        android:backgroundTint="@color/LMBlue"
+        android:text="Remove"
+        android:textColor="@color/white" />
+
+    <View
+        android:id="@+id/notificationSeparator2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="280dp"
+        android:background="@color/LMGray" />
+
+    <TextView
+        android:id="@+id/quoteNotificationTxt"
+        android:layout_width="275dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="295dp"
+        android:text="Based on your Honda Accord's healthy maintenance score, Liberty Mutual has prepared a personalized auto quote for you."
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/quoteCircleImg"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignTop="@+id/notificationSeparator2"
+        android:layout_marginTop="5dp"
+        android:scaleType="fitCenter"
+        android:tint="@color/green"
+        app:srcCompat="@drawable/ic_circle" />
+
+    <TextView
+        android:id="@+id/quoteCircleLetterTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/quoteCircleImg"
+        android:layout_alignLeft="@+id/quoteCircleImg"
+        android:layout_alignRight="@+id/quoteCircleImg"
+        android:layout_alignTop="@+id/quoteCircleImg"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:text="Q"
+        android:textColor="@color/LMGray"
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/checkQuoteImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/quoteNotificationTxt"
+        android:layout_alignRight="@+id/quoteNotificationTxt"
+        android:layout_below="@+id/quoteCircleImg"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/LMBlue"
+        android:text="Check It Out"
+        android:textColor="@color/white" />
+
+    <View
+        android:id="@+id/notificationSeparator3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="450dp"
+        android:background="@color/LMGray" />
+
+</RelativeLayout>
