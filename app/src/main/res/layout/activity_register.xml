@@ -25,22 +25,22 @@
         android:id="@+id/libertyCustomersBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/takePicBtn"
-        android:layout_alignStart="@+id/takePicBtn"
-        android:layout_below="@+id/takePicBtn"
-        android:layout_marginTop="58dp"
-        android:background="@color/LMBlue"
-        android:text="No, I have another insurer"
-        android:textColor="@android:color/white" />
-
-    <Button
-        android:id="@+id/takePicBtn"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:background="@color/LMBlue"
         android:text="Yes I do"
         android:textColor="@android:color/white"
         android:layout_below="@+id/titleView"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/takePicBtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/libertyCustomersBtn"
+        android:layout_alignStart="@+id/libertyCustomersBtn"
+        android:layout_below="@+id/libertyCustomersBtn"
+        android:layout_marginTop="58dp"
+        android:background="@color/LMBlue"
+        android:text="No, I have another insurer"
+        android:textColor="@android:color/white" />
 </RelativeLayout>
