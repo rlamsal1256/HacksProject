@@ -11,29 +11,23 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.ActivityRecognition;
-import com.project.libertyhacks.mutual.liberty.care.MyAdapter;
+import com.project.libertyhacks.mutual.liberty.care.utilities.YourCarsAdapter;
 import com.project.libertyhacks.mutual.liberty.care.R;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.services.StepCounterAndDetectActivityService;
 import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class YourCarsActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
@@ -48,8 +42,9 @@ public class YourCarsActivity extends AppCompatActivity implements
     private RelativeLayout addCarLayout;
     private ImageButton addCarBtn;
     private FloatingActionButton addAnotherCarBtn;
-    private TextView noCarsTextView;
     ArrayList<Car> cars;
+    String totalStepsStr;
+    private YourCarsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +64,6 @@ public class YourCarsActivity extends AppCompatActivity implements
         cars = Singleton.getInstance().getCars();
         populateScreenWithCars();
 
-        // TextView for when user has no cars added
-        noCarsTextView = findViewById(R.id.noCarsText);
 
         // ImageButton to add a car
         addCarBtn = findViewById(R.id.addCarBtn);
@@ -96,7 +89,8 @@ public class YourCarsActivity extends AppCompatActivity implements
             LinearLayoutManager myLayoutManager = new LinearLayoutManager(this);
             myLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             if (cars.size() > 0 & myRecyclerView != null) {
-                myRecyclerView.setAdapter(new MyAdapter(cars));
+                adapter = new YourCarsAdapter(cars, totalStepsStr);
+                myRecyclerView.setAdapter(adapter);
                 myRecyclerView.setLayoutManager(myLayoutManager);
             }
         }
@@ -135,9 +129,10 @@ public class YourCarsActivity extends AppCompatActivity implements
         extractSteps(steps);
 
         String lastDistance = lastStepsAmt + " steps";
-        String totalStepsStr = totalSteps + " steps";
+        totalStepsStr = totalSteps + " steps";
         Log.d("YourCarsActivity**", "last step: " + lastDistance);
         Log.d("YourCarsActivity**", "total step: " + totalStepsStr);
+        adapter.updateSteps(totalStepsStr);
 //        ((TextView) findViewById(R.id.lastDistanceTxtView)).setText(lastDistance);
 //        ((TextView) findViewById(R.id.totalDistanceTextView)).setText(totalStepsStr);
     }
