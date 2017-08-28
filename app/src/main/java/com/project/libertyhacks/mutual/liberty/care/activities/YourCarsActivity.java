@@ -21,11 +21,11 @@ import android.widget.RelativeLayout;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.ActivityRecognition;
-import com.project.libertyhacks.mutual.liberty.care.utilities.YourCarsAdapter;
 import com.project.libertyhacks.mutual.liberty.care.R;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.services.StepCounterAndDetectActivityService;
 import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
+import com.project.libertyhacks.mutual.liberty.care.utilities.YourCarsAdapter;
 
 import java.util.ArrayList;
 
@@ -57,12 +57,13 @@ public class YourCarsActivity extends AppCompatActivity implements
             actionBar.setTitle("Your Cars");
         }
 
+        cars = Singleton.getInstance().getCars();
+
         getStepsFromSharedPrefAndUpdateUI();
 
         createApiClientAndConnect();
 
-        cars = Singleton.getInstance().getCars();
-        populateScreenWithCars();
+//        populateScreenWithCars();
 
 
         // ImageButton to add a car
@@ -84,6 +85,13 @@ public class YourCarsActivity extends AppCompatActivity implements
     }
 
     private void populateScreenWithCars() {
+
+        extractSteps(steps);
+
+        String lastDistance = lastStepsAmt + " steps";
+        totalStepsStr = totalSteps + " steps";
+
+
             RecyclerView myRecyclerView = findViewById(R.id.cardView);
             myRecyclerView.setHasFixedSize(true);
             LinearLayoutManager myLayoutManager = new LinearLayoutManager(this);
@@ -118,9 +126,12 @@ public class YourCarsActivity extends AppCompatActivity implements
     private void getStepsFromSharedPrefAndUpdateUI() {
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         steps = prefs.getString("steps", "0");
-        updateUI();
+//        updateUI();
+        populateScreenWithCars();
 
-        listener = (sharedPreferences, s) -> updateUI();
+
+//        listener = (sharedPreferences, s) -> updateUI();
+        listener = (sharedPreferences, s) -> populateScreenWithCars();
         prefs.registerOnSharedPreferenceChangeListener(listener);
     }
 
@@ -132,7 +143,6 @@ public class YourCarsActivity extends AppCompatActivity implements
         totalStepsStr = totalSteps + " steps";
         Log.d("YourCarsActivity**", "last step: " + lastDistance);
         Log.d("YourCarsActivity**", "total step: " + totalStepsStr);
-        adapter.updateSteps(totalStepsStr);
 //        ((TextView) findViewById(R.id.lastDistanceTxtView)).setText(lastDistance);
 //        ((TextView) findViewById(R.id.totalDistanceTextView)).setText(totalStepsStr);
     }
