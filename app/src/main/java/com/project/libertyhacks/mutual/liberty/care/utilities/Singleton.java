@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.project.libertyhacks.mutual.liberty.care.activities.TakeLicensePictureAcitivity;
+import com.project.libertyhacks.mutual.liberty.care.activities.YourCarsActivity;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
 
@@ -34,6 +35,12 @@ public class Singleton {
     public User getCurrentUser() { return  this.currentUser; }
     private User currentUser;
     private ArrayList<Car> cars = new ArrayList<>();
+    private YourCarsActivity yourCarsActivity;
+
+    public void setYourCarsActivity(YourCarsActivity yca)
+    {
+        this.yourCarsActivity = yca;
+    }
 
     public boolean carExists(String vin)
     {
@@ -74,6 +81,7 @@ public class Singleton {
     {
         Log.d("NEW CAR", c.toString());
         cars.add(c);
+        yourCarsActivity.updateCars();
     }
 
     private FirebaseUser firebaseUser;

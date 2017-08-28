@@ -11,10 +11,13 @@ import android.widget.ImageButton;
 
 import com.project.libertyhacks.mutual.liberty.care.R;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
+import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
 import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
 import com.project.libertyhacks.mutual.liberty.care.utilities.VINAnalyzer;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EnterCarInfoActivity extends AppCompatActivity {
 
@@ -47,8 +50,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
             car.setOwnerId(Singleton.getInstance().getFirebaseUser().getUid());
             car.setName(carsName); // Will replace this with user input later
 
-            // Log car in database
-            Singleton.getInstance().addCar(car);
+            this.addCar(car);
 
             Intent intent = new Intent(EnterCarInfoActivity.this, YourCarsActivity.class);
             startActivity(intent);
@@ -88,5 +90,16 @@ public class EnterCarInfoActivity extends AppCompatActivity {
 //                    (view, year, monthOfYear, dayOfMonth) -> lastOilChangeDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year), mYear, mMonth, mDay);
 //            datePickerDialog.show();
 //        });
+    }
+
+    void addCar(Car car)
+    {
+        // Log car in database
+        Singleton.getInstance().addCar(car);
+        FirebaseAccess firebaseAccess = new FirebaseAccess();
+        Map<String, Object> carMap = new HashMap<>();
+        carMap.put(car.getKey(), true);
+        firebaseAccess.post("cars", car);
+        firebaseAccess.post("users/" + Singleton.getInstance().getCurrentUser().getKey(), carMap);
     }
 }

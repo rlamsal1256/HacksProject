@@ -41,11 +41,25 @@ public class FirebaseAccess {
         Log.d("Database Reference", mDatabase.toString());
 
         Map<String, Object> map = m.toMap();
-        Log.d("USER UID", m.getKey());
+        Log.d("KEY", m.getKey());
         DatabaseReference key = mDatabase.child(m.getKey());
         key.setValue(map);
 
         Log.d("InputInfo", key + ": " + map.toString());
+        return true;
+    }
+
+    public boolean post(String url, Map m)
+    {
+        DatabaseReference mDatabase = database.getReference(url);
+        Log.d("Database Reference", mDatabase.toString());
+
+        DatabaseReference key = mDatabase.child("cars");
+        Log.d("KEY", key.toString());
+        Log.d("InputInfo", key.toString() + ": " + m.toString());
+        String newCarKeyString = m.entrySet().toArray()[0].toString();
+        DatabaseReference newCar = key.child(newCarKeyString);
+        newCar.setValue(m.get(newCarKeyString));
         return true;
     }
 
