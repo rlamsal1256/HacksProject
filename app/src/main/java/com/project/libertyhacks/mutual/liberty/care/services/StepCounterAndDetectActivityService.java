@@ -91,11 +91,13 @@ public class StepCounterAndDetectActivityService extends IntentService implement
 
                         firebaseAccess.updateCarMiles("1234", stepCounter, totalCount);
 
-                        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
-                        builder.setContentText("We detected " + stepCounter + " steps. Total steps is now " + totalCount);
-                        builder.setSmallIcon(R.mipmap.ic_launcher);
-                        builder.setContentTitle(getString(R.string.app_name));
-                        NotificationManagerCompat.from(this).notify(0, builder.build());
+                        if (stepsUntilNow != 0){
+                            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
+                            builder.setContentText("We detected " + stepCounter + " steps. Total steps is now " + totalCount);
+                            builder.setSmallIcon(R.mipmap.care_logo);
+                            builder.setContentTitle(getString(R.string.app_name));
+                            NotificationManagerCompat.from(this).notify(0, builder.build());
+                        }
                     }
                     break;
                 }
