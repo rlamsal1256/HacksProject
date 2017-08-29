@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -17,8 +15,6 @@ import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
 import com.project.libertyhacks.mutual.liberty.care.utilities.VINAnalyzer;
 
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class EnterCarInfoActivity extends AppCompatActivity {
@@ -28,7 +24,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_car_info);
 
-        ImageButton nextScreenBtn = findViewById(R.id.nextScreenBtn);
+        ImageButton nextScreenBtn = findViewById(R.id.nextScreenCarInfoBtn);
         nextScreenBtn.setOnClickListener(v -> {
             // Get input VIN
             EditText vinTxt = findViewById(R.id.vinTxt);

@@ -145,7 +145,7 @@
         app:srcCompat="@drawable/calendar" />
 
     <ImageButton
-        android:id="@+id/nextScreenBtn"
+        android:id="@+id/nextScreenDriverLicenseInfoBtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignEnd="@+id/licenseNumTxt"

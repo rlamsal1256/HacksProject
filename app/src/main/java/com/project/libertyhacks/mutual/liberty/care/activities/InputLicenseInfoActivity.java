@@ -55,7 +55,7 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
         setUserLicenseExpDateBtn = findViewById(R.id.setUserLicenseExpDateImgBtn);
         userLicenseNum = findViewById(R.id.licenseNumTxt);
         userLicenseExpDate = findViewById(R.id.expDateTxt);
-        nextScreenBtn = findViewById(R.id.nextScreenBtn);
+        nextScreenBtn = findViewById(R.id.nextScreenDriverLicenseInfoBtn);
 
 
         setUserDobBtn.setOnClickListener(this);
