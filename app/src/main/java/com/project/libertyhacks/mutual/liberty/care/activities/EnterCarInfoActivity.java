@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ import com.project.libertyhacks.mutual.liberty.care.utilities.VINAnalyzer;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class EnterCarInfoActivity extends AppCompatActivity {
 
@@ -31,6 +33,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
             // Get input VIN
             EditText vinTxt = findViewById(R.id.vinTxt);
             String vin = vinTxt.getText().toString();
+            if (vin.isEmpty()) vin = Integer.toString(new Random().nextInt());
 
             EditText carsNameEditText = findViewById(R.id.carsNameEditText);
             String carsName = carsNameEditText.getText().toString();
@@ -49,6 +52,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
             car.setMiles(miles);
             car.setOwnerId(Singleton.getInstance().getFirebaseUser().getUid());
             car.setName(carsName); // Will replace this with user input later
+            Log.d("CAR NAME", "*********** CAR NAME:" + carsName);
 
             this.addCar(car);
 
@@ -97,8 +101,8 @@ public class EnterCarInfoActivity extends AppCompatActivity {
         // Log car in database
         Singleton.getInstance().addCar(car);
         FirebaseAccess firebaseAccess = new FirebaseAccess();
-        Map<String, Object> carMap = new HashMap<>();
-        carMap.put(car.getKey(), true);
+//        Map<String, Object> carMap = new HashMap<>();
+//        carMap.put(car.getKey(), true);
         firebaseAccess.post("cars", car);
         firebaseAccess.onAddedCar(car);
     }

@@ -81,23 +81,23 @@
             android:layout_marginBottom="5dp">
 
             <TextView
-                android:id="@+id/genderTextView"
+                android:id="@+id/sexTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/gender"
+                android:text="@string/sex"
                 android:textColor="@color/LMBlue"
                 android:textSize="18sp"
                 android:layout_weight="1"/>
 
             <TextView
-                android:id="@+id/genderValueTextView"
+                android:id="@+id/sexValueTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
                 android:text="@string/male"
                 android:textColor="@color/LMBlue"
-                android:textSize="18sp"
-                android:layout_weight="1"
-                android:gravity="end"/>
+                android:textSize="18sp" />
 
         </LinearLayout>
 

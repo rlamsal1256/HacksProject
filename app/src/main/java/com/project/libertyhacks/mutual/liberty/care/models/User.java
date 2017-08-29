@@ -14,7 +14,7 @@ public class User implements Mapable {
 
     private String userName;
     private int userAge;
-    private String userGender;
+    private String userSex;
     private DateTemplate userDOB;
     private String userKey;
     private Map<String, Object> cars;
@@ -25,13 +25,13 @@ public class User implements Mapable {
 
     }
 
-    public User(String userKey, String userName, int userAge, String userGender,
+    public User(String userKey, String userName, int userAge, String userSex,
                 DateTemplate userDOB, String userLicenseNum, DateTemplate userLicenseExpDate,
                 Map<String, Object> cars) {
         this.userKey = userKey;
         this.userName = userName;
         this.userAge = userAge;
-        this.userGender = userGender;
+        this.userSex = userSex;
         this.userDOB = userDOB;
         this.userLicenseNum = userLicenseNum;
         this.userLicenseExpDate = userLicenseExpDate;
@@ -90,12 +90,12 @@ public class User implements Mapable {
         this.userLicenseExpDate = userLicenseExpDate;
     }
 
-    public String getUserGender() {
-        return userGender;
+    public String getUserSex() {
+        return userSex;
     }
 
-    public void setUserGender(String userGender) {
-        this.userGender = userGender;
+    public void setUserSex(String userSex) {
+        this.userSex = userSex;
     }
 
     @Override
@@ -122,7 +122,7 @@ public class User implements Mapable {
         return "{" +
                 "userName='" + userName + '\'' +
                 ", userAge=" + userAge +
-                ", userGender=" + userGender +
+                ", userSex=" + userSex +
                 ", userDOB=" + userDOB +
                 ", userLicenseNum='" + userLicenseNum + '\'' +
                 ", userLicenseExpDate=" + userLicenseExpDate +
@@ -134,7 +134,7 @@ public class User implements Mapable {
         HashMap<String, Object> result = new HashMap<>();
         result.put("userName", userName);
         result.put("userAge", userAge);
-        result.put("userGender", String.valueOf(userGender));
+        result.put("userSex", String.valueOf(userSex));
         result.put("userDOB", userDOB.toMap());
         result.put("userLicenseNum", userLicenseNum);
         result.put("userLicenseExpDate", userLicenseExpDate.toMap());

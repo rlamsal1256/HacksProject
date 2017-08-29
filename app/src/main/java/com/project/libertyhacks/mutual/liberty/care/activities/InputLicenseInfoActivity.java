@@ -71,11 +71,11 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
                 Map<String, Object> cars = new HashMap<>();
 
 
-                if (userUID != null && licNum != null && userName.getText() != null && String.valueOf(userGender()) != null && userDobDateTemplate != null
+                if (userUID != null && licNum != null && userName.getText() != null && String.valueOf(userSex()) != null && userDobDateTemplate != null
                         && userLicenseExpDateTemplate != null) {
                     User newUser = new User(userUID, userName.getText().toString(),
                             userAge,
-                            String.valueOf(userGender()),
+                            String.valueOf(userSex()),
                             userDobDateTemplate,
                             licNum,
                             userLicenseExpDateTemplate,
@@ -107,7 +107,7 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
     }
 
 
-    private char userGender() {
+    private char userSex() {
         if (isUserMale)
             return 'M';
         else
