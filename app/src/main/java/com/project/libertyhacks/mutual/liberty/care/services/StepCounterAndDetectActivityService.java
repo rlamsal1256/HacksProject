@@ -143,10 +143,6 @@ public class StepCounterAndDetectActivityService extends IntentService implement
 
         totalCount = (int) sensorEvent.values[0];
 
-        if (stepsUntilNow == 0){
-            stepsUntilNow = totalCount;
-        }
-
         if (stepsUntilNow != totalCount) {
             //don't send a notification if the user hasn't taken new steps
             countValueChanged = true;
