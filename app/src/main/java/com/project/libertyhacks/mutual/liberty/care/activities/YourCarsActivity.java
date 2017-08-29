@@ -98,7 +98,7 @@ public class YourCarsActivity extends AppCompatActivity implements
             LinearLayoutManager myLayoutManager = new LinearLayoutManager(this);
             myLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             if (cars.size() > 0 & myRecyclerView != null) {
-                myRecyclerView.setAdapter(new MyAdapter(cars));
+                myRecyclerView.setAdapter(new MyAdapter(YourCarsActivity.this, cars));
                 myRecyclerView.setLayoutManager(myLayoutManager);
             }
         }

@@ -1,5 +1,6 @@
 package com.project.libertyhacks.mutual.liberty.care.utilities;
 
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -18,6 +19,7 @@ import com.project.libertyhacks.mutual.liberty.care.interfaces.Mapable;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -153,6 +155,39 @@ public class FirebaseAccess {
             }
         });
     }
+
+    public void removeCar(String vin)
+    {
+        String logTag = "removeCar";
+        ArrayList<Car> cars = Singleton.getInstance().getCars();
+        Car removeCar = new Car();
+        for (Car c : cars)
+        {
+            if (vin.equals(c.getVin()))
+            {
+                removeCar = c;
+                Log.d(logTag, "found in Singleton");
+            }
+        }
+        cars.remove(removeCar);
+        Log.d(logTag, "removed from Singleton");
+
+        DatabaseReference carRef = database.getReference("/cars/" + vin);
+        if (carRef != null)
+        {
+            carRef.removeValue();
+            Log.d(logTag, "removed from cars");
+        }
+
+
+        DatabaseReference userCarRef = database.getReference("/users/" + Singleton.getInstance().getCurrentUser().getKey() + "/cars/" + vin);
+        if (userCarRef != null)
+        {
+            userCarRef.removeValue();
+            Log.d(logTag, "removed from user");
+        }
+    }
+
 
     public void updateCarMiles(String vin, int lastCount, int totalCount) {
         DatabaseReference mDatabase = database.getReference("/cars/" + vin);
