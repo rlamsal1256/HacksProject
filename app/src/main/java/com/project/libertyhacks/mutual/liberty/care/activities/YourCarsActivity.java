@@ -1,7 +1,10 @@
 package com.project.libertyhacks.mutual.liberty.care.activities;
 
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -24,6 +28,7 @@ import com.google.android.gms.location.ActivityRecognition;
 import com.project.libertyhacks.mutual.liberty.care.R;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.services.StepCounterAndDetectActivityService;
+import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
 import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
 import com.project.libertyhacks.mutual.liberty.care.utilities.YourCarsAdapter;
 
@@ -46,6 +51,32 @@ public class YourCarsActivity extends AppCompatActivity implements
     String totalStepsStr;
     private YourCarsAdapter adapter;
 
+//    private int carMiles = 0;
+
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            getMilesFromSharedPreferenceAndUpdateUI();
+//            Bundle bundle = intent.getExtras();
+//            if (bundle != null) {
+//                String string = bundle.getString(DownloadService.FILEPATH);
+//                int resultCode = bundle.getInt(DownloadService.RESULT);
+//                if (resultCode == RESULT_OK) {
+//                    Toast.makeText(MainActivity.this,
+//                            "Download complete. Download URI: " + string,
+//                            Toast.LENGTH_LONG).show();
+////                    textView.setText("Download done");
+//                } else {
+//                    Toast.makeText(MainActivity.this, "Download failed",
+//                            Toast.LENGTH_LONG).show();
+////                    textView.setText("Download failed");
+//                }
+//            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,14 +88,11 @@ public class YourCarsActivity extends AppCompatActivity implements
             actionBar.setTitle("Your Cars");
         }
 
-        cars = Singleton.getInstance().getCars();
-
-        getStepsFromSharedPrefAndUpdateUI();
+        getMilesFromSharedPreferenceAndUpdateUI();
 
         createApiClientAndConnect();
 
 //        populateScreenWithCars();
-
 
         // ImageButton to add a car
         addCarBtn = findViewById(R.id.addCarBtn);
@@ -82,6 +110,18 @@ public class YourCarsActivity extends AppCompatActivity implements
         });
 
         resolveVisibility();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(receiver, new IntentFilter(
+                StepCounterAndDetectActivityService.NOTIFICATION));
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(receiver);
     }
 
     private void populateScreenWithCars() {
@@ -123,16 +163,15 @@ public class YourCarsActivity extends AppCompatActivity implements
         mApiClient.connect();
     }
 
-    private void getStepsFromSharedPrefAndUpdateUI() {
+    private void getMilesFromSharedPreferenceAndUpdateUI() {
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         steps = prefs.getString("steps", "0");
-//        updateUI();
+
         populateScreenWithCars();
 
-
 //        listener = (sharedPreferences, s) -> updateUI();
-        listener = (sharedPreferences, s) -> populateScreenWithCars();
-        prefs.registerOnSharedPreferenceChangeListener(listener);
+//        listener = (sharedPreferences, s) -> populateScreenWithCars();
+//        prefs.registerOnSharedPreferenceChangeListener(listener);
     }
 
     private void updateUI() {

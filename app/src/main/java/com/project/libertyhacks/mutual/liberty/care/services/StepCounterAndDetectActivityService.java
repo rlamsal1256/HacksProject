@@ -15,7 +15,9 @@ import android.util.Log;
 import com.google.android.gms.location.ActivityRecognitionResult;
 import com.google.android.gms.location.DetectedActivity;
 import com.project.libertyhacks.mutual.liberty.care.R;
+import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
+import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
 
 import java.util.List;
 
@@ -32,6 +34,13 @@ public class StepCounterAndDetectActivityService extends IntentService implement
     int totalCount;
     boolean countValueChanged = false;
 
+    private Car car;
+
+
+    private SharedPreferences.OnSharedPreferenceChangeListener listener;
+    public static final String NOTIFICATION = "com.project.libertyhacks.mutual.liberty.care.services";
+
+
     public StepCounterAndDetectActivityService() {
         super("StepCounterAndDetectActivityService");
     }
@@ -47,6 +56,10 @@ public class StepCounterAndDetectActivityService extends IntentService implement
 
             SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
             String steps = prefs.getString("steps", "0");
+
+            listener = (sharedPreferences, s) -> publishResults();
+            prefs.registerOnSharedPreferenceChangeListener(listener);
+
             extractStepsUntilNow(steps);
 
             requestSensor();
@@ -54,6 +67,12 @@ public class StepCounterAndDetectActivityService extends IntentService implement
             ActivityRecognitionResult result = ActivityRecognitionResult.extractResult(intent);
             handleDetectedActivities(result.getProbableActivities());
         }
+    }
+
+    private void publishResults() {
+        Log.d("Inside service", "Publish results ******");
+        Intent intent = new Intent(NOTIFICATION);
+        sendBroadcast(intent);
     }
 
     private void extractStepsUntilNow(String steps) {
@@ -117,6 +136,8 @@ public class StepCounterAndDetectActivityService extends IntentService implement
                 getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
         editor.putString("steps", String.valueOf(stepCounter) + "," + String.valueOf(stepsUntilNow) + "," + String.valueOf(totalCount));
         editor.apply();
+
+
     }
 
     @Override

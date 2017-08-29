@@ -34,6 +34,7 @@ public class Singleton {
     public User getCurrentUser() { return  this.currentUser; }
     private User currentUser;
     private ArrayList<Car> cars = new ArrayList<>();
+    private int carMiles = 0;
 
     public boolean carExists(String vin)
     {
@@ -84,5 +85,9 @@ public class Singleton {
 
     public void setFirebaseUser(FirebaseUser firebaseUser) {
         this.firebaseUser = firebaseUser;
+    }
+
+    public void addCarMiles(int miles) {
+        carMiles = miles;
     }
 }

@@ -12,6 +12,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.project.libertyhacks.mutual.liberty.care.activities.GetStartedActivity;
 import com.project.libertyhacks.mutual.liberty.care.activities.InputLicenseInfoActivity;
+import com.project.libertyhacks.mutual.liberty.care.activities.YourCarsActivity;
 import com.project.libertyhacks.mutual.liberty.care.interfaces.Mapable;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
@@ -31,6 +32,9 @@ public class FirebaseAccess {
     private GetStartedActivity getStartedActivity;
     private InputLicenseInfoActivity inputLicenseInfoActivity;
     private MyFirebaseInstanceIdService firebaseInstanceIdService = new MyFirebaseInstanceIdService();
+
+    private YourCarsActivity yourCarsActivity;
+
 
     public FirebaseAccess() {
 
@@ -80,6 +84,26 @@ public class FirebaseAccess {
             }
         });
     }
+
+    public void getCarMiles(String vin) {
+        DatabaseReference mDatabase = database.getReference("cars/" + vin);
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Car newCar = dataSnapshot.getValue(Car.class);
+                if (newCar != null) {
+                    Singleton.getInstance().addCarMiles(newCar.getMiles());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
 
     public void updateCarMiles(String vin, int lastCount, int totalCount) {
         DatabaseReference mDatabase = database.getReference("/cars/" + vin);
