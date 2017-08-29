@@ -17,7 +17,6 @@ import com.google.android.gms.location.DetectedActivity;
 import com.project.libertyhacks.mutual.liberty.care.R;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.utilities.FirebaseAccess;
-import com.project.libertyhacks.mutual.liberty.care.utilities.Singleton;
 
 import java.util.List;
 
@@ -33,9 +32,6 @@ public class StepCounterAndDetectActivityService extends IntentService implement
     int stepCounter;
     int totalCount;
     boolean countValueChanged = false;
-
-    private Car car;
-
 
     private SharedPreferences.OnSharedPreferenceChangeListener listener;
     public static final String NOTIFICATION = "com.project.libertyhacks.mutual.liberty.care.services";

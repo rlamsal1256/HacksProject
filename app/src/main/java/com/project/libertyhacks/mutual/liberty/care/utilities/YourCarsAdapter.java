@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.project.libertyhacks.mutual.liberty.care.R;
-import com.project.libertyhacks.mutual.liberty.care.activities.EnterCarInfoActivity;
 import com.project.libertyhacks.mutual.liberty.care.activities.RemoveCarActivity;
-import com.project.libertyhacks.mutual.liberty.care.activities.YourCarsActivity;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 
 import java.util.ArrayList;
@@ -20,7 +18,6 @@ import java.util.ArrayList;
 /**
  * Created by n0312809 on 8/18/2017.
  */
-
 public class YourCarsAdapter extends RecyclerView.Adapter<YourCarsAdapter.MyViewHolder> {
     private ArrayList<Car> list;
     private String totalSteps;

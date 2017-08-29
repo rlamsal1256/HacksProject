@@ -1,6 +1,5 @@
 package com.project.libertyhacks.mutual.liberty.care.utilities;
 
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.util.Log;
 

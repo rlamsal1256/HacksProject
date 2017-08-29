@@ -22,7 +22,7 @@ public class FirebaseToken {
     }
 
     private FirebaseToken() {
-        this.token = FirebaseInstanceId.getInstance().getToken();
+        token = FirebaseInstanceId.getInstance().getToken();
         Log.d(TAG, "********************************************************************");
         Log.d(TAG, token);
         Log.d(TAG, "********************************************************************");
