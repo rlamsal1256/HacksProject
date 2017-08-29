@@ -51,29 +51,10 @@ public class YourCarsActivity extends AppCompatActivity implements
     String totalStepsStr;
     private YourCarsAdapter adapter;
 
-//    private int carMiles = 0;
-
     private BroadcastReceiver receiver = new BroadcastReceiver() {
-
         @Override
         public void onReceive(Context context, Intent intent) {
-
             getMilesFromSharedPreferenceAndUpdateUI();
-//            Bundle bundle = intent.getExtras();
-//            if (bundle != null) {
-//                String string = bundle.getString(DownloadService.FILEPATH);
-//                int resultCode = bundle.getInt(DownloadService.RESULT);
-//                if (resultCode == RESULT_OK) {
-//                    Toast.makeText(MainActivity.this,
-//                            "Download complete. Download URI: " + string,
-//                            Toast.LENGTH_LONG).show();
-////                    textView.setText("Download done");
-//                } else {
-//                    Toast.makeText(MainActivity.this, "Download failed",
-//                            Toast.LENGTH_LONG).show();
-////                    textView.setText("Download failed");
-//                }
-//            }
         }
     };
 
@@ -93,8 +74,6 @@ public class YourCarsActivity extends AppCompatActivity implements
         getMilesFromSharedPreferenceAndUpdateUI();
 
         createApiClientAndConnect();
-
-//        populateScreenWithCars();
 
         // ImageButton to add a car
         addCarBtn = findViewById(R.id.addCarBtn);
@@ -129,21 +108,18 @@ public class YourCarsActivity extends AppCompatActivity implements
     private void populateScreenWithCars() {
 
         extractSteps(steps);
-
-//        String lastDistance = lastStepsAmt + " steps";
         totalStepsStr = totalSteps + " steps";
 
-
-            RecyclerView myRecyclerView = findViewById(R.id.cardView);
-            myRecyclerView.setHasFixedSize(true);
-            LinearLayoutManager myLayoutManager = new LinearLayoutManager(this);
-            myLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-            if (cars.size() > 0 & myRecyclerView != null) {
-                adapter = new YourCarsAdapter(cars, totalStepsStr);
-                myRecyclerView.setAdapter(adapter);
-                myRecyclerView.setLayoutManager(myLayoutManager);
-            }
+        RecyclerView myRecyclerView = findViewById(R.id.cardView);
+        myRecyclerView.setHasFixedSize(true);
+        LinearLayoutManager myLayoutManager = new LinearLayoutManager(this);
+        myLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        if (cars.size() > 0 & myRecyclerView != null) {
+            adapter = new YourCarsAdapter(cars, totalStepsStr);
+            myRecyclerView.setAdapter(adapter);
+            myRecyclerView.setLayoutManager(myLayoutManager);
         }
+    }
 
     private void resolveVisibility() {
         if (cars.isEmpty()) {
@@ -170,23 +146,7 @@ public class YourCarsActivity extends AppCompatActivity implements
         steps = prefs.getString("steps", "0");
 
         populateScreenWithCars();
-
-//        listener = (sharedPreferences, s) -> updateUI();
-//        listener = (sharedPreferences, s) -> populateScreenWithCars();
-//        prefs.registerOnSharedPreferenceChangeListener(listener);
     }
-
-//    private void updateUI() {
-//        Log.d("StepsfromSP***", steps);
-//        extractSteps(steps);
-//
-//        String lastDistance = lastStepsAmt + " steps";
-//        totalStepsStr = totalSteps + " steps";
-//        Log.d("YourCarsActivity**", "last step: " + lastDistance);
-//        Log.d("YourCarsActivity**", "total step: " + totalStepsStr);
-////        ((TextView) findViewById(R.id.lastDistanceTxtView)).setText(lastDistance);
-////        ((TextView) findViewById(R.id.totalDistanceTextView)).setText(totalStepsStr);
-//    }
 
     private void extractSteps(String steps) {
         String[] parts = steps.split(",");
@@ -217,9 +177,9 @@ public class YourCarsActivity extends AppCompatActivity implements
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         if (!cars.isEmpty()) {
-        Intent intent = new Intent(this, StepCounterAndDetectActivityService.class);
-        PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        ActivityRecognition.ActivityRecognitionApi.requestActivityUpdates(mApiClient, 1000, pendingIntent);
+            Intent intent = new Intent(this, StepCounterAndDetectActivityService.class);
+            PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            ActivityRecognition.ActivityRecognitionApi.requestActivityUpdates(mApiClient, 1000, pendingIntent);
         }
     }
 
