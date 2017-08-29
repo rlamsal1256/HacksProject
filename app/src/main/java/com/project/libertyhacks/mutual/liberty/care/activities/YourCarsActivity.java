@@ -81,16 +81,19 @@ public class YourCarsActivity extends AppCompatActivity implements
         addCarLayout = findViewById(R.id.addCarLayout);
 
         addCarBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(YourCarsActivity.this, EnterCarInfoActivity.class);
-            startActivity(intent);
+            createEnterInfoIntent();
         });
 
         addAnotherCarBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(YourCarsActivity.this, EnterCarInfoActivity.class);
-            startActivity(intent);
+            createEnterInfoIntent();
         });
 
         resolveVisibility();
+    }
+
+    private void createEnterInfoIntent() {
+        Intent intent = new Intent(YourCarsActivity.this, EnterCarInfoActivity.class);
+        startActivity(intent);
     }
 
     @Override
