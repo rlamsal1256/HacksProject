@@ -119,7 +119,7 @@ public class YourCarsActivity extends AppCompatActivity implements
 
     private void updateAdapter() {
         if (cars.size() > 0) {
-            YourCarsAdapter myAdapter = new YourCarsAdapter(cars, totalStepsStr);
+            YourCarsAdapter myAdapter = new YourCarsAdapter(YourCarsActivity.this, cars, totalStepsStr);
             myRecyclerView.setAdapter(myAdapter);
             myRecyclerView.setLayoutManager(myLayoutManager);
         }
