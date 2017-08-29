@@ -33,7 +33,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/takePicBtn"
+        android:id="@+id/nonLibertyBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/libertyCustomersBtn"

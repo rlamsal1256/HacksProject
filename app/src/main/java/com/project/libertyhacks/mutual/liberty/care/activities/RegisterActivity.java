@@ -15,7 +15,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        Button nonLibertyBtn = (Button) findViewById(R.id.takePicBtn);
+        Button nonLibertyBtn = (Button) findViewById(R.id.nonLibertyBtn);
         nonLibertyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         libertyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, TakeLicensePictureAcitivity.class);
+                Intent intent = new Intent(RegisterActivity.this, UnderConstructionActivity.class);
                 startActivity(intent);
             }
         });
