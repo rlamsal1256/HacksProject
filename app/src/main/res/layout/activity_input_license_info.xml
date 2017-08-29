@@ -78,16 +78,16 @@
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/genderTextView"
+        android:id="@+id/sexTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nameTxtView"
-        android:layout_alignStart="@+id/nameTxtView"
-        android:layout_below="@+id/radioSex"
-        android:layout_marginTop="10dp"
-        android:text="Gender"
+        android:text="Sex"
         android:textColor="@color/LMBlue"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_marginBottom="28dp"
+        android:layout_above="@+id/setUserDobImgBtn"
+        android:layout_alignLeft="@+id/nameTxtView"
+        android:layout_alignStart="@+id/nameTxtView" />
 
     <EditText
         android:id="@+id/dobTxt"
@@ -124,18 +124,6 @@
         android:ems="10"
         android:inputType="date" />
 
-    <RadioGroup
-        android:id="@+id/radioSex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/userNameTxt"
-        android:layout_alignRight="@+id/userNameTxt"
-        android:layout_below="@+id/userNameTxt"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal">
-
-    </RadioGroup>
-
     <ImageButton
         android:id="@+id/setUserLicenseExpDateImgBtn"
         android:layout_width="wrap_content"
@@ -168,12 +156,13 @@
         app:srcCompat="@drawable/ic_right_arrow" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/sexRadioGroup"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignTop="@+id/genderTextView"
         android:layout_alignLeft="@+id/userNameTxt"
-        android:layout_alignStart="@+id/userNameTxt">
+        android:layout_alignStart="@+id/userNameTxt"
+        android:layout_alignTop="@+id/sexTextView"
+        android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/userMaleRadioBtn"

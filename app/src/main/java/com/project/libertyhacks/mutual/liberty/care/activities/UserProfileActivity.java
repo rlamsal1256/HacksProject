@@ -29,8 +29,8 @@ public class UserProfileActivity extends AppCompatActivity {
         //TextView age = findViewById(R.id.textView13);
         //age.setText(currentUser.getUserAge());
 
-        TextView gender = findViewById(R.id.genderValueTextView);
-        gender.setText(currentUser.getUserGender());
+        TextView sex = findViewById(R.id.sexValueTextView);
+        sex.setText(currentUser.getUserSex());
 
         TextView dob = findViewById(R.id.dobValueTextView);
         dob.setText(currentUser.getUserDOB().toString());
