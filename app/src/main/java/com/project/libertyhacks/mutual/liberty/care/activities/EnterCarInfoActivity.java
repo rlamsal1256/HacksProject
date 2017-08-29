@@ -24,7 +24,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_car_info);
 
-        ImageButton nextScreenBtn = findViewById(R.id.nextScreenCarInfoBtn);
+        ImageButton nextScreenBtn = findViewById(R.id.next);
         nextScreenBtn.setOnClickListener(v -> {
             // Get input VIN
             EditText vinTxt = findViewById(R.id.vinTxt);

@@ -124,16 +124,11 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
             mDay = c.get(Calendar.DAY_OF_MONTH);
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
+                    (view1, year, monthOfYear, dayOfMonth) -> {
 
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
+                        userDob.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                        userDobDateTemplate = new DateTemplate(monthOfYear + 1, dayOfMonth, year);
 
-                            userDob.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                            userDobDateTemplate = new DateTemplate(monthOfYear + 1, dayOfMonth, year);
-
-                        }
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
 
@@ -146,22 +141,13 @@ public class InputLicenseInfoActivity extends AppCompatActivity implements
             mDay = c.get(Calendar.DAY_OF_MONTH);
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
+                    (view12, year, monthOfYear, dayOfMonth) -> {
 
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
+                        userLicenseExpDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                        userLicenseExpDateTemplate = new DateTemplate(monthOfYear + 1, dayOfMonth, year);
 
-                            userLicenseExpDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                            userLicenseExpDateTemplate = new DateTemplate(monthOfYear + 1, dayOfMonth, year);
-
-                        }
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
-
-        } else if (view == nextScreenBtn) {
-
-
         }
     }
 

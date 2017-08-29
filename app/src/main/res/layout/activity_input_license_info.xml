@@ -148,12 +148,12 @@
         android:id="@+id/nextScreenDriverLicenseInfoBtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignEnd="@+id/licenseNumTxt"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/licenseNumTxt"
-        android:layout_marginBottom="39dp"
         android:background="@drawable/round_edges_button"
-        app:srcCompat="@drawable/ic_right_arrow" />
+        app:srcCompat="@drawable/ic_right_arrow"
+        android:layout_below="@+id/setUserLicenseExpDateImgBtn"
+        android:layout_alignRight="@+id/licenseNumTxt"
+        android:layout_alignEnd="@+id/licenseNumTxt"
+        android:layout_marginTop="34dp" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/sexRadioGroup"
