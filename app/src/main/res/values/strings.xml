@@ -19,5 +19,7 @@
     <string name="back">Back</string>
     <string name="add_car">Great! Now let\'s add a car.</string>
     <string name="add_another_car">Add Another Car</string>
+    <string name="confirm">Confirm</string>
+    <string name="edit_info">Edit Info</string>
 
 </resources>
