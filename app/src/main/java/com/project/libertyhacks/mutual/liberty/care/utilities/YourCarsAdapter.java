@@ -1,5 +1,8 @@
 package com.project.libertyhacks.mutual.liberty.care.utilities;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.project.libertyhacks.mutual.liberty.care.R;
+import com.project.libertyhacks.mutual.liberty.care.activities.EnterCarInfoActivity;
+import com.project.libertyhacks.mutual.liberty.care.activities.RemoveCarActivity;
+import com.project.libertyhacks.mutual.liberty.care.activities.YourCarsActivity;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 
 import java.util.ArrayList;
@@ -18,8 +24,10 @@ import java.util.ArrayList;
 public class YourCarsAdapter extends RecyclerView.Adapter<YourCarsAdapter.MyViewHolder> {
     private ArrayList<Car> list;
     private String totalSteps;
+    private Activity context;
 
-    public YourCarsAdapter(ArrayList<Car> data, String steps) {
+    public YourCarsAdapter(Activity context, ArrayList<Car> data, String steps) {
+        this.context = context;
         list = data;
         totalSteps = steps;
     }
@@ -38,6 +46,16 @@ public class YourCarsAdapter extends RecyclerView.Adapter<YourCarsAdapter.MyView
             super(v);
             carNameTextView =  v.findViewById(R.id.carNameTextView);
             carMilesTextView = v.findViewById(R.id.carMilesTextView);
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, RemoveCarActivity.class);
+                    Bundle b = new Bundle();
+                    b.putString("carName", carNameTextView.getText().toString());
+                    intent.putExtras(b);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 

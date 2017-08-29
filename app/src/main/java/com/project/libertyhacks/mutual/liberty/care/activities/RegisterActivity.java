@@ -28,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         libertyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, TakeLicensePictureAcitivity.class);
+                Intent intent = new Intent(RegisterActivity.this, UnderConstructionActivity.class);
                 startActivity(intent);
             }
         });

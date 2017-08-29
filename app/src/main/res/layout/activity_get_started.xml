@@ -15,13 +15,14 @@
         android:layout_above="@+id/getStartedBtn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="53dp"
-        android:fontFamily="casual"
+        android:layout_marginBottom="80dp"
+        android:fontFamily="sans-serif"
         android:gravity="center_horizontal"
-        android:text="CARe"
+        android:text="CARe,"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
         android:textColor="@color/LMBlue"
-        android:textSize="36sp" />
+        android:textSize="36sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/getStartedBtn"
@@ -30,6 +31,28 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:background="@color/LMBlue"
-        android:text="Get Started"
+        android:text="Let's Get Started!"
         android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:text="Welcome to"
+        android:textColor="@color/LMBlue"
+        android:textSize="24sp"
+        android:layout_above="@+id/titleView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcomeText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="your car maintenance assistant"
+        android:textColor="@color/LMBlue"
+        android:textSize="18sp" />
 </RelativeLayout>

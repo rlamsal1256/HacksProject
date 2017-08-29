@@ -60,7 +60,9 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activities.NotificationsHardCodedActivity"></activity>
+        <activity android:name=".activities.NotificationsHardCodedActivity" />
+        <activity android:name=".activities.UnderConstructionActivity"></activity>
+        <activity android:name=".activities.RemoveCarActivity"></activity>
     </application>
 
 </manifest>

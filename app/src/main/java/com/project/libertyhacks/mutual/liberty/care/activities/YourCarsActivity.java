@@ -60,6 +60,7 @@ public class YourCarsActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_cars);
+        Singleton.getInstance().setYourCarsActivity(this);
 
         // Create action bar
         ActionBar actionBar = getSupportActionBar();
@@ -198,4 +199,13 @@ public class YourCarsActivity extends AppCompatActivity implements
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
+    public void updateCars()
+    {
+        Log.d("UPDATE CARS", "UPDATE THE CARSSRSRSSSS*8********");
+        cars = Singleton.getInstance().getCars();
+        populateScreenWithCars();
+        resolveVisibility();
+    }
+
 }
