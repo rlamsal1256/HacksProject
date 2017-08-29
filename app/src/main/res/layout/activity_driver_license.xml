@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context="com.project.libertyhacks.mutual.liberty.care.activities.DriverLicenseActivity">
 
+    <ImageButton
+        android:id="@+id/backBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/inputLicenseInfoBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/inputLicenseInfoBtn"
+        android:layout_marginBottom="30dp"
+        android:background="@color/LMBlue"
+        android:backgroundTint="@color/LMBlue"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_left_arrow" />
+
     <TextView
         android:id="@+id/titleView"
         android:layout_width="350dp"
