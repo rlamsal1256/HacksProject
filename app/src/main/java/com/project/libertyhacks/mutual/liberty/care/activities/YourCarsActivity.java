@@ -88,6 +88,8 @@ public class YourCarsActivity extends AppCompatActivity implements
             actionBar.setTitle("Your Cars");
         }
 
+        cars = Singleton.getInstance().getCars();
+
         getMilesFromSharedPreferenceAndUpdateUI();
 
         createApiClientAndConnect();

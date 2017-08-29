@@ -110,7 +110,7 @@ public class StepCounterAndDetectActivityService extends IntentService implement
 
                         firebaseAccess.updateCarMiles("1234", stepCounter, totalCount);
 
-                        if (stepsUntilNow != 0){
+                        if (stepCounter != totalCount){
                             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
                             builder.setContentText("We detected " + stepCounter + " steps. Total steps is now " + totalCount);
                             builder.setSmallIcon(R.mipmap.care_logo);
