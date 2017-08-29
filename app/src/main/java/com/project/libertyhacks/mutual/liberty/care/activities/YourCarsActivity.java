@@ -130,7 +130,7 @@ public class YourCarsActivity extends AppCompatActivity implements
 
         extractSteps(steps);
 
-        String lastDistance = lastStepsAmt + " steps";
+//        String lastDistance = lastStepsAmt + " steps";
         totalStepsStr = totalSteps + " steps";
 
 
@@ -176,17 +176,17 @@ public class YourCarsActivity extends AppCompatActivity implements
 //        prefs.registerOnSharedPreferenceChangeListener(listener);
     }
 
-    private void updateUI() {
-        Log.d("StepsfromSP***", steps);
-        extractSteps(steps);
-
-        String lastDistance = lastStepsAmt + " steps";
-        totalStepsStr = totalSteps + " steps";
-        Log.d("YourCarsActivity**", "last step: " + lastDistance);
-        Log.d("YourCarsActivity**", "total step: " + totalStepsStr);
-//        ((TextView) findViewById(R.id.lastDistanceTxtView)).setText(lastDistance);
-//        ((TextView) findViewById(R.id.totalDistanceTextView)).setText(totalStepsStr);
-    }
+//    private void updateUI() {
+//        Log.d("StepsfromSP***", steps);
+//        extractSteps(steps);
+//
+//        String lastDistance = lastStepsAmt + " steps";
+//        totalStepsStr = totalSteps + " steps";
+//        Log.d("YourCarsActivity**", "last step: " + lastDistance);
+//        Log.d("YourCarsActivity**", "total step: " + totalStepsStr);
+////        ((TextView) findViewById(R.id.lastDistanceTxtView)).setText(lastDistance);
+////        ((TextView) findViewById(R.id.totalDistanceTextView)).setText(totalStepsStr);
+//    }
 
     private void extractSteps(String steps) {
         String[] parts = steps.split(",");
