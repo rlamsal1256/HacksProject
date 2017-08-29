@@ -100,6 +100,6 @@ public class EnterCarInfoActivity extends AppCompatActivity {
         Map<String, Object> carMap = new HashMap<>();
         carMap.put(car.getKey(), true);
         firebaseAccess.post("cars", car);
-        firebaseAccess.post("users/" + Singleton.getInstance().getCurrentUser().getKey(), carMap);
+        firebaseAccess.onAddedCar(car);
     }
 }

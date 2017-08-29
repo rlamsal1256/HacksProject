@@ -9,6 +9,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.project.libertyhacks.mutual.liberty.care.activities.GetStartedActivity;
 import com.project.libertyhacks.mutual.liberty.care.activities.InputLicenseInfoActivity;
@@ -16,6 +18,7 @@ import com.project.libertyhacks.mutual.liberty.care.interfaces.Mapable;
 import com.project.libertyhacks.mutual.liberty.care.models.Car;
 import com.project.libertyhacks.mutual.liberty.care.models.User;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -49,19 +52,75 @@ public class FirebaseAccess {
         return true;
     }
 
-    public boolean post(String url, Map m)
+    public void onAddedCar(Car car)
     {
-        DatabaseReference mDatabase = database.getReference(url);
-        Log.d("Database Reference", mDatabase.toString());
+        DatabaseReference postRef = database.getReference("/users/" + Singleton.getInstance().getCurrentUser().getKey());
+        postRef.runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+                User user = mutableData.getValue(User.class);
+                if (user == null)
+                {
+                    Log.d("USER IS NULL", Singleton.getInstance().getCurrentUser().getKey());
+                    return Transaction.success(mutableData);
+                }
 
-        DatabaseReference key = mDatabase.child("cars");
-        Log.d("KEY", key.toString());
-        Log.d("InputInfo", key.toString() + ": " + m.toString());
-        String newCarKeyString = m.entrySet().toArray()[0].toString();
-        DatabaseReference newCar = key.child(newCarKeyString);
-        newCar.setValue(m.get(newCarKeyString));
-        return true;
+                if (user.getCars() != null)
+                {
+                    Log.d("CARS NOT NULL", "ADDING ANOTHER CAR");
+                    user.getCars().put(car.getKey(), true);
+                }
+                else
+                {
+                    Log.d("CARS NULL", "ADDING A NEW CAR");
+                    Map<String, Object> carMap = new HashMap<>();
+                    carMap.put(car.getKey(), true);
+                    user.setCars(carMap);
+                }
+
+                mutableData.setValue(user);
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+                // Transaction completed
+                Log.d("TRANSACTION COMPLETE", "postTransaction:onComplete:" + databaseError);
+            }
+        });
     }
+
+//    public boolean post(String url, Map m)
+//    {
+//        DatabaseReference mDatabase = database.getReference(url);
+//        Log.d("Database Reference", mDatabase.toString());
+//
+//        DatabaseReference key = mDatabase.child("cars");
+//        key.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                Map carMap = dataSnapshot.getValue(Map.class);
+//                String carKey = m.entrySet().toArray()[0].toString();
+//                if (carMap != null)
+//                {
+//                    carMap.put(carKey, m.get(carKey));
+//                    key.setValue(carMap);
+//                }
+//                else
+//                {
+//                    Map newCarMap = new HashMap();
+//                    newCarMap.put(carKey, m.get(carKey));
+//                    key.setValue(newCarMap);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//        return true;
+//    }
 
 
     public void setGetStartedActivity(GetStartedActivity gsa) {
