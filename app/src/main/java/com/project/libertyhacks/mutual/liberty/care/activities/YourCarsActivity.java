@@ -39,12 +39,10 @@ public class YourCarsActivity extends AppCompatActivity implements
     public GoogleApiClient mApiClient;
     public int lastStepsAmt;
     public int totalSteps;
-    private String steps = "";
     private RelativeLayout addCarLayout;
     private FloatingActionButton addAnotherCarBtn;
     private RecyclerView myRecyclerView;
     private LinearLayoutManager myLayoutManager;
-    private YourCarsAdapter myAdapter;
     ArrayList<Car> cars;
     String totalStepsStr;
 
@@ -117,7 +115,7 @@ public class YourCarsActivity extends AppCompatActivity implements
 
     private void updateAdapter() {
         if (cars.size() > 0) {
-            myAdapter = new YourCarsAdapter(cars, totalStepsStr);
+            YourCarsAdapter myAdapter = new YourCarsAdapter(cars, totalStepsStr);
             myRecyclerView.setAdapter(myAdapter);
             myRecyclerView.setLayoutManager(myLayoutManager);
         }
@@ -145,7 +143,7 @@ public class YourCarsActivity extends AppCompatActivity implements
 
     private void getMilesFromSharedPreferenceAndUpdateUI() {
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        steps = prefs.getString("steps", "0");
+        String steps = prefs.getString("steps", "0");
 
         extractSteps(steps);
         totalStepsStr = totalSteps + " steps";
