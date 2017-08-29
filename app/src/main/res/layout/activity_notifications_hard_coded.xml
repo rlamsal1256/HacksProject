@@ -43,7 +43,7 @@
 
     <Button
         android:id="@+id/scheduleAppointmentImgBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/oilChangeNotificationTxt"
         android:layout_alignRight="@+id/oilChangeNotificationTxt"
@@ -97,7 +97,7 @@
 
     <Button
         android:id="@+id/removeLicenseExpImgBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/licenseExpirationNotificationTxt"
         android:layout_alignRight="@+id/licenseExpirationNotificationTxt"
@@ -152,7 +152,7 @@
 
     <Button
         android:id="@+id/checkQuoteImgBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/quoteNotificationTxt"
         android:layout_alignRight="@+id/quoteNotificationTxt"
