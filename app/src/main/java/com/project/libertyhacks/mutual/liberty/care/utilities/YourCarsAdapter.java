@@ -32,11 +32,6 @@ public class YourCarsAdapter extends RecyclerView.Adapter<YourCarsAdapter.MyView
         totalSteps = steps;
     }
 
-    public void updateSteps(String steps){
-        totalSteps = steps;
-        this.notifyDataSetChanged();
-    }
-
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView carNameTextView;

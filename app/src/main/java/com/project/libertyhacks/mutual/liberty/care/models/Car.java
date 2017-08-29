@@ -89,7 +89,7 @@ public class Car implements Mapable {
         this.make = newCar.getMake();
         this.miles = newCar.getMiles();
         this.model = newCar.getModel();
-        this.name = newCar.getKey();
+        this.name = newCar.getName();
         this.vin = newCar.getVin();
         this.year = newCar.getYear();
     }
