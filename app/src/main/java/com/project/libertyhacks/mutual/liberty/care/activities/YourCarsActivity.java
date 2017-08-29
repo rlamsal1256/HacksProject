@@ -100,8 +100,8 @@ public class YourCarsActivity extends AppCompatActivity implements
                 StepCounterAndDetectActivityService.NOTIFICATION));
     }
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onDestroy() {
+        super.onDestroy();
         unregisterReceiver(receiver);
     }
 
