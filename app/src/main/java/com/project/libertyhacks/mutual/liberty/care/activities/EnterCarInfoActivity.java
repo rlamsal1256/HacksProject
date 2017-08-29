@@ -18,6 +18,7 @@ import com.project.libertyhacks.mutual.liberty.care.utilities.VINAnalyzer;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class EnterCarInfoActivity extends AppCompatActivity {
 
@@ -31,6 +32,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
             // Get input VIN
             EditText vinTxt = findViewById(R.id.vinTxt);
             String vin = vinTxt.getText().toString();
+            if (vin.isEmpty()) vin = Integer.toString(new Random().nextInt());
 
             EditText carsNameEditText = findViewById(R.id.carsNameEditText);
             String carsName = carsNameEditText.getText().toString();
@@ -97,8 +99,8 @@ public class EnterCarInfoActivity extends AppCompatActivity {
         // Log car in database
         Singleton.getInstance().addCar(car);
         FirebaseAccess firebaseAccess = new FirebaseAccess();
-        Map<String, Object> carMap = new HashMap<>();
-        carMap.put(car.getKey(), true);
+//        Map<String, Object> carMap = new HashMap<>();
+//        carMap.put(car.getKey(), true);
         firebaseAccess.post("cars", car);
         firebaseAccess.onAddedCar(car);
     }
