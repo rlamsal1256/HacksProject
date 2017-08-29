@@ -136,8 +136,6 @@ public class StepCounterAndDetectActivityService extends IntentService implement
                 getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
         editor.putString("steps", String.valueOf(stepCounter) + "," + String.valueOf(stepsUntilNow) + "," + String.valueOf(totalCount));
         editor.apply();
-
-
     }
 
     @Override

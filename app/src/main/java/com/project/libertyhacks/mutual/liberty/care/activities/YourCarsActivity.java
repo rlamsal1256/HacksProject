@@ -42,6 +42,9 @@ public class YourCarsActivity extends AppCompatActivity implements
     private String steps = "";
     private RelativeLayout addCarLayout;
     private FloatingActionButton addAnotherCarBtn;
+    private RecyclerView myRecyclerView;
+    private LinearLayoutManager myLayoutManager;
+    private YourCarsAdapter myAdapter;
     ArrayList<Car> cars;
     String totalStepsStr;
 
@@ -51,6 +54,7 @@ public class YourCarsActivity extends AppCompatActivity implements
         public void onReceive(Context context, Intent intent) {
             Log.d("Inside youractivity", "Results received******");
             getMilesFromSharedPreferenceAndUpdateUI();
+            updateAdapter();
         }
     };
 
@@ -68,6 +72,8 @@ public class YourCarsActivity extends AppCompatActivity implements
         cars = Singleton.getInstance().getCars();
 
         getMilesFromSharedPreferenceAndUpdateUI();
+
+        populateScreenWithCars();
 
         createApiClientAndConnect();
 
@@ -102,17 +108,17 @@ public class YourCarsActivity extends AppCompatActivity implements
     }
 
     private void populateScreenWithCars() {
-
-        extractSteps(steps);
-        totalStepsStr = totalSteps + " steps";
-
-        RecyclerView myRecyclerView = findViewById(R.id.cardView);
+        myRecyclerView = findViewById(R.id.cardView);
         myRecyclerView.setHasFixedSize(true);
-        LinearLayoutManager myLayoutManager = new LinearLayoutManager(this);
+        myLayoutManager = new LinearLayoutManager(this);
         myLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        updateAdapter();
+    }
+
+    private void updateAdapter() {
         if (cars.size() > 0) {
-            YourCarsAdapter adapter = new YourCarsAdapter(cars, totalStepsStr);
-            myRecyclerView.setAdapter(adapter);
+            myAdapter = new YourCarsAdapter(cars, totalStepsStr);
+            myRecyclerView.setAdapter(myAdapter);
             myRecyclerView.setLayoutManager(myLayoutManager);
         }
     }
@@ -141,7 +147,8 @@ public class YourCarsActivity extends AppCompatActivity implements
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         steps = prefs.getString("steps", "0");
 
-        populateScreenWithCars();
+        extractSteps(steps);
+        totalStepsStr = totalSteps + " steps";
     }
 
     private void extractSteps(String steps) {
