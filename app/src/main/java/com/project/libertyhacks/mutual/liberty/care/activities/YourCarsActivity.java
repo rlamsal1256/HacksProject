@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,9 +45,11 @@ public class YourCarsActivity extends AppCompatActivity implements
     ArrayList<Car> cars;
     String totalStepsStr;
 
+    // Receives updates from @StepCounterAndDetectActivityService when steps are detected
     private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            Log.d("Inside youractivity", "Results received******");
             getMilesFromSharedPreferenceAndUpdateUI();
         }
     };
