@@ -67,17 +67,6 @@
         android:layout_marginTop="46dp" />
 
     <EditText
-        android:id="@+id/licenseNumTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_alignBaseline="@+id/licenseNumTextView"
-        android:layout_alignBottom="@+id/licenseNumTextView"
-        android:layout_toRightOf="@+id/licenseNumTextView"
-        android:layout_toEndOf="@+id/licenseNumTextView" />
-
-    <EditText
         android:id="@+id/userNameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -87,6 +76,40 @@
         android:layout_alignBottom="@+id/nameTxtView"
         android:layout_alignLeft="@+id/licenseNumTxt"
         android:layout_alignStart="@+id/licenseNumTxt" />
+
+    <TextView
+        android:id="@+id/genderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        android:textColor="@color/LMBlue"
+        android:textSize="18sp"
+        android:layout_below="@+id/radioSex"
+        android:layout_alignLeft="@+id/nameTxtView"
+        android:layout_alignStart="@+id/nameTxtView"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/dobTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        android:layout_alignBaseline="@+id/dobTextView"
+        android:layout_alignBottom="@+id/dobTextView"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_alignEnd="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/licenseNumTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_alignBaseline="@+id/licenseNumTextView"
+        android:layout_alignBottom="@+id/licenseNumTextView"
+        android:layout_toRightOf="@+id/licenseNumTextView"
+        android:layout_toEndOf="@+id/licenseNumTextView" />
 
     <EditText
         android:id="@+id/expDateTxt"
@@ -100,29 +123,6 @@
         android:inputType="date"
         android:layout_alignRight="@+id/dobTxt"
         android:layout_alignEnd="@+id/dobTxt" />
-
-    <EditText
-        android:id="@+id/dobTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        android:layout_alignBaseline="@+id/dobTextView"
-        android:layout_alignBottom="@+id/dobTextView"
-        android:layout_alignRight="@+id/textView3"
-        android:layout_alignEnd="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/genderTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gender"
-        android:textColor="@color/LMBlue"
-        android:textSize="18sp"
-        android:layout_below="@+id/radioSex"
-        android:layout_alignLeft="@+id/nameTxtView"
-        android:layout_alignStart="@+id/nameTxtView"
-        android:layout_marginTop="10dp" />
 
     <RadioGroup
         android:id="@+id/radioSex"
