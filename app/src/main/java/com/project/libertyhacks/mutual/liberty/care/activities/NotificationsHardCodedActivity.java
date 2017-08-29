@@ -17,12 +17,14 @@ public class NotificationsHardCodedActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle("Notifications");
+            // Show back button on action bar
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Enable back button
         if (item.getItemId() == android.R.id.home ) {
             finish();
             return true;
