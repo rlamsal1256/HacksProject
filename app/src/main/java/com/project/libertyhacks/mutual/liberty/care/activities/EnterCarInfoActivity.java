@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -51,6 +52,7 @@ public class EnterCarInfoActivity extends AppCompatActivity {
             car.setMiles(miles);
             car.setOwnerId(Singleton.getInstance().getFirebaseUser().getUid());
             car.setName(carsName); // Will replace this with user input later
+            Log.d("CAR NAME", "*********** CAR NAME:" + carsName);
 
             this.addCar(car);
 
