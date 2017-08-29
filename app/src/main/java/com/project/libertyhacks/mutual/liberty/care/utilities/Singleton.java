@@ -26,7 +26,7 @@ public class Singleton {
 
     public void setCurrentUser(User user) {
         this.currentUser = user;
-        if (this.takeLicensePictureAcitivity != null)
+        if (this.takeLicensePictureAcitivity != null && cars.isEmpty())
         {
             this.takeLicensePictureAcitivity.postUserSuccessful();
         }
